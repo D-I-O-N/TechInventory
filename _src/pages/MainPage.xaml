@@ -41,7 +41,7 @@
         <!-- Боковое меню или панель навигации -->
         <StackPanel Background="#FF2C3E50" Margin="0,0,-13,0" >
             <!-- Пример кнопок для навигации -->
-            <Button Content="Кабинеты" Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" Cursor="Hand" FontSize="18" Height="44"/>
+            <Button Content="Кабинеты" Style="{StaticResource NavigationButtonStyle}" Click="PageRoomsOpen_Click" FontWeight="Bold" Cursor="Hand" FontSize="18" Height="44"/>
             <Button Content="Сотрудники" Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="44"/>
             <Button Content="Оборудование" Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="45"/>
             <Button Content="Выдача/Возврат" Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="44"/>

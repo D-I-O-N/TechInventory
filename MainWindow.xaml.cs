@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TechInventory._src.pages;
+using TechInventory._src.pages.rooms;
 
 namespace TechInventory
 {
@@ -27,9 +28,12 @@ namespace TechInventory
 
         }
 
-        private void Window_Initialized (object sender, EventArgs e)
+        private void Window_Initialized(object sender, EventArgs e)
         {
-            MainFrameNavigation.Navigate(new MainPage());
+            //MainFrameNavigation.Navigate(new MainPage());
+
+            MainFrameNavigation.Navigate(new RoomsPage());
+
         }
     }
 }
