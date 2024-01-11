@@ -123,7 +123,7 @@ namespace TechInventory._src.pages.rooms
 
         private void dataGridView1_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-
+            // добавлена сортировка и выбор
             if (dataGridView1.SelectedItem != null)
             {
                 Room selectedRoom = (Room)dataGridView1.SelectedItem;
