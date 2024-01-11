@@ -104,8 +104,8 @@
     <Compile Include="_src\pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="_src\pages\rooms\PageRooms.xaml.cs">
-      <DependentUpon>PageRooms.xaml</DependentUpon>
+    <Compile Include="_src\pages\rooms\AddRoom_Form.xaml.cs">
+      <DependentUpon>AddRoom_Form.xaml</DependentUpon>
     </Compile>
     <Compile Include="_src\pages\rooms\RoomsPage.xaml.cs">
       <DependentUpon>RoomsPage.xaml</DependentUpon>
@@ -126,7 +126,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="_src\pages\rooms\PageRooms.xaml">
+    <Page Include="_src\pages\rooms\AddRoom_Form.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\refresh.png" />
+    <Resource Include="img\search.png" />
     <Content Include="_src\database\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

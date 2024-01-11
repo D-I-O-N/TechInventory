@@ -111,6 +111,8 @@ namespace TechInventory._src.pages.rooms
                 ReadSingleRow(dataGrid, reader);
             }
             reader.Close();
+
+            entities.Database.Connection.Close();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -141,9 +143,41 @@ namespace TechInventory._src.pages.rooms
             }
         }
 
+        private void refreshImg_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            RefreshDataGrid(dataGridView1);
+        }
+
+        private void Search(DataGrid dataGrid)
+        {
+            dataGrid.Items.Clear();
+
+            string searchString = $"select * from Rooms where concat (RoomNumber, Description) like N'%" + txtBoxSearch.Text + "%'";
+
+            SqlCommand com = new SqlCommand(searchString, (SqlConnection)entities.Database.Connection);
+
+            entities.Database.Connection.Open();
+
+            SqlDataReader reader = com.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ReadSingleRow(dataGrid, reader);
+            }
+            reader.Close();
+
+            entities.Database.Connection.Close();
+        }
+
+        private void txtBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Search(dataGridView1);
+        }
+
         private void AddCabinet_Click(object sender, RoutedEventArgs e)
         {
-
+            AddRoom_Form createRoomWindow = new AddRoom_Form();
+            createRoomWindow.ShowDialog();
         }
 
         private void EditCabinet_Click(object sender, RoutedEventArgs e)
@@ -166,9 +200,5 @@ namespace TechInventory._src.pages.rooms
             NavigationService.GoBack();
         }
 
-        private void refreshImg_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            RefreshDataGrid(dataGridView1);
-        }
     }
 }

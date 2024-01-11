@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TechInventory"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="500" MinWidth="700" Height="500" Width="700" Initialized="Window_Initialized" >
+        Title="MainWindow" MinHeight="500" MinWidth="700" 
+        Height="500" Width="700" 
+        Initialized="Window_Initialized" 
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Frame NavigationUIVisibility="Hidden" x:Name="MainFrameNavigation"/>
     </Grid>

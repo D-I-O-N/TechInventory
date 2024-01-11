@@ -1,0 +1,21 @@
+﻿<Window x:Class="TechInventory._src.pages.rooms.AddRoom_Form"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TechInventory._src.pages.rooms"
+        mc:Ignorable="d"
+        Title="Добавление нового кабинета" Height="200" Width="400"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Margin="10">
+            <Label Content="Номер кабинета" FontWeight="Bold"/>
+            <TextBox x:Name="txtRoomNumber" Margin="0,0,0,10"/>
+
+            <Label Content="Название" FontWeight="Bold"/>
+            <TextBox x:Name="txtDescription" Margin="0,0,0,10"/>
+
+            <Button Content="Добавить" Width="100" Height="30" Click="CreateRoom_Click" FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</Window>
