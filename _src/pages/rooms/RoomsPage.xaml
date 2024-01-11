@@ -24,20 +24,22 @@
                Foreground="White"
                TextWrapping="Wrap"
                LineHeight="1.5" HorizontalAlignment="Center" />
+            <Image x:Name="refreshImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/refresh.png" MouseDown="refreshImg_MouseDown" />
         </Grid>
 
         <Grid Grid.Row="1">
             <!-- Список кабинетов -->
-            <DataGrid x:Name="dataGridView1" Height="156">
+            <DataGrid  x:Name="dataGridView1" Height="156" SelectedCellsChanged="dataGridView1_SelectedCellsChanged">
             </DataGrid>
         </Grid>
 
         <Grid Grid.Row="2">
             <!-- Кнопки для действий -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="Добавить кабинет" FontWeight="Bold" FontSize="18" Height="44" Width="175" Margin="5" Click="AddCabinet_Click"/>
-                <Button Content="Редактировать" FontWeight="Bold" FontSize="18" Height="44" Width="175" Margin="5" Click="EditCabinet_Click"/>
-                <Button Content="Удалить" FontWeight="Bold" FontSize="18" Height="44" Width="175" Margin="5" Click="DeleteCabinet_Click"/>
+                <Button Content="Добавить" FontWeight="Bold" FontSize="18" Height="44" Width="150" Margin="5" Click="AddCabinet_Click"/>
+                <Button Content="Редактировать" FontWeight="Bold" FontSize="18" Height="44" Width="150" Margin="5" Click="EditCabinet_Click"/>
+                <Button Content="Удалить" FontWeight="Bold" FontSize="18" Height="44" Width="150" Margin="5" Click="DeleteCabinet_Click"/>
+                <Button Content="Сохранить" FontWeight="Bold" FontSize="18" Height="44" Width="150" Margin="5" Click="SaveCabinet_Click"/>
             </StackPanel>
         </Grid>
 
@@ -56,9 +58,9 @@
                         <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Description" Width="119"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
-                        <TextBox Margin="5" Width="233"/>
-                        <TextBox Margin="5" Width="233"/>
-                        <TextBox Margin="5" Width="233"/>
+                        <TextBox x:Name="txtBoxID"  Margin="5" Width="233"/>
+                        <TextBox x:Name="txtBoxRoomNumber"  Margin="5" Width="233"/>
+                        <TextBox x:Name="txtBoxDescription"  Margin="5" Width="233"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

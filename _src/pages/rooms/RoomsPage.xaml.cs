@@ -113,6 +113,34 @@ namespace TechInventory._src.pages.rooms
             reader.Close();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            CreateColumns();
+            RefreshDataGrid(dataGridView1);
+        }
+
+        private void dataGridView1_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+
+            if (dataGridView1.SelectedItem != null)
+            {
+                Room selectedRoom = (Room)dataGridView1.SelectedItem;
+                if (selectedRoom != null)
+                {
+                    txtBoxID.Text = selectedRoom.ID.ToString();
+                    txtBoxRoomNumber.Text = selectedRoom.RoomNumber.ToString();
+                    txtBoxDescription.Text = selectedRoom.Description;
+                }
+                else
+                {
+                    txtBoxID.Text = "не выбрано";
+                    txtBoxRoomNumber.Text = "не выбрано";
+                    txtBoxDescription.Text = "не выбрано";
+                }
+
+            }
+        }
+
         private void AddCabinet_Click(object sender, RoutedEventArgs e)
         {
 
@@ -120,7 +148,7 @@ namespace TechInventory._src.pages.rooms
 
         private void EditCabinet_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void DeleteCabinet_Click(object sender, RoutedEventArgs e)
@@ -128,15 +156,19 @@ namespace TechInventory._src.pages.rooms
 
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void SaveCabinet_Click(object sender, RoutedEventArgs e)
         {
-            CreateColumns();
-            RefreshDataGrid(dataGridView1);
+
         }
 
         private void BackToPage_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void refreshImg_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            RefreshDataGrid(dataGridView1);
         }
     }
 }
