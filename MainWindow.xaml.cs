@@ -30,9 +30,9 @@ namespace TechInventory
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            //MainFrameNavigation.Navigate(new MainPage());
+            MainFrameNavigation.Navigate(new MainPage());
 
-            MainFrameNavigation.Navigate(new RoomsPage());
+            //MainFrameNavigation.Navigate(new RoomsPage());
 
         }
     }

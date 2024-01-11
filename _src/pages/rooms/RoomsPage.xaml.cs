@@ -113,11 +113,6 @@ namespace TechInventory._src.pages.rooms
             reader.Close();
         }
 
-        private void RoomsPage_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddCabinet_Click(object sender, RoutedEventArgs e)
         {
 
@@ -137,6 +132,11 @@ namespace TechInventory._src.pages.rooms
         {
             CreateColumns();
             RefreshDataGrid(dataGridView1);
+        }
+
+        private void BackToPage_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

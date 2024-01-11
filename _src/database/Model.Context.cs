@@ -135,11 +135,5 @@ namespace TechInventory._src.database
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
-
-        internal class Room : Rooms
-        {
-            public new int RoomNumber { get; set; }
-            public new string Description { get; set; }
-        }
     }
 }

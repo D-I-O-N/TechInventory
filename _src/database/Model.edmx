@@ -22,6 +22,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EquipmentName" Type="nvarchar" MaxLength="100" />
           <Property Name="EquipmentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Count" Type="int" />
           <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="PurchaseDate" Type="date" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
@@ -181,6 +182,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EquipmentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EquipmentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Count" Type="Int32" />
           <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -355,6 +357,7 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
                 <ScalarProperty Name="EquipmentType" ColumnName="EquipmentType" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
                 <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
                 <ScalarProperty Name="Status" ColumnName="Status" />

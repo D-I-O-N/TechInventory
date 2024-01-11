@@ -23,6 +23,7 @@ namespace TechInventory._src.database
         public int ID { get; set; }
         public string EquipmentName { get; set; }
         public string EquipmentType { get; set; }
+        public Nullable<int> Count { get; set; }
         public string SerialNumber { get; set; }
         public Nullable<System.DateTime> PurchaseDate { get; set; }
         public string Status { get; set; }
