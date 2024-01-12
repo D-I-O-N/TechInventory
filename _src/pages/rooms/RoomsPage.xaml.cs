@@ -44,7 +44,7 @@ namespace TechInventory._src.pages.rooms
     {
         Entities entities = new Entities();
 
-        int selectedRow;
+        //int selectedRow;
 
         public RoomsPage()
         {

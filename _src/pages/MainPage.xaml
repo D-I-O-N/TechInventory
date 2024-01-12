@@ -45,14 +45,27 @@
             <Button Content="Сотрудники" Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="44"/>
             <Button Content="Оборудование" Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="45"/>
             <Button Content="Выдача/Возврат" Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="44"/>
-            <Button Content="Отчеты" Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="44"/>
+            <Button Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="44">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <Image Source="/img/diagram.png" Width="70" Height="70" />
+                    <TextBlock Text="Отчеты" Foreground="White" FontSize="18" FontWeight="Bold" />
+                </StackPanel>
+            </Button>
+            <!-- Добавленная кнопка -->
+            <Button Style="{StaticResource NavigationButtonStyle}" FontWeight="Bold" FontSize="18" Height="44">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <Image Source="/img/issue-and-return.png" Width="70" Height="70" />
+                    <TextBlock Text="О программе" Foreground="White" FontSize="18" FontWeight="Bold" />
+                </StackPanel>
+            </Button>
+
         </StackPanel>
 
         <!-- Основное содержимое страницы -->
         <StackPanel Margin="0,257,-13,0">
             <!-- Здесь может быть ваш основной контент, например, Frame для отображения различных страниц -->
 
-            <TextBlock TextAlignment="Center" Text="Добро пожаловать в систему учета компьютерной техники в колледже. Здесь вы можете управлять информацией о кабинетах, сотрудниках, оборудовании и истории его использования."
+            <TextBlock Visibility="Hidden" TextAlignment="Center" Text="Добро пожаловать в систему учета компьютерной техники в колледже. Здесь вы можете управлять информацией о кабинетах, сотрудниках, оборудовании и истории его использования."
            Margin="10"
            FontSize="22"
            Foreground="White"

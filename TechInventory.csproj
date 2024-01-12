@@ -180,6 +180,12 @@
   <ItemGroup>
     <Resource Include="img\refresh.png" />
     <Resource Include="img\search.png" />
+    <Resource Include="img\about.png" />
+    <Resource Include="img\door.png" />
+    <Resource Include="img\employee.png" />
+    <Resource Include="img\equipment.png" />
+    <Resource Include="img\issue-and-return.png" />
+    <Resource Include="img\diagram.png" />
     <Content Include="_src\database\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
