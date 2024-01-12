@@ -223,10 +223,10 @@ namespace TechInventory._src.pages.rooms
                 if (roomToDelete != null)
                 {
                     entities.Rooms.Remove(roomToDelete);
-                    //entities.SaveChanges();
+                    entities.SaveChanges();
 
-                    //// Обновление DataGrid
-                    //RefreshDataGrid(dataGridView1);
+                    // Обновление DataGrid
+                    RefreshDataGrid(dataGridView1);
                 }
             }
         }
@@ -245,15 +245,93 @@ namespace TechInventory._src.pages.rooms
 
         private void EditCabinet_Click(object sender, RoutedEventArgs e)
         {
+            Room selectedRoom = (Room)dataGridView1.SelectedItem;
 
+            if (selectedRoom != null)
+            {
+                infoEdit.Visibility = Visibility.Visible;
+                btnEdit.Visibility = Visibility.Hidden;
+                btnSave.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("Кабинет не выбран.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void UpdateRoomInDatabase(Room roomToUpdate)
+        {
+            
+            string updateQuery = $"UPDATE Rooms SET RoomNumber = {roomToUpdate.RoomNumber}, Description = N'{roomToUpdate.Description}' WHERE ID = {roomToUpdate.ID}";
+
+            using (SqlCommand command = new SqlCommand(updateQuery, (SqlConnection)entities.Database.Connection))
+            {
+                entities.Database.Connection.Open();
+                command.ExecuteNonQuery();
+                entities.Database.Connection.Close();
+            }
+        }
+
+        private void UpdateRoomFromFields(Room room)
+        {
+            // Предполагается, что у вас есть поля для ввода данных на форме,
+            // например, txtBoxRoomNumber и txtBoxDescription
+            if (int.TryParse(txtBoxRoomNumber.Text, out int roomNumber))
+            {
+                room.RoomNumber = roomNumber;
+            }
+            else
+            {
+                // Обработка ошибки, если введенное значение для RoomNumber не является числом
+                MessageBox.Show("Неверный формат номера кабинета.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                // Возможно, вы захотите добавить другую логику обработки ввода данных
+                return; // Прерываем метод, так как введенные данные некорректны
+            }
+
+            // Обновляем описание из поля ввода
+            room.Description = txtBoxDescription.Text;
+
+            // Помечаем запись как измененную
+            room.State = RowState.Modified;
+        }
+
+        private void ClearFields()
+        {
+            txtBoxRoomNumber.Text = string.Empty;
+            txtBoxDescription.Text = string.Empty;
+            // Добавьте другие элементы управления, которые вы хотите очистить
         }
 
         private void SaveCabinet_Click(object sender, RoutedEventArgs e)
         {
-            entities.SaveChanges();
+            Room selectedRoom = (Room)dataGridView1.SelectedItem;
 
-            // Обновление DataGrid
-            RefreshDataGrid(dataGridView1);
+            if (selectedRoom != null)
+            {
+               
+                // Обновляем данные в объекте комнаты на основе полей формы
+                UpdateRoomFromFields(selectedRoom);
+
+                // Обновляем данные в базе данных
+                UpdateRoomInDatabase(selectedRoom);
+
+                // Отключаем режим редактирования
+                infoEdit.Visibility = Visibility.Hidden;
+
+                // Включаем кнопку "Редактировать", отключаем кнопку "Сохранить"
+                btnEdit.Visibility = Visibility.Visible;
+                btnSave.Visibility = Visibility.Hidden;
+
+                // Обновляем DataGrid
+                dataGridView1.Items.Refresh();
+
+                // Очищаем поля формы или отключаем режим редактирования
+                ClearFields(); // Метод для очистки полей, если необходимо
+            }
+            else
+            {
+                MessageBox.Show("Кабинет не выбран.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void BackToPage_Click(object sender, RoutedEventArgs e)
