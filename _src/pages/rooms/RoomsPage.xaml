@@ -24,8 +24,8 @@
                Foreground="White"
                TextWrapping="Wrap"
                LineHeight="1.5" HorizontalAlignment="Left" />
-            <Image x:Name="searchImg" HorizontalAlignment="Center" Margin="130,7,7,7" Height="40" Width="40" Source="/img/search.png" MouseDown="refreshImg_MouseDown" />
-            <TextBox x:Name="txtBoxSearch" HorizontalAlignment="Right" Margin="5,5,60,5" Width="200" Height="27" TextChanged="txtBoxSearch_TextChanged" FontSize="18"/>
+            <Image x:Name="searchImg" HorizontalAlignment="Right" Margin="0,7,270,7" Height="40" Width="40" Source="/img/search.png" MouseDown="refreshImg_MouseDown" />
+            <TextBox x:Name="txtBoxSearch" HorizontalAlignment="Right"  Margin="5,5,60,5" Width="200" Height="27" TextChanged="txtBoxSearch_TextChanged" FontSize="18"/>
             <Image x:Name="refreshImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/refresh.png" MouseDown="refreshImg_MouseDown" />
         </Grid>
 

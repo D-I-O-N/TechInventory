@@ -34,8 +34,8 @@ namespace TechInventory._src.pages.rooms
         public int RoomNumber { get; set; }
         public string Description { get; set; }
         public bool IsNew { get; set; }
+        internal RowState State { get; set; }
     }
-
 
     /// <summary>
     /// Логика взаимодействия для RoomsPage.xaml
@@ -169,6 +169,68 @@ namespace TechInventory._src.pages.rooms
             entities.Database.Connection.Close();
         }
 
+        //private void deleteItem()
+        //{
+        //    Room selectedRoom = (Room)dataGridView1.SelectedItem;
+        //    if (selectedRoom != null)
+        //    {
+        //        // Установите состояние объекта как удаленный
+        //        selectedRoom.State = RowState.Deleted;
+        //        // Обновите DataGrid
+        //        dataGridView1.Items.Refresh();
+        //    }
+        //}
+
+        //private void Update()
+        //{
+        //    entities.Database.Connection.Open();
+
+        //    foreach (Room room in dataGridView1.ItemsSource)
+        //    {
+        //        var rowState = room.State;
+
+        //        if (rowState == RowState.Existed)
+        //        {
+        //            continue;
+        //        }
+
+        //        if (rowState == RowState.Deleted)
+        //        {
+        //            var id = room.ID;
+        //            var deleteQuery = $"delete from Rooms where ID = {id}";
+
+        //            var command = new SqlCommand(deleteQuery, (SqlConnection)entities.Database.Connection);
+
+        //            command.ExecuteNonQuery();
+        //        }
+        //    }
+
+        //    entities.Database.Connection.Close();
+        //}
+
+
+        private void DeleteCabinet_Click(object sender, RoutedEventArgs e)
+        {
+
+            var selectedItem = dataGridView1.SelectedItem;
+            if (selectedItem != null)
+            {
+                Room selectedRoom = (Room)selectedItem;
+                int roomId = selectedRoom.ID;
+
+                // Удаление из базы данных по ID
+                var roomToDelete = entities.Rooms.Find(roomId);
+                if (roomToDelete != null)
+                {
+                    entities.Rooms.Remove(roomToDelete);
+                    //entities.SaveChanges();
+
+                    //// Обновление DataGrid
+                    //RefreshDataGrid(dataGridView1);
+                }
+            }
+        }
+
         private void txtBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Search(dataGridView1);
@@ -178,6 +240,7 @@ namespace TechInventory._src.pages.rooms
         {
             AddRoom_Form createRoomWindow = new AddRoom_Form();
             createRoomWindow.ShowDialog();
+            
         }
 
         private void EditCabinet_Click(object sender, RoutedEventArgs e)
@@ -185,14 +248,12 @@ namespace TechInventory._src.pages.rooms
 
         }
 
-        private void DeleteCabinet_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void SaveCabinet_Click(object sender, RoutedEventArgs e)
         {
+            entities.SaveChanges();
 
+            // Обновление DataGrid
+            RefreshDataGrid(dataGridView1);
         }
 
         private void BackToPage_Click(object sender, RoutedEventArgs e)
