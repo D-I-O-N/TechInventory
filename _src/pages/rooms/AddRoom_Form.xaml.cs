@@ -28,7 +28,7 @@ namespace TechInventory._src.pages.rooms
             InitializeComponent();
         }
 
-        private void CreateRoom_Click(object sender, RoutedEventArgs e)
+        private void AddRoomFormButton_Click(object sender, RoutedEventArgs e)
         {
             entities.Database.Connection.Open();
 
@@ -50,6 +50,17 @@ namespace TechInventory._src.pages.rooms
             }
 
             entities.Database.Connection.Close();
+        }
+
+        private void ClearFields()
+        {
+            txtRoomNumber.Text = string.Empty;
+            txtDescription.Text = string.Empty;
+        }
+
+        private void AddRoomFormButton_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ClearFields();
         }
     }
 }

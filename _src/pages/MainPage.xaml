@@ -22,12 +22,12 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Ellipse x:Name="ButtonBackground" Width="40" Height="40" Fill="#FF2C3E50"/>
+                            <Rectangle x:Name="ButtonBackground" Width="170" Height="140" Fill="#2C3E50"/>
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#A9DFBF"/>
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#006400"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -37,43 +37,61 @@
 
     </Page.Resources>
 
-    <Grid>
+    <Grid Background="#FF2C3E50">
         <!-- Боковое меню или панель навигации -->
-        <StackPanel Background="#FF2C3E50" Margin="0,0,-13,0" >
+        <StackPanel Margin="0,70,0,0" VerticalAlignment="Center" Cursor="Hand" >
             <!-- Пример кнопок для навигации -->
-            <Button Content="Кабинеты" Style="{StaticResource NavigationButtonStyle}" Click="PageRoomsOpen_Click" FontWeight="Bold" Cursor="Hand" FontSize="18" Height="44"/>
-            <Button Content="Сотрудники" Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="44"/>
-            <Button Content="Оборудование" Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="45"/>
-            <Button Content="Выдача/Возврат" Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="44"/>
-            <Button Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Height="44">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="140" Width="Auto" >
+                <Button Style="{StaticResource NavigationButtonStyle}" Click="PageRoomsOpen_Click" FontWeight="Bold" Cursor="Hand" FontSize="18" Width="170">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                    <Image Source="/img/diagram.png" Width="70" Height="70" />
-                    <TextBlock Text="Отчеты" Foreground="White" FontSize="18" FontWeight="Bold" />
+                    <Image Source="/img/door.png" Width="70" Height="70" />
+                    <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" Text="Кабинеты" Foreground="White" FontSize="18" FontWeight="Bold" />
                 </StackPanel>
             </Button>
-            <!-- Добавленная кнопка -->
-            <Button Style="{StaticResource NavigationButtonStyle}" FontWeight="Bold" FontSize="18" Height="44">
+                <Button Style="{StaticResource NavigationButtonStyle}" Click="PageEmployeeOpen_Click" FontWeight="Bold" FontSize="18"  Width="170">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                    <Image Source="/img/issue-and-return.png" Width="70" Height="70" />
-                    <TextBlock Text="О программе" Foreground="White" FontSize="18" FontWeight="Bold" />
+                        <Image Source="/img/employee.png" Width="70" Height="70" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" Text="Сотрудники" Foreground="White" FontSize="18" FontWeight="Bold" />
                 </StackPanel>
             </Button>
-
+                <Button Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Width="170">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <Image Source="/img/equipment.png" Width="70" Height="70" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Оборудование" Foreground="White" FontSize="18" FontWeight="Bold" />
+                </StackPanel>
+            </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="140" Width="Auto" >
+                <Button Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Width="170">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <Image Source="/img/issue-and-return.png" Width="70" Height="70" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Выдача/Возврат" Foreground="White" FontSize="18" FontWeight="Bold" />
+                </StackPanel>
+            </Button>
+                <Button Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Width="170">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <Image Source="/img/diagram.png" Width="70" Height="70" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Отчеты" Foreground="White" FontSize="18" FontWeight="Bold" />
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource NavigationButtonStyle}" FontWeight="Bold" FontSize="18" Width="170">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <Image Source="/img/about.png" Width="70" Height="70" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="О программе" Foreground="White" FontSize="18" FontWeight="Bold" />
+                </StackPanel>
+            </Button>
+            </StackPanel>
         </StackPanel>
 
         <!-- Основное содержимое страницы -->
-        <StackPanel Margin="0,257,-13,0">
+        <StackPanel Margin="0,0,0,0">
             <!-- Здесь может быть ваш основной контент, например, Frame для отображения различных страниц -->
-
-            <TextBlock Visibility="Hidden" TextAlignment="Center" Text="Добро пожаловать в систему учета компьютерной техники в колледже. Здесь вы можете управлять информацией о кабинетах, сотрудниках, оборудовании и истории его использования."
+            <TextBlock Visibility="Visible" TextAlignment="Center" Text="Добро пожаловать в систему учета компьютерной техники в колледже. Здесь вы можете управлять информацией о кабинетах, сотрудниках, оборудовании и истории его использования."
            Margin="10"
            FontSize="22"
            Foreground="White"
            TextWrapping="Wrap"
            LineHeight="1.5" HorizontalAlignment="Center" FontWeight="Bold"/>
-
-
         </StackPanel>
-
     </Grid>
 </Page>

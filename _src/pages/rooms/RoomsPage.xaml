@@ -5,9 +5,37 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TechInventory._src.pages.rooms"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="700"
+      d:DesignHeight="450" d:DesignWidth="800"
       Title="RoomsPage" Loaded="Page_Loaded" >
-
+    
+    <Page.Resources>
+        <Style x:Key="HoverButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Margin" Value="0,2,0,2"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                            <Rectangle x:Name="ButtonBackground" Width="150" Height="44" Fill="{TemplateBinding Background}"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#2C3E50"/>
+                                <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    </Page.Resources>
+    
     <Grid Background="#FF2C3E50">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -20,47 +48,48 @@
 
         <Grid Grid.Row="0">
             <!-- Заголовок страницы -->
-            <TextBlock Text="Управление кабинетами" Margin="10" FontSize="20" FontWeight="Bold"      
+            <Image x:Name="clearImg" HorizontalAlignment="Right" Margin="0,7,320,7" Height="40" Width="40" Source="/img/сlearFields.png" MouseDown="clearImg_MouseDown" />
+            <TextBlock Text="Управление аудиториями" Margin="10" FontSize="20" FontWeight="Bold"      
                Foreground="White"
                TextWrapping="Wrap"
                LineHeight="1.5" HorizontalAlignment="Left" />
             <Image x:Name="searchImg" HorizontalAlignment="Right" Margin="0,7,270,7" Height="40" Width="40" Source="/img/search.png" MouseDown="refreshImg_MouseDown" />
             <TextBox x:Name="txtBoxSearch" HorizontalAlignment="Right"  Margin="5,5,60,5" Width="200" Height="27" TextChanged="txtBoxSearch_TextChanged" FontSize="18"/>
-            <Image x:Name="refreshImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/refresh.png" MouseDown="refreshImg_MouseDown" />
+            <Image x:Name="refreshImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/refresh.png" MouseDown="refreshImg_MouseDown" Cursor="Hand" />
         </Grid>
 
         <Grid Grid.Row="1">
             <!-- Список кабинетов -->
-            <DataGrid  x:Name="dataGridView1" Height="156" SelectedCellsChanged="dataGridView1_SelectedCellsChanged">
+            <DataGrid  x:Name="dataGridView1" SelectedCellsChanged="dataGridView1_SelectedCellsChanged">
             </DataGrid>
         </Grid>
 
         <Grid Grid.Row="2">
             <!-- Кнопки для действий -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="Добавить" FontWeight="Bold" FontSize="18" Height="44" Width="150" Margin="5" Click="AddCabinet_Click"/>
-                <Button x:Name="btnEdit"  Content="Редактировать" FontWeight="Bold" FontSize="18" Height="44" Width="150" Margin="5" Click="EditCabinet_Click"/>
-                <Button Content="Удалить" FontWeight="Bold" FontSize="18" Height="44" Width="150" Margin="5" Click="DeleteCabinet_Click"/>
-                <Button x:Name="btnSave" Content="Сохранить" FontWeight="Bold" FontSize="18" Height="44" Width="150" Margin="5" Click="SaveCabinet_Click"/>
+                <Button Content="Добавить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="AddCabinet_Click"/>
+                <Button x:Name="btnEdit"  Content="Редактировать" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="EditCabinet_Click"/>
+                <Button Content="Удалить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="DeleteCabinet_Click"/>
+                <Button x:Name="btnSave" Visibility="Hidden" Content="Сохранить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="SaveCabinet_Click"/>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="3">
             <!-- Текущая запись -->
-            <StackPanel Background="White" Height="148" >
-                <TextBlock TextAlignment="Center" Text="Выбранная запись о кабинете"
+            <StackPanel Background="White">
+                <TextBlock x:Name="txtID" TextAlignment="Center" Text="Выбранная запись о аудитории"
                    FontSize="18"
                    Foreground="Black"
                    TextWrapping="Wrap"
-                   LineHeight="1.5" FontWeight="Bold" Width="276" Margin="0,5,0,10"/>
+                   LineHeight="1.5" FontWeight="Bold" Margin="0,5,0,10"/>
                 <StackPanel Margin="0,0,0,0" Orientation="Horizontal" Width="470" >
                     <StackPanel Orientation="Vertical" Width="129" >
-                        <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="ID" Width="119" FontWeight="Bold"/>
-                        <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Номер кабинета" Width="119" FontWeight="Bold"/>
+                        <!--<TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="ID" Width="119" FontWeight="Bold"/>-->
+                        <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Номер аудитории" Width="119" FontWeight="Bold"/>
                         <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Описание" Width="119" FontWeight="Bold"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
-                        <TextBox x:Name="txtBoxID"  Margin="5" Width="233"/>
+                        <!--<TextBox x:Name="txtBoxID"  Margin="5" Width="233"/>-->
                         <TextBox x:Name="txtBoxRoomNumber"  Margin="5" Width="233"/>
                         <TextBox x:Name="txtBoxDescription"  Margin="5" Width="233"/>
                     </StackPanel>
@@ -70,7 +99,7 @@
         </Grid>
 
         <Grid Grid.Row="4">
-            <Button HorizontalAlignment="Right" Margin="7" Content="Назад"   FontWeight="Bold" FontSize="11" Height="19" Width="110" Click="BackToPage_Click"/>
+            <Image x:Name="backImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/back.png" MouseLeftButtonUp="BackToPage_MouseLeftButtonUp" Cursor="Hand" />
         </Grid>
     </Grid>
 </Page>

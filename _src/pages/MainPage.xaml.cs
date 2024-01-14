@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TechInventory._src.pages.employees;
 using TechInventory._src.pages.rooms;
 
 namespace TechInventory._src.pages
@@ -29,6 +30,11 @@ namespace TechInventory._src.pages
         private void PageRoomsOpen_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new RoomsPage());
+        }
+
+        private void PageEmployeeOpen_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeesPage());
         }
     }
 }

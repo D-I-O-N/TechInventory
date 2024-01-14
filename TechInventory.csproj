@@ -101,6 +101,9 @@
     <Compile Include="_src\database\sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="_src\pages\employees\EmployeesPage.xaml.cs">
+      <DependentUpon>EmployeesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_src\pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="_src\pages\employees\EmployeesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="_src\pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,7 +177,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="_src\pages\employees\" />
     <Folder Include="_src\pages\equipment\" />
     <Folder Include="_src\pages\statistics\" />
   </ItemGroup>
@@ -180,12 +186,14 @@
   <ItemGroup>
     <Resource Include="img\refresh.png" />
     <Resource Include="img\search.png" />
+    <Resource Include="img\diagram.png" />
     <Resource Include="img\about.png" />
     <Resource Include="img\door.png" />
     <Resource Include="img\employee.png" />
     <Resource Include="img\equipment.png" />
     <Resource Include="img\issue-and-return.png" />
-    <Resource Include="img\diagram.png" />
+    <Resource Include="img\back.png" />
+    <Resource Include="img\сlearFields.png" />
     <Content Include="_src\database\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

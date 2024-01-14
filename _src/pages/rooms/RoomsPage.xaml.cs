@@ -43,7 +43,6 @@ namespace TechInventory._src.pages.rooms
     public partial class RoomsPage : Page
     {
         Entities entities = new Entities();
-
         //int selectedRow;
 
         public RoomsPage()
@@ -61,7 +60,7 @@ namespace TechInventory._src.pages.rooms
 
             DataGridTextColumn roomNumberСolumn = new DataGridTextColumn
             {
-                Header = "Номер кабинета",
+                Header = "Номер аудитории",
                 Binding = new Binding("RoomNumber")
             };
 
@@ -129,15 +128,16 @@ namespace TechInventory._src.pages.rooms
                 Room selectedRoom = (Room)dataGridView1.SelectedItem;
                 if (selectedRoom != null)
                 {
-                    txtBoxID.Text = selectedRoom.ID.ToString();
+                    string ID = selectedRoom.ID.ToString();
+                    txtID.Text = "Выбранная запись о аудитории № " + ID;
                     txtBoxRoomNumber.Text = selectedRoom.RoomNumber.ToString();
                     txtBoxDescription.Text = selectedRoom.Description;
                 }
                 else
                 {
-                    txtBoxID.Text = "не выбрано";
-                    txtBoxRoomNumber.Text = "не выбрано";
-                    txtBoxDescription.Text = "не выбрано";
+                    txtID.Text = "Выбранная запись о аудитории № ....";
+                    txtBoxRoomNumber.Text = "Не выбрано";
+                    txtBoxDescription.Text = "Не выбрано";
                 }
 
             }
@@ -227,6 +227,7 @@ namespace TechInventory._src.pages.rooms
 
                     // Обновление DataGrid
                     RefreshDataGrid(dataGridView1);
+                    ClearFields();
                 }
             }
         }
@@ -299,7 +300,6 @@ namespace TechInventory._src.pages.rooms
         {
             txtBoxRoomNumber.Text = string.Empty;
             txtBoxDescription.Text = string.Empty;
-            // Добавьте другие элементы управления, которые вы хотите очистить
         }
 
         private void SaveCabinet_Click(object sender, RoutedEventArgs e)
@@ -334,10 +334,14 @@ namespace TechInventory._src.pages.rooms
             }
         }
 
-        private void BackToPage_Click(object sender, RoutedEventArgs e)
+        private void BackToPage_MouseLeftButtonUp(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
+        private void clearImg_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ClearFields();
+        }
     }
 }

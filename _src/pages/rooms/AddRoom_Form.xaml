@@ -5,17 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TechInventory._src.pages.rooms"
         mc:Ignorable="d"
-        Title="Добавление нового кабинета" Height="200" Width="400"
+        Title="Добавление новой аудитории" Height="218" Width="400"
         WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid Background="#FF2C3E50" >
         <StackPanel Margin="10">
-            <Label Content="Номер кабинета" FontWeight="Bold"/>
+            <Label Content="Номер аудитории" Foreground="White" FontWeight="Bold"/>
             <TextBox x:Name="txtRoomNumber" Margin="0,0,0,10"/>
 
-            <Label Content="Название" FontWeight="Bold"/>
-            <TextBox x:Name="txtDescription" Margin="0,0,0,10"/>
+            <Label Content="Название" Foreground="White" FontWeight="Bold"/>
+            <TextBox x:Name="txtDescription"  Margin="0,0,0,10"/>
 
-            <Button Content="Добавить" Width="100" Height="30" Click="CreateRoom_Click" FontWeight="Bold"/>
+            <Button x:Name="AddRoomForm"  Content="Добавить\Очистить" Width="130" Height="30" Click="AddRoomFormButton_Click" FontWeight="Bold" MouseRightButtonUp="AddRoomFormButton_MouseRightButtonUp"/>
+
+            <Label Content="*ЛКМ - Добавить\ПКМ - очистить" Margin="0,7,0,0" Foreground="White" FontSize="9" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </Window>
