@@ -34,6 +34,7 @@ namespace TechInventory._src.pages.rooms
         public int RoomNumber { get; set; }
         public string Description { get; set; }
         public bool IsNew { get; set; }
+       
         internal RowState State { get; set; }
     }
 

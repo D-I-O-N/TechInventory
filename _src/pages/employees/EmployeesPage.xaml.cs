@@ -16,6 +16,8 @@ using TechInventory._src.pages.rooms;
 using System.Data.SqlClient;
 using System.Data;
 using TechInventory._src.database;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace TechInventory._src.pages.employees
 {
@@ -40,18 +42,94 @@ namespace TechInventory._src.pages.employees
         public string Position { get; set; }
         public int RoomID { get; set; }
         public bool IsNew { get; set; }
+        public Rooms AssignedRoom { get; internal set; }
+
+        //public Employees AssignedRoom { get; internal set; }
+
+        //public Room AssignedRoom { get; internal set; }
         internal RowState State { get; set; }
+
     }
+
+    //public class RoomViewModel
+    //{
+    //    public int RoomID { get; set; }
+    //    public string Description { get; set; }
+
+    //    public override string ToString()
+    //    {
+    //        return Description;
+    //    }
+    //}
 
 
     public partial class EmployeesPage : Page
     {
         Entities entities = new Entities();
 
+        //public ObservableCollection<string> Names { get; set; } = new ObservableCollection<string>()
+        //{
+        //    "sadasd",
+        //    "adasdasd",
+        //    "adasdasd"
+        //};
+
         public EmployeesPage()
         {
             InitializeComponent();
         }
+
+        public ObservableCollection<RoomViewModel> RoomsList { get; set; } = new ObservableCollection<RoomViewModel>();
+
+        private List<Rooms> GetRoomsFromDatabase()
+        {
+            using (Entities entities = new Entities())
+            {
+                // Предположим, что у вас есть DbSet<Rooms> в вашем классе Entities
+                return entities.Rooms.ToList();
+            }
+        }
+
+        private void ComboBoxRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxRooms.SelectedItem is RoomViewModel selectedRoom)
+            {
+                txtBoxRoomID.Text = selectedRoom.RoomID.ToString();
+            }
+        }
+
+
+        // Метод для загрузки комнат из базы данных
+        private void LoadRoomsFromDatabase()
+        {
+            // Здесь вам нужно использовать ваш код для получения данных из базы данных
+            // Пример: roomsList = GetRoomsFromDatabase();
+            // Предполагается, что у вас есть метод GetRoomsFromDatabase, который возвращает List<Rooms>
+            // Затем преобразуйте его в ObservableCollection<RoomViewModel>
+            // Например:
+            List<Rooms> roomsFromDatabase = GetRoomsFromDatabase();
+            RoomsList.Clear();
+            foreach (var room in roomsFromDatabase)
+            {
+                RoomsList.Add(new RoomViewModel { RoomID = room.ID, Description = room.Description });
+            }
+        }
+
+        // Класс RoomViewModel для отображения данных в ComboBox
+        public class RoomViewModel
+        {
+            public int RoomID { get; set; }
+            public string Description { get; set; }
+
+            public override string ToString()
+            {
+                return Description;
+            }
+        }
+
+
+
+
 
         private void CreateColumns()
         {
@@ -81,8 +159,14 @@ namespace TechInventory._src.pages.employees
 
             DataGridTextColumn roomIDColumn = new DataGridTextColumn
             {
-                Header = "ID Кабинета",
+                Header = "ID Аудитории",
                 Binding = new Binding("RoomID")
+            };
+
+            DataGridTextColumn roomColumn = new DataGridTextColumn
+            {
+                Header = "Информация о аудитории",
+                Binding = new Binding("AssignedRoom.Description") // Предположим, что у кабинета есть свойство RoomInfo
             };
 
             DataGridTextColumn newColumn = new DataGridTextColumn
@@ -96,21 +180,27 @@ namespace TechInventory._src.pages.employees
             dataGridView1.Columns.Add(lastNameColumn);
             dataGridView1.Columns.Add(positionColumn);
             dataGridView1.Columns.Add(roomIDColumn);
+            dataGridView1.Columns.Add(roomColumn);
             dataGridView1.Columns.Add(newColumn);
         }
 
         private void ReadSingleRow(DataGrid dataGrid, IDataRecord record)
         {
+            int roomID = record.GetInt32(4);
+            var selRoom = entities.Rooms.FirstOrDefault(r => r.ID == roomID);
+
             dataGrid.Items.Add(new Employee
             {
                 ID = record.GetInt32(0),
                 FirstName = record.GetString(1),
                 LastName = record.GetString(2),
                 Position = record.GetString(3),
-                RoomID = record.GetInt32(4),
+                RoomID = roomID,
+                AssignedRoom = selRoom, // Обновляем AssignedRoom
                 IsNew = true // Помечаем как новую запись
             });
         }
+
 
         private void RefreshDataGrid(DataGrid dataGrid)
         {
@@ -147,6 +237,10 @@ namespace TechInventory._src.pages.employees
         {
             CreateColumns();
             RefreshDataGrid(dataGridView1);
+
+            LoadRoomsFromDatabase();
+            //comboBoxRooms.DisplayMemberPath = "Description";
+            comboBoxRooms.ItemsSource = RoomsList;
         }
 
         private void dataGridView1_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
@@ -163,6 +257,9 @@ namespace TechInventory._src.pages.employees
                     txtBoxLastName.Text = selectedEmployee.LastName;
                     txtBoxPosition.Text = selectedEmployee.Position;
                     txtBoxRoomID.Text = selectedEmployee.RoomID.ToString();
+                    //txtBoxRoomID.Text = selectedEmployee.AssignedRoom.Description.ToString();
+                    //comboBoxRooms.IsEnabled = true;
+                    //comboBoxRooms.SelectedItem = selectedEmployee.AssignedRoom.Description.ToString();
                 }
                 else
                 {
@@ -171,7 +268,10 @@ namespace TechInventory._src.pages.employees
                     txtBoxLastName.Text = "Не выбрано";
                     txtBoxPosition.Text = "Не выбрано";
                     txtBoxRoomID.Text = "Не выбрано";
+                    //comboBoxRooms.IsEnabled = false;
+                    //comboBoxRooms.SelectedItem = null;
                 }
+
             }
         }
 
@@ -241,9 +341,11 @@ namespace TechInventory._src.pages.employees
 
             if (selectedEmployee != null)
             {
+
                 infoEdit.Visibility = Visibility.Visible;
                 btnEdit.Visibility = Visibility.Hidden;
                 btnSave.Visibility = Visibility.Visible;
+                comboBoxRooms.IsEnabled = true;
             }
             else
             {
@@ -269,6 +371,22 @@ namespace TechInventory._src.pages.employees
             employee.FirstName = txtBoxFirstName.Text;
             employee.LastName = txtBoxLastName.Text;
             employee.Position = txtBoxPosition.Text;
+            //employee.AssignedRoom.Description = txtBoxRoomID.Text;
+
+
+            //if (comboBoxRooms.SelectedItem is Room selectedRoom)
+            //{
+            //    // Присваиваем значение Description из выбранного элемента в AssignedRoom.Description
+            //    txtBox.Text = selectedRoom.Description;
+
+            //    //employee.AssignedRoom.Description = txtBoxRoomID.Text;
+            //    // Можете также присвоить другие свойства, если они есть в классе Room
+            //    // employee.AssignedRoom.SomeOtherProperty = selectedRoom.SomeOtherProperty;
+
+            //    // Помечаем запись как измененную
+
+            //}
+
 
             if (int.TryParse(txtBoxRoomID.Text, out int roomID))
             {

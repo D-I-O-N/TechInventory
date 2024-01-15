@@ -11,7 +11,7 @@ namespace TechInventory._src.database
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Rooms
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,14 +20,15 @@ namespace TechInventory._src.database
             this.Employees = new HashSet<Employees>();
             this.Equipment = new HashSet<Equipment>();
         }
-    
+
         public int ID { get; set; }
         public Nullable<int> RoomNumber { get; set; }
         public string Description { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employees> Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Equipment> Equipment { get; set; }
     }
 }
+
