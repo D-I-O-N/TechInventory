@@ -331,8 +331,8 @@ namespace TechInventory._src.pages.employees
         private void AddEmployee_Click(object sender, RoutedEventArgs e)
         {
             // Ваш код для открытия формы добавления сотрудника
-            // Например, AddEmployee_Form createEmployeeWindow = new AddEmployee_Form();
-            // createEmployeeWindow.ShowDialog();
+            AddEmployees_Form createEmployeeWindow = new AddEmployees_Form();
+            createEmployeeWindow.ShowDialog();
         }
 
         private void EditEmployee_Click(object sender, RoutedEventArgs e)

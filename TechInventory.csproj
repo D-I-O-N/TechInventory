@@ -101,6 +101,9 @@
     <Compile Include="_src\database\sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="_src\pages\employees\AddEmployees_Form.xaml.cs">
+      <DependentUpon>AddEmployees_Form.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_src\pages\employees\EmployeesPage.xaml.cs">
       <DependentUpon>EmployeesPage.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="_src\pages\employees\AddEmployees_Form.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="_src\pages\employees\EmployeesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

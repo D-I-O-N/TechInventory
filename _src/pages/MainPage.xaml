@@ -27,7 +27,7 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#006400"/>
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#2ECC71"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -39,7 +39,7 @@
 
     <Grid Background="#FF2C3E50">
         <!-- Боковое меню или панель навигации -->
-        <StackPanel Margin="0,70,0,0" VerticalAlignment="Center" Cursor="Hand" >
+        <StackPanel Margin="0,80,0,0" VerticalAlignment="Center" Cursor="Hand" >
             <!-- Пример кнопок для навигации -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="140" Width="Auto" >
                 <Button Style="{StaticResource NavigationButtonStyle}" Click="PageRoomsOpen_Click" FontWeight="Bold" Cursor="Hand" FontSize="18" Width="170">
@@ -86,9 +86,9 @@
         <!-- Основное содержимое страницы -->
         <StackPanel Margin="0,0,0,0">
             <!-- Здесь может быть ваш основной контент, например, Frame для отображения различных страниц -->
-            <TextBlock Visibility="Visible" TextAlignment="Center" Text="Добро пожаловать в систему учета компьютерной техники в колледже. Здесь вы можете управлять информацией о кабинетах, сотрудниках, оборудовании и истории его использования."
+            <TextBlock Visibility="Visible" TextAlignment="Center" Text="Добро пожаловать в систему учета электронно-вычислительной техники в колледже ГБПОУ ''МПК''. Здесь вы можете управлять информацией       о кабинетах, сотрудниках, оборудовании и истории его использования."
            Margin="10"
-           FontSize="22"
+           FontSize="21"
            Foreground="White"
            TextWrapping="Wrap"
            LineHeight="1.5" HorizontalAlignment="Center" FontWeight="Bold"/>
