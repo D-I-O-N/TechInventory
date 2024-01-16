@@ -16,6 +16,7 @@ using TechInventory._src.database;
 using System.Data.SqlClient; // добавили
 using System.Data;
 using System.Runtime.Remoting.Contexts;
+using TechInventory._src.pages.employees;
 
 namespace TechInventory._src.pages.rooms
 {
@@ -303,15 +304,33 @@ namespace TechInventory._src.pages.rooms
             txtBoxDescription.Text = string.Empty;
         }
 
+        private bool ValidateEquipment(Room room)
+        {
+            // Добавьте здесь логику проверки
+            // Например, проверка на пустые поля, корректность даты и т.д.
+
+            // Пример проверки на пустые поля
+            if (string.IsNullOrEmpty(room.Description) || string.IsNullOrEmpty(txtBoxRoomNumber.Text))
+            {
+                MessageBox.Show("Заполните все обязательные поля правильно.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            // Добавьте другие проверки, которые вам необходимы
+
+            return true; // Если все проверки прошли успешно
+        }
+
         private void SaveCabinet_Click(object sender, RoutedEventArgs e)
         {
             Room selectedRoom = (Room)dataGridView1.SelectedItem;
 
             if (selectedRoom != null)
             {
-               
-                // Обновляем данные в объекте комнаты на основе полей формы
-                UpdateRoomFromFields(selectedRoom);
+                if (ValidateEquipment(selectedRoom))
+                {
+                    // Обновляем данные в объекте комнаты на основе полей формы
+                    UpdateRoomFromFields(selectedRoom);
 
                 // Обновляем данные в базе данных
                 UpdateRoomInDatabase(selectedRoom);
@@ -323,6 +342,7 @@ namespace TechInventory._src.pages.rooms
                 btnEdit.Visibility = Visibility.Visible;
                 btnSave.Visibility = Visibility.Hidden;
 
+                }
                 // Обновляем DataGrid
                 dataGridView1.Items.Refresh();
 

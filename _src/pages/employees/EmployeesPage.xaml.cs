@@ -284,7 +284,7 @@ namespace TechInventory._src.pages.employees
         {
             dataGrid.Items.Clear();
 
-            string searchString = $"select * from Employees where concat (FirstName, LastName, Position, RoomID) like N'%" + txtBoxSearch.Text + "%'";
+            string searchString = $"SELECT * FROM Employees WHERE CONCAT(ID, FirstName, LastName, Position, RoomID) LIKE N'%{txtBoxSearch.Text}%'";
 
             SqlCommand com = new SqlCommand(searchString, (SqlConnection)entities.Database.Connection);
 
@@ -371,21 +371,6 @@ namespace TechInventory._src.pages.employees
             employee.FirstName = txtBoxFirstName.Text;
             employee.LastName = txtBoxLastName.Text;
             employee.Position = txtBoxPosition.Text;
-            //employee.AssignedRoom.Description = txtBoxRoomID.Text;
-
-
-            //if (comboBoxRooms.SelectedItem is Room selectedRoom)
-            //{
-            //    // Присваиваем значение Description из выбранного элемента в AssignedRoom.Description
-            //    txtBox.Text = selectedRoom.Description;
-
-            //    //employee.AssignedRoom.Description = txtBoxRoomID.Text;
-            //    // Можете также присвоить другие свойства, если они есть в классе Room
-            //    // employee.AssignedRoom.SomeOtherProperty = selectedRoom.SomeOtherProperty;
-
-            //    // Помечаем запись как измененную
-
-            //}
 
 
             if (int.TryParse(txtBoxRoomID.Text, out int roomID))
@@ -403,14 +388,32 @@ namespace TechInventory._src.pages.employees
             employee.State = RowState.Modified;
         }
 
+        private bool ValidateEquipment(Employee employee)
+        {
+            // Добавьте здесь логику проверки
+            // Например, проверка на пустые поля, корректность даты и т.д.
+
+            // Пример проверки на пустые поля
+            if (string.IsNullOrEmpty(employee.FirstName) || string.IsNullOrEmpty(employee.LastName) || string.IsNullOrEmpty(employee.Position) || string.IsNullOrEmpty(txtBoxRoomID.Text))
+            {
+                MessageBox.Show("Заполните все обязательные поля правильно.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            // Добавьте другие проверки, которые вам необходимы
+
+            return true; // Если все проверки прошли успешно
+        }
+
         private void SaveEmployee_Click(object sender, RoutedEventArgs e)
         {
             Employee selectedEmployee = (Employee)dataGridView1.SelectedItem;
 
             if (selectedEmployee != null)
             {
-                // Обновляем данные в объекте сотрудника на основе полей формы
-                UpdateEmployeeFromFields(selectedEmployee);
+                if (ValidateEquipment(selectedEmployee)) { 
+                    // Обновляем данные в объекте сотрудника на основе полей формы
+                    UpdateEmployeeFromFields(selectedEmployee);
 
                 // Обновляем данные в базе данных
                 UpdateEmployeeInDatabase(selectedEmployee);
@@ -421,6 +424,10 @@ namespace TechInventory._src.pages.employees
                 // Включаем кнопку "Редактировать", отключаем кнопку "Сохранить"
                 btnEdit.Visibility = Visibility.Visible;
                 btnSave.Visibility = Visibility.Hidden;
+
+                    comboBoxRooms.IsEnabled = false;
+                    comboBoxRooms.SelectedItem = null;
+                }
 
                 // Обновляем DataGrid
                 dataGridView1.Items.Refresh();

@@ -43,31 +43,31 @@
             <!-- Пример кнопок для навигации -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="140" Width="Auto" >
                 <Button Style="{StaticResource NavigationButtonStyle}" Click="PageRoomsOpen_Click" FontWeight="Bold" Cursor="Hand" FontSize="18" Width="170">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                    <Image Source="/img/door.png" Width="70" Height="70" />
-                    <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" Text="Кабинеты" Foreground="White" FontSize="18" FontWeight="Bold" />
-                </StackPanel>
-            </Button>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <Image Source="/img/door.png" Width="70" Height="70" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" Text="Кабинеты" Foreground="White" FontSize="18" FontWeight="Bold" />
+                    </StackPanel>
+                </Button>
                 <Button Style="{StaticResource NavigationButtonStyle}" Click="PageEmployeeOpen_Click" FontWeight="Bold" FontSize="18"  Width="170">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/employee.png" Width="70" Height="70" />
                         <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" Text="Сотрудники" Foreground="White" FontSize="18" FontWeight="Bold" />
-                </StackPanel>
-            </Button>
-                <Button Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Width="170">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource NavigationButtonStyle}" Click="PageEquipmentOpen_Click" FontWeight="Bold" FontSize="18" Width="170">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/equipment.png" Width="70" Height="70" />
                         <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Оборудование" Foreground="White" FontSize="18" FontWeight="Bold" />
-                </StackPanel>
-            </Button>
+                    </StackPanel>
+                </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="140" Width="Auto" >
                 <Button Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Width="170">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/issue-and-return.png" Width="70" Height="70" />
                         <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Выдача/Возврат" Foreground="White" FontSize="18" FontWeight="Bold" />
-                </StackPanel>
-            </Button>
+                    </StackPanel>
+                </Button>
                 <Button Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Width="170">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/diagram.png" Width="70" Height="70" />
@@ -75,12 +75,13 @@
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource NavigationButtonStyle}" FontWeight="Bold" FontSize="18" Width="170">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                    <Image Source="/img/about.png" Width="70" Height="70" />
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <Image Source="/img/about.png" Width="70" Height="70" />
                         <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="О программе" Foreground="White" FontSize="18" FontWeight="Bold" />
-                </StackPanel>
-            </Button>
+                    </StackPanel>
+                </Button>
             </StackPanel>
+            
         </StackPanel>
 
         <!-- Основное содержимое страницы -->
@@ -92,6 +93,7 @@
            Foreground="White"
            TextWrapping="Wrap"
            LineHeight="1.5" HorizontalAlignment="Center" FontWeight="Bold"/>
+            
         </StackPanel>
     </Grid>
 </Page>
