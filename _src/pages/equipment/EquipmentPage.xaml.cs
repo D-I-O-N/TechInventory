@@ -363,8 +363,7 @@ namespace TechInventory._src.pages.equipment
             // Например, проверка на пустые поля, корректность даты и т.д.
 
             // Пример проверки на пустые поля
-            if (string.IsNullOrEmpty(equipment.EquipmentName) || string.IsNullOrEmpty(equipment.EquipmentType) || string.IsNullOrEmpty(equipment.Status) 
-                || string.IsNullOrEmpty(equipment.Status) || string.IsNullOrEmpty(equipment.SerialNumber) || string.IsNullOrEmpty(txtBoxPurchaseDate.Text) || string.IsNullOrEmpty(txtBoxRoomID.Text))
+            if (string.IsNullOrEmpty(equipment.EquipmentName) || string.IsNullOrEmpty(equipment.EquipmentType) || string.IsNullOrEmpty(equipment.Status) || string.IsNullOrEmpty(equipment.SerialNumber) || string.IsNullOrEmpty(txtBoxPurchaseDate.Text) || string.IsNullOrEmpty(txtBoxRoomID.Text))
             {
                 MessageBox.Show("Заполните все обязательные поля правильно.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
@@ -427,7 +426,8 @@ namespace TechInventory._src.pages.equipment
 
         private void AddEquipment_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEquipment_Form createEquipmentWindow = new AddEquipment_Form();
+            createEquipmentWindow.ShowDialog();
         }
 
         private void EditEquipment_Click(object sender, RoutedEventArgs e)
