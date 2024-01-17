@@ -107,6 +107,9 @@
     <Compile Include="_src\pages\employees\EmployeesPage.xaml.cs">
       <DependentUpon>EmployeesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="_src\pages\equipmentHistory\EquipmentHistoryPage.xaml.cs">
+      <DependentUpon>EquipmentHistoryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_src\pages\equipment\AddEquipment_Form.xaml.cs">
       <DependentUpon>AddEquipment_Form.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="_src\pages\employees\EmployeesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_src\pages\equipmentHistory\EquipmentHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

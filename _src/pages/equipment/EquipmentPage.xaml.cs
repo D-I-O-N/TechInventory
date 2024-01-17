@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TechInventory._src.database;
 using TechInventory._src.pages.employees;
+using TechInventory._src.pages.rooms;
 
 namespace TechInventory._src.pages.equipment
 {
@@ -403,11 +404,6 @@ namespace TechInventory._src.pages.equipment
             }
         }
 
-        private void BackToPage_MouseLeftButtonUp(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
-        }
-
         private void ClearFields()
         {
             txtBoxEquipmentName.Text = string.Empty;
@@ -450,7 +446,29 @@ namespace TechInventory._src.pages.equipment
 
         private void DeleteEquipment_Click(object sender, RoutedEventArgs e)
         {
+            var selectedItem = dataGridView1.SelectedItem;
+            if (selectedItem != null)
+            {
+                Equipment selectedEquipment = (Equipment)selectedItem;
+                int EquipmentId = selectedEquipment.ID;
 
+                // Удаление из базы данных по ID
+                var EquipmentToDelete = entities.Employees.Find(EquipmentId);
+                if (EquipmentToDelete != null)
+                {
+                    entities.Employees.Remove(EquipmentToDelete);
+                    entities.SaveChanges();
+
+                    // Обновление DataGrid
+                    RefreshDataGrid(dataGridView1);
+                    ClearFields();
+                }
+            }
+        }
+
+        private void BackToPage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 

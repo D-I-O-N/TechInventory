@@ -1,0 +1,152 @@
+﻿<Page x:Class="TechInventory._src.pages.equipmentHistory.EquipmentHistoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TechInventory._src.pages.equipmentHistory"
+      mc:Ignorable="d"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EquipmentHistoryPage" Loaded="Page_Loaded">
+  
+
+    <Page.Resources>
+        <Style x:Key="HoverButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Rectangle x:Name="ButtonBackground" Width="150" Height="44" Fill="{TemplateBinding Background}"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#2C3E50"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#FF2C3E50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <!-- Заголовок страницы -->
+            <Image x:Name="clearImg" HorizontalAlignment="Right" Margin="0,7,320,7" Height="40" Width="40" Source="/img/сlearFields.png" MouseDown="clearImg_MouseDown" />
+            <TextBlock Text="История выдачи/возврата оборудования" Margin="10" FontSize="20" FontWeight="Bold"      
+                       Foreground="White"
+                       TextWrapping="Wrap"
+                       LineHeight="1.5" HorizontalAlignment="Left" />
+            <Image x:Name="searchImg" HorizontalAlignment="Right" Margin="0,7,270,7" Height="40" Width="40" Source="/img/search.png" MouseDown="refreshImg_MouseDown" />
+            <TextBox x:Name="txtBoxSearch" HorizontalAlignment="Right"  Margin="5,5,60,5" Width="200" Height="27" TextChanged="txtBoxSearch_TextChanged" FontSize="18"/>
+            <Image x:Name="refreshImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/refresh.png" MouseDown="refreshImg_MouseDown" Cursor="Hand" />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <!-- Список истории оборудования -->
+            <DataGrid  x:Name="dataGridView1" SelectedCellsChanged="dataGridView1_SelectedCellsChanged">
+
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <!-- Кнопки для действий -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Content="Добавить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="AddEquipmentHistory_Click"/>
+                <Button x:Name="btnEdit"  Content="Редактировать" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="EditEquipmentHistory_Click"/>
+                <Button Content="Удалить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="DeleteEquipmentHistory_Click"/>
+                <Button x:Name="btnSave" Visibility="Hidden" Content="Сохранить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="SaveEquipmentHistory_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <!-- Текущая запись -->
+            <StackPanel Background="White">
+                <TextBlock x:Name="txtID" TextAlignment="Center" Text="Выбранная запись об оборудовании"
+                           FontSize="18"
+                           Foreground="Black"
+                           TextWrapping="Wrap"
+                           LineHeight="1.5" FontWeight="Bold" Margin="0,5,0,10"/>
+                <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <StackPanel Orientation="Vertical" Width="800">
+                        <StackPanel Orientation="Horizontal" Width="800" >
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Наименование" Width="100" FontWeight="Bold" VerticalAlignment="Center"/>
+                                <TextBox x:Name="txtBoxEquipmentHistoryName" Text="{Binding SelectedEquipment.EquipmentID, Mode=TwoWay}"  Margin="5" Width="132" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxEquipmentName" Margin="5" Width="135" IsEditable="True" IsReadOnly="True" IsEnabled="False"
+                                      SelectedValuePath="EquipmentID"
+                                      SelectedValue="{Binding SelectedEquipment.EquipmentID, Mode=TwoWay}"
+                                      ItemsSource="{Binding EquipmentList}"
+                                      SelectionChanged="ComboBoxEquipment_SelectionChanged" VerticalAlignment="Center">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding EquipmentID}" Visibility="Visible"/>
+                                                <TextBlock Text=" " Visibility="Visible"/>
+                                                <TextBlock Text="{Binding EquipmentName}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Сотрудник" Width="71" FontWeight="Bold" VerticalAlignment="Center"/>
+                                <TextBox x:Name="txtBoxEquipmentHistoryEmployee" Text="{Binding SelectedEmployee.EmployeeID, Mode=TwoWay}" Margin="5" Width="114" VerticalAlignment="Center" />
+                                <ComboBox x:Name="comboBoxEmployee" Margin="5" Width="135" IsEditable="True" IsReadOnly="True" IsEnabled="False"
+                                      SelectedValuePath="EmployeeID"
+                                      SelectedValue="{Binding SelectedEmployee.EmployeeID, Mode=TwoWay}"
+                                      ItemsSource="{Binding EmployeeList}"
+                                      SelectionChanged="ComboBoxEmployees_SelectionChanged" VerticalAlignment="Center">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding EmployeeID}" Visibility="Visible"/>
+                                                <TextBlock Text=" " Visibility="Visible"/>
+                                                <TextBlock Text="{Binding LastName}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"  Width="593" >
+                            <StackPanel Orientation="Horizontal" Width="283">
+                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата выдачи" Width="80" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBox x:Name="txtBoxEquipmentHistoryCheckoutDate"  Margin="5" Width="180" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата возврата" Width="109" FontWeight="Bold" VerticalAlignment="Center"/>
+                                <TextBox x:Name="txtBoxEquipmentHistoryReturnDate"  Margin="5" Width="180" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+                <Label x:Name="infoEdit" Visibility="Hidden" HorizontalContentAlignment="Center" Content="*Открыт режим редактирования" FontWeight="Bold" Foreground="Red" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Image x:Name="backImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/back.png" MouseLeftButtonUp="BackToPage_MouseLeftButtonUp" Cursor="Hand" />
+        </Grid>
+
+
+    </Grid>
+</Page>

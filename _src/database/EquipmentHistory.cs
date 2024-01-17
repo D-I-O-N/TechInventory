@@ -11,7 +11,8 @@ namespace TechInventory._src.database
 {
     using System;
     using System.Collections.Generic;
-    
+    using TechInventory._src.pages.employees;
+
     public partial class EquipmentHistory
     {
         public int ID { get; set; }
@@ -22,5 +23,9 @@ namespace TechInventory._src.database
     
         public virtual Employees Employees { get; set; }
         public virtual Equipment Equipment { get; set; }
+        public bool IsNew { get; internal set; }
+        public Employees AssignedEmployee { get; internal set; }
+        public Equipment AssignedEquipment { get; internal set; }
+        internal RowState State { get; set; }
     }
 }
