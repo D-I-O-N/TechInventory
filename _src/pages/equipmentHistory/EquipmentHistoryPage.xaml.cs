@@ -429,8 +429,8 @@ namespace TechInventory._src.pages.equipmentHistory
 
         private void AddEquipmentHistory_Click(object sender, RoutedEventArgs e)
         {
-            //AddEquipmentHistory_Form createEquipmentHistoryWindow = new AddEquipmentHistory_Form();
-            //createEquipmentHistoryWindow.ShowDialog();
+            AddEquipmentHistory_Form createEquipmentHistoryWindow = new AddEquipmentHistory_Form();
+            createEquipmentHistoryWindow.ShowDialog();
         }
 
         private void EditEquipmentHistory_Click(object sender, RoutedEventArgs e)
