@@ -273,7 +273,7 @@ namespace TechInventory._src.pages.equipment
                                  $"EquipmentType = N'{equipmentToUpdate.EquipmentType}', " +
                                  $"Count = {equipmentToUpdate.Count}, " +
                                  $"SerialNumber = N'{equipmentToUpdate.SerialNumber}', " +
-                                 $"PurchaseDate = '{equipmentToUpdate.PurchaseDate:yyyy-MM-dd HH:mm:ss}', " +
+                                 $"PurchaseDate = '{equipmentToUpdate.PurchaseDate:s}', " +
                                  $"Status = N'{equipmentToUpdate.Status}', " +
                                  $"RoomID = {equipmentToUpdate.RoomID} " +
                                  $"WHERE ID = {equipmentToUpdate.ID}";
@@ -288,25 +288,25 @@ namespace TechInventory._src.pages.equipment
 
         private void UpdateEquipmentFromFields(Equipment equipment)
         {
-            string inputDate = txtBoxPurchaseDate.Text;
+            //string inputDate = txtBoxPurchaseDate.Text;
 
-            equipment.EquipmentName = txtBoxEquipmentName.Text;
-            equipment.EquipmentType = txtBoxEquipmentType.Text;
-            equipment.Count = int.Parse(txtBoxEquipmentCount.Text);
-            equipment.SerialNumber = txtBoxSN.Text;
-            //equipment.PurchaseDate = txtBoxPurchaseDate.Text;
-            //equipment.PurchaseDate = DateTime.ParseExact(txtBoxPurchaseDate.Text, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-            equipment.Status = txtBoxStatus.Text;
+            //equipment.EquipmentName = txtBoxEquipmentName.Text;
+            //equipment.EquipmentType = txtBoxEquipmentType.Text;
+            //equipment.Count = int.Parse(txtBoxEquipmentCount.Text);
+            //equipment.SerialNumber = txtBoxSN.Text;
+            ////equipment.PurchaseDate = txtBoxPurchaseDate.Text;
+            ////equipment.PurchaseDate = DateTime.ParseExact(txtBoxPurchaseDate.Text, "s", CultureInfo.InvariantCulture);
+            //equipment.Status = txtBoxStatus.Text;
 
-            if (DateTime.TryParseExact(inputDate, format: "s", provider: CultureInfo.InvariantCulture, style: DateTimeStyles.None, result: out DateTime purchaseDate))
-            {
-                equipment.PurchaseDate = purchaseDate;
-            }
-            else
-            {
-                // Введенное значение не соответствует ожидаемому формату
-                MessageBox.Show("Неверный формат даты. Используйте формат 'год-месяц-день час:минута:секунда'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            //if (DateTime.TryParseExact(inputDate, format: "s", provider: CultureInfo.InvariantCulture, style: DateTimeStyles.None, result: out DateTime purchaseDate))
+            //{
+            //    equipment.PurchaseDate = purchaseDate;
+            //}
+            //else
+            //{
+            //    // Введенное значение не соответствует ожидаемому формату
+            //    MessageBox.Show("Неверный формат даты. Используйте формат 'год-месяц-день час:минута:секунда'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
 
             if (int.TryParse(txtBoxRoomID.Text, out int roomID))
             {

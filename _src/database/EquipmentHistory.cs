@@ -27,5 +27,7 @@ namespace TechInventory._src.database
         public Employees AssignedEmployee { get; internal set; }
         public Equipment AssignedEquipment { get; internal set; }
         internal RowState State { get; set; }
+
+
     }
 }
