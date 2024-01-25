@@ -1,0 +1,40 @@
+﻿<Page x:Class="TechInventory._src.pages.about.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TechInventory._src.pages.about"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AboutPage">
+
+    <Grid Background="#FF2C3E50">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="70" />
+            <RowDefinition/>
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,45">
+            <TextBlock Text="О программе" FontSize="24" FontWeight="Bold" Margin="0,60,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Margin="0,125,0,41" Grid.RowSpan="3">
+            <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="20" FontFamily="Segoe UI Light" Height="216" Width="630" Text="Эта программа предназначена для учета электронно-вычислительной техники. Она облегчает процессы отслеживания и управления компьютерами, а также другими устройствами в вашей организации." HorizontalAlignment="Center" Margin="0,0,0,-22"/>
+        </Grid>
+        <Grid Grid.Row="2" Margin="0,108,0,0">
+
+            <TextBlock TextWrapping="Wrap" Margin="0,20,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">
+                Разработчик: Белошапка Денис Сергеевич
+            </TextBlock>
+
+        </Grid>
+        <Grid Grid.Row="3">
+            <TextBlock Text="Год создания: 2024" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Image x:Name="backImg" HorizontalAlignment="Left" Margin="732,5,0,5" Height="40" Width="40" Source="/img/back.png" MouseLeftButtonUp="BackToPage_MouseLeftButtonUp" Cursor="Hand" />
+        </Grid>
+
+
+
+    </Grid>
+</Page>

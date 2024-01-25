@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TechInventory._src.pages.about;
 using TechInventory._src.pages.employees;
 using TechInventory._src.pages.equipment;
 using TechInventory._src.pages.equipmentHistory;
@@ -57,5 +58,10 @@ namespace TechInventory._src.pages
             NavigationService.Navigate(new EquipmentReportPage());
         }
 
+        private void OpenAbout_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AboutPage());
+            
+        }
     }
 }

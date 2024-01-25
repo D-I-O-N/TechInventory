@@ -63,10 +63,11 @@ namespace TechInventory._src.pages.statistics
             MyReportViewer.ProcessingMode = ProcessingMode.Local;
 
             // Указываем путь к файлу отчета
-            MyReportViewer.LocalReport.ReportPath = @"C:\Users\danb9\Desktop\C#\TechInventory\_src\pages\statistics\EquipmentReport.rdlc"; // Замените на фактический путь к вашему отчету
+            MyReportViewer.LocalReport.ReportPath = @"C:\Users\danb9\Desktop\C#\TechInventory\_src\pages\statistics\EquipmentReport.rdlc";
 
             // Добавляем данные в отчет
             MyReportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet_EpAndEq", myDataSet.Tables[0]));
+            
 
             // Устанавливаем режим отображения
             MyReportViewer.SetDisplayMode(DisplayMode.PrintLayout);
@@ -77,5 +78,5 @@ namespace TechInventory._src.pages.statistics
 
     }
 }
-    
+
 

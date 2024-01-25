@@ -47,7 +47,7 @@
                 <Button Style="{StaticResource NavigationButtonStyle}" Click="PageRoomsOpen_Click" FontWeight="Bold" Cursor="Hand" FontSize="18" Width="170">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/door.png" Width="70" Height="70" />
-                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" Text="Кабинеты" Foreground="White" FontSize="18" FontWeight="Bold" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" Text="Аудитории" Foreground="White" FontSize="18" FontWeight="Bold" />
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource NavigationButtonStyle}" Click="PageEmployeeOpen_Click" FontWeight="Bold" FontSize="18"  Width="170">
@@ -73,13 +73,13 @@
                 <Button Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Width="170" Click="OpenStatic_Click">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/diagram.png" Width="70" Height="70" />
-                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Отчеты" Foreground="White" FontSize="18" FontWeight="Bold" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Отчет" Foreground="White" FontSize="18" FontWeight="Bold" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource NavigationButtonStyle}" FontWeight="Bold" FontSize="18" Width="170">
+                <Button Style="{StaticResource NavigationButtonStyle}" FontWeight="Bold" FontSize="18" Width="170" Click="OpenAbout_Click">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/about.png" Width="70" Height="70" />
-                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="О программе" Foreground="White" FontSize="18" FontWeight="Bold" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="О программе" Foreground="White" FontSize="18" FontWeight="Bold"  />
                     </StackPanel>
                 </Button>
             </StackPanel>
