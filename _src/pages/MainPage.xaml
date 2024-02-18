@@ -31,6 +31,18 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="ButtonBackground" Property="Fill" Value="#72d4de"/>
+                                <Setter TargetName="ButtonBackground" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FF000000" Direction="320" ShadowDepth="0" Opacity="0.5" BlurRadius="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1.7"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -56,6 +68,18 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="ButtonBackground" Property="Fill" Value="#7645e2"/>
+                                <Setter TargetName="ButtonBackground" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FF000000" Direction="320" ShadowDepth="0" Opacity="0.5" BlurRadius="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1.7"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -81,6 +105,18 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="ButtonBackground" Property="Fill" Value="#4689e4"/>
+                                <Setter TargetName="ButtonBackground" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FF000000" Direction="320" ShadowDepth="0" Opacity="0.5" BlurRadius="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1.7"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -106,6 +142,18 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="ButtonBackground" Property="Fill" Value="#bedff9"/>
+                                <Setter TargetName="ButtonBackground" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FF000000" Direction="320" ShadowDepth="0" Opacity="0.5" BlurRadius="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1.7"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -132,6 +180,18 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="ButtonBackground" Property="Fill" Value="#d7e747"/>
+                                <Setter TargetName="ButtonBackground" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FF000000" Direction="320" ShadowDepth="0" Opacity="0.5" BlurRadius="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1.7"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -157,6 +217,18 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="ButtonBackground" Property="Fill" Value="#fe8369"/>
+                                <Setter TargetName="ButtonBackground" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FF000000" Direction="320" ShadowDepth="0" Opacity="0.5" BlurRadius="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1.7"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -222,15 +294,15 @@
         <!-- Основное содержимое страницы -->
         
             <!-- Здесь может быть ваш основной контент, например, Frame для отображения различных страниц -->
-        <Grid Grid.Row="0">
-                <Rectangle Margin="5" Width="770" Fill="#4db3ff" RadiusX="10" RadiusY="10"/>
+        <Grid Grid.Row="0" HorizontalAlignment="Center" >
+                <Rectangle Margin="10,5,10,5" Fill="#4db3ff" RadiusX="10" RadiusY="10"/>
                 <TextBlock Width="710" TextAlignment="Center" Text="Добро пожаловать в систему учета электронно-вычислительной техники в колледже ГБПОУ ''МПК''. Здесь вы можете управлять информацией о кабинетах, сотрудниках, оборудовании и истории его использования."
                Margin="5"
                FontSize="18"
                Foreground="White"
                TextWrapping="Wrap"
                LineHeight="1.5" FontWeight="Bold"/>
-            </Grid>
+        </Grid>
 
         
     </Grid>
