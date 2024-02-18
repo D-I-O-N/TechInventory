@@ -102,8 +102,7 @@ namespace TechInventory._src.pages.equipmentHistory
                 entities.Database.Connection.Open();
 
                 // Считывание значений из элементов управления
-                // Создание нового объекта EquipmentHistory и заполнение его данными
-
+          
                 // Пример:
                 DateTime checkoutDate;
                 if (!DateTime.TryParseExact(txtBoxEquipmentHistoryCheckoutDate.Text, "s", CultureInfo.InvariantCulture, DateTimeStyles.None, out checkoutDate))
@@ -112,12 +111,6 @@ namespace TechInventory._src.pages.equipmentHistory
                     return;
                 }
 
-                //DateTime returnDate;
-                //if (DateTime.TryParseExact(txtBoxEquipmentHistoryReturnDate.Text, "s", CultureInfo.InvariantCulture, DateTimeStyles.None, out returnDate))
-                //{
-                //    MessageBox.Show("Неверный формат даты выдачи. Используйте формат 'год-месяц-день час:минута:секунда'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                //    return;
-                //}
 
                 var newEquipmentHistory = new EquipmentHistory
                 {
@@ -156,6 +149,22 @@ namespace TechInventory._src.pages.equipmentHistory
                 e.Handled = true;
             }
         }
+
+
+
+//        Этот код представляет собой обработчик события TextChanged, который вызывается каждый раз, когда изменяется текст в TextBox с именем txtBoxEquipmentHistoryCheckoutDate.
+
+//Очистка текста: В строке txtBoxEquipmentHistoryCheckoutDate.Text = new string (txtBoxEquipmentHistoryCheckoutDate.Text.Where(c => char.IsDigit(c) || c == ':' || c == 'T' || c == '-').ToArray());
+//удаляются все символы, кроме цифр, двоеточий, буквы 'T' и дефисов.
+
+//Ограничение длины: После очистки текста проверяется его длина, и если она превышает максимальную длину маски (в данном случае 19 символов), то текст обрезается до максимальной длины.
+
+//Добавление разделителей в маску: Затем проверяется каждая позиция в строке, и если необходимо, добавляются разделители.
+//Например, между годом, месяцем и днем добавляется дефис, а между часами, минутами и секундами добавляется двоеточие.
+
+//Установка каретки в конец текста: В конце обработчика устанавливается каретка в конец текста, чтобы обеспечить удобство ввода для пользователя.
+
+//Таким образом, этот код обеспечивает ввод текста в TextBox в формате, соответствующем маске даты и времени "гггг-мм-ддТчч:мм:сс".
 
         private void TextBox_TextChangedCheckoutDate(object sender, TextChangedEventArgs e)
         {

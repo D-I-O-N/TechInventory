@@ -199,6 +199,10 @@ namespace TechInventory._src.pages.equipment
             RefreshDataGrid(dataGridView1);
         }
 
+        //try: Этот оператор используется для обработки кода, который может вызвать исключения(ошибки) 
+        //    во время выполнения.Если внутри блока try возникает исключение, выполнение переходит к блоку catch.
+
+
         private void RefreshDataGrid(DataGrid dataGrid)
         {
             try
@@ -225,9 +229,17 @@ namespace TechInventory._src.pages.equipment
             }
             finally
             {
-                entities.Database.Connection.Close();
+                entities.Database.Connection.Close(); /*Закрывает соединение с базой данных, даже если произошло исключение в блоке try. 
+                                                       * Это важно для правильной работы с ресурсами и предотвращения утечек.*/
             }
         }
+
+        //цикл while, чтобы прочитать каждую строку данных из результата запроса.
+        //Для каждой строки вызывается метод ReadSingleRow, который, вероятно, добавляет данные в DataGrid.
+
+        //finally: Этот блок содержит код, который выполняется всегда, независимо от того, произошло исключение или нет.
+        //В данном случае, он закрывает соединение с базой данных в блоке finally.
+
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {

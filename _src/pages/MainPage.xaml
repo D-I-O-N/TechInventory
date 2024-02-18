@@ -6,7 +6,9 @@
       xmlns:ReportViewerRDLC="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
       xmlns:local="clr-namespace:TechInventory._src.pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      
+      MinWidth="800" MaxWidth="800"
+      MinHeight="450" MaxHeight="450"
       Title="MainPage">
 
     <Page.Resources>
@@ -23,12 +25,138 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Rectangle x:Name="ButtonBackground" Width="170" Height="140" Fill="#2C3E50"/>
+                            <Rectangle x:Name="ButtonBackground" Width="170" Height="140" Fill="#262537" RadiusX="10" RadiusY="10"/>
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#2ECC71"/>
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#72d4de"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="NavigationButtonStyle2" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FF2C3E50"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Rectangle x:Name="ButtonBackground" Width="170" Height="140" Fill="#262537" RadiusX="10" RadiusY="10"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#7645e2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="NavigationButtonStyle3" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FF2C3E50"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Rectangle x:Name="ButtonBackground" Width="170" Height="140" Fill="#262537" RadiusX="10" RadiusY="10"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#4689e4"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="NavigationButtonStyle4" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FF2C3E50"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Rectangle x:Name="ButtonBackground" Width="170" Height="140" Fill="#262537" RadiusX="10" RadiusY="10"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#bedff9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style x:Key="NavigationButtonStyle5" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FF2C3E50"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Rectangle x:Name="ButtonBackground" Width="170" Height="140" Fill="#262537" RadiusX="10" RadiusY="10"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#d7e747"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="NavigationButtonStyle6" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FF2C3E50"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Rectangle x:Name="ButtonBackground" Width="170" Height="140" Fill="#262537" RadiusX="10" RadiusY="10"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#fe8369"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -38,64 +166,72 @@
 
     </Page.Resources>
 
-    <Grid Background="#FF2C3E50">
-        
-        <!-- Боковое меню или панель навигации -->
-        <StackPanel Margin="0,80,0,0" VerticalAlignment="Center" Cursor="Hand" >
+    <Grid Background="#262537">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" >
+            <!-- Боковое меню или панель навигации -->
+        <StackPanel Margin="0,0,0,0" VerticalAlignment="Top" Cursor="Hand" >
             <!-- Пример кнопок для навигации -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="140" Width="Auto" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="155" Width="Auto" >
                 <Button Style="{StaticResource NavigationButtonStyle}" Click="PageRoomsOpen_Click" FontWeight="Bold" Cursor="Hand" FontSize="18" Width="170">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/door.png" Width="70" Height="70" />
-                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" Text="Аудитории" Foreground="White" FontSize="18" FontWeight="Bold" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" Text="Аудитории" Foreground="White" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI Black" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource NavigationButtonStyle}" Click="PageEmployeeOpen_Click" FontWeight="Bold" FontSize="18"  Width="170">
+                <Button Style="{StaticResource NavigationButtonStyle2}" Click="PageEmployeeOpen_Click" FontWeight="Bold" FontSize="18"  Width="170">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/employee.png" Width="70" Height="70" />
-                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" Text="Сотрудники" Foreground="White" FontSize="18" FontWeight="Bold" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" Text="Сотрудники" Foreground="White" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI Black" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource NavigationButtonStyle}" Click="PageEquipmentOpen_Click" FontWeight="Bold" FontSize="18" Width="170">
+                <Button Style="{StaticResource NavigationButtonStyle3}" Click="PageEquipmentOpen_Click" FontWeight="Bold" FontSize="18" Width="170">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/equipment.png" Width="70" Height="70" />
-                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Оборудование" Foreground="White" FontSize="18" FontWeight="Bold" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Оборудование" Foreground="White" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI Black" />
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="140" Width="Auto" >
-                <Button Style="{StaticResource NavigationButtonStyle}" Click="PageEquipmentHistoryOpen_Click" FontWeight="Bold" FontSize="18" Width="170">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="155" Width="Auto" >
+                <Button Style="{StaticResource NavigationButtonStyle4}" Click="PageEquipmentHistoryOpen_Click" FontWeight="Bold" FontSize="18" Width="170">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/issue-and-return.png" Width="70" Height="70" />
-                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Выдача/Возврат" Foreground="White" FontSize="18" FontWeight="Bold" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Выдача/Возврат" Foreground="White" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI Black" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource NavigationButtonStyle}"  FontWeight="Bold" FontSize="18" Width="170" Click="OpenStatic_Click">
+                <Button Style="{StaticResource NavigationButtonStyle5}"  FontWeight="Bold" FontSize="18" Width="170" Click="OpenStatic_Click">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/diagram.png" Width="70" Height="70" />
-                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Отчет" Foreground="White" FontSize="18" FontWeight="Bold" />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="Отчет" Foreground="White" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI Black" />
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource NavigationButtonStyle}" FontWeight="Bold" FontSize="18" Width="170" Click="OpenAbout_Click">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="/img/about.png" Width="70" Height="70" />
-                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="О программе" Foreground="White" FontSize="18" FontWeight="Bold"  />
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"  Text="О программе" Foreground="White" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI Black"  />
                     </StackPanel>
                 </Button>
             </StackPanel>
-            
-        </StackPanel>
 
-        <!-- Основное содержимое страницы -->
-        <StackPanel Margin="0,0,0,0">
-            <!-- Здесь может быть ваш основной контент, например, Frame для отображения различных страниц -->
-            <TextBlock Visibility="Visible" TextAlignment="Center" Text="Добро пожаловать в систему учета электронно-вычислительной техники в колледже ГБПОУ ''МПК''. Здесь вы можете управлять информацией       о кабинетах, сотрудниках, оборудовании и истории его использования."
-           Margin="10"
-           FontSize="21"
-           Foreground="White"
-           TextWrapping="Wrap"
-           LineHeight="1.5" HorizontalAlignment="Center" FontWeight="Bold"/>
-            
         </StackPanel>
+        </Grid>
+        <!-- Основное содержимое страницы -->
+        
+            <!-- Здесь может быть ваш основной контент, например, Frame для отображения различных страниц -->
+        <Grid Grid.Row="0">
+                <Rectangle Margin="5" Width="770" Fill="#4db3ff" RadiusX="10" RadiusY="10"/>
+                <TextBlock Width="710" TextAlignment="Center" Text="Добро пожаловать в систему учета электронно-вычислительной техники в колледже ГБПОУ ''МПК''. Здесь вы можете управлять информацией о кабинетах, сотрудниках, оборудовании и истории его использования."
+               Margin="5"
+               FontSize="18"
+               Foreground="White"
+               TextWrapping="Wrap"
+               LineHeight="1.5" FontWeight="Bold"/>
+            </Grid>
+
+        
     </Grid>
 </Page>

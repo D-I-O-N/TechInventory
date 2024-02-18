@@ -22,13 +22,20 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Rectangle x:Name="ButtonBackground" Width="150" Height="44" Fill="{TemplateBinding Background}"/>
+                            <Rectangle x:Name="ButtonBackground" Width="150" Height="44" Fill="{TemplateBinding Background}" RadiusX="10" RadiusY="10" />
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#2C3E50"/>
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#262537"/>
                                 <Setter Property="Foreground" Value="White"/>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:2.5"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -37,7 +44,8 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="#FF2C3E50">
+
+    <Grid Background="#262537">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
@@ -49,14 +57,18 @@
 
         <Grid Grid.Row="0">
             <!-- Заголовок страницы -->
-            <Image x:Name="clearImg" HorizontalAlignment="Right" Margin="0,7,320,7" Height="40" Width="40" Source="/img/сlearFields.png" MouseDown="clearImg_MouseDown" />
+
+
             <TextBlock Text="Управление оборудованием" Margin="10" FontSize="20" FontWeight="Bold"      
                Foreground="White"
                TextWrapping="Wrap"
-               LineHeight="1.5" HorizontalAlignment="Left" />
-            <Image x:Name="searchImg" HorizontalAlignment="Right" Margin="0,7,270,7" Height="40" Width="40" Source="/img/search.png" MouseDown="refreshImg_MouseDown" />
-            <TextBox x:Name="txtBoxSearch" HorizontalAlignment="Right"  Margin="5,5,60,5" Width="200" Height="27" TextChanged="txtBoxSearch_TextChanged" FontSize="18"/>
-            <Image x:Name="refreshImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/refresh.png" MouseDown="refreshImg_MouseDown" Cursor="Hand" />
+               LineHeight="1.5" HorizontalAlignment="Left" FontFamily="Segoe UI Black" />
+            <StackPanel Orientation="Horizontal" Margin="437,0,0,0" HorizontalAlignment="Left" Width="363">
+                <Image x:Name="clearImg" HorizontalAlignment="Left" Margin="5" Height="40" Width="40" Source="/img/сlearFields.png" MouseDown="clearImg_MouseDown" />
+                <Image x:Name="searchImg" Margin="5" Height="40" Width="40" Source="/img/search.png" MouseDown="refreshImg_MouseDown" />
+                <TextBox x:Name="txtBoxSearch"  Width="200" Height="26" TextChanged="txtBoxSearch_TextChanged" FontSize="18"/>
+                <Image x:Name="refreshImg" Margin="5" Height="40" Width="40" Source="/img/refresh.png" MouseDown="refreshImg_MouseDown" Cursor="Hand" />
+            </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -69,11 +81,11 @@
 
         <Grid Grid.Row="2">
             <!-- Кнопки для действий -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="Добавить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="AddEquipment_Click"/>
-                <Button x:Name="btnEdit"  Content="Редактировать" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="EditEquipment_Click"/>
-                <Button Content="Удалить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="DeleteEquipment_Click"/>
-                <Button x:Name="btnSave" Visibility="Hidden" Content="Сохранить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="SaveEquipment_Click"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <Button Content="Добавить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Background="#fe8369" Foreground="White" Click="AddEquipment_Click" FontFamily="Segoe UI Black"/>
+                <Button x:Name="btnEdit"  Content="Изменить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="50" Background="#4689e4" Foreground="White" Width="150" Margin="5" Click="EditEquipment_Click" FontFamily="Segoe UI Black"/>
+                <Button Content="Удалить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Background="#7645e2" Foreground="White" Click="DeleteEquipment_Click" FontFamily="Segoe UI Black"/>
+                <Button x:Name="btnSave" Visibility="Hidden" Content="Сохранить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold"  Background="#d7e747" Foreground="White" FontSize="18" Height="50" Width="150" Margin="5" Click="SaveEquipment_Click" FontFamily="Segoe UI Black"/>
             </StackPanel>
         </Grid>
 
@@ -84,7 +96,7 @@
                    FontSize="18"
                    Foreground="Black"
                    TextWrapping="Wrap"
-                   LineHeight="1.5" FontWeight="Bold" Margin="0,5,0,10"/>
+                   LineHeight="1.5" FontWeight="Bold" Margin="0,5,0,10" FontFamily="Segoe UI Black"/>
                 <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center" >
                     <StackPanel Orientation="Vertical">
                         <!--<StackPanel Orientation="Horizontal" Width="223">
@@ -94,41 +106,41 @@
                         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Width="800">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="790" >
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Название" Width="60" FontWeight="Bold" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txtBoxEquipmentName"  Margin="5" Width="180" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Название" Width="60" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxEquipmentName"  Margin="5" Width="180" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Тип" Width="25" FontWeight="Bold" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txtBoxEquipmentType"  Margin="5" Width="160" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Тип" Width="25" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxEquipmentType"  Margin="5" Width="160" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Количество" Width="70" FontWeight="Bold" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txtBoxEquipmentCount"  Margin="5" Width="70" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Количество" Width="73" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxEquipmentCount"  Margin="5" Width="70" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Статус" Width="40" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txtBoxStatus"  Margin="5" Width="100" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Статус" Width="40" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxStatus"  Margin="5" Width="100" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="790">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="SN" Width="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txtBoxSN"  Margin="5" Width="100" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="SN" Width="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxSN"  Margin="5" Width="100" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата покупки" Width="80" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    <TextBox x:Name="txtBoxPurchaseDate"  Margin="5" Width="108" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата покупки" Width="86" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxPurchaseDate"  Margin="5" Width="108" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock x:Name="txtIDAudit" Margin="5" TextAlignment="Right" FontSize="12" Text="ID Аудитории" Width="83" FontWeight="Bold" VerticalAlignment="Center"/>
-                                    <TextBlock x:Name="txtBoxRoomID" FontSize="12" Text="{Binding SelectedRoom.RoomID, Mode=TwoWay}" Margin="5" Width="67" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="txtIDAudit" Margin="5" TextAlignment="Right" FontSize="12" Text="ID Аудитории" Width="87" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBlock x:Name="txtBoxRoomID" FontSize="12" Text="{Binding SelectedRoom.RoomID, Mode=TwoWay}" Margin="5" Width="67" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                     <!--<ComboBox x:Name="comboBoxRooms" Width="200" DisplayMemberPath="Description" SelectedValuePath="ID" IsEditable="True" />-->
-                                    <ComboBox x:Name="comboBoxRooms" Margin="5" Width="257" IsEditable="True" IsReadOnly="True" IsEnabled="False"
+                                    <ComboBox x:Name="comboBoxRooms" Margin="5" Width="240" IsEditable="True" IsReadOnly="True" IsEnabled="False"
           SelectedValuePath="RoomID"
           SelectedValue="{Binding SelectedRoom.RoomID, Mode=TwoWay}"
           ItemsSource="{Binding RoomsList}"
-          SelectionChanged="ComboBoxRooms_SelectionChanged" VerticalAlignment="Center">
+          SelectionChanged="ComboBoxRooms_SelectionChanged" VerticalAlignment="Center" FontFamily="Segoe UI Black">
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
@@ -151,7 +163,7 @@
         </Grid>
 
         <Grid Grid.Row="4">
-            <Image x:Name="backImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/back.png" MouseLeftButtonUp="BackToPage_MouseLeftButtonUp" Cursor="Hand" />
+            <Image x:Name="backImg" HorizontalAlignment="Right" Margin="3" Height="40" Width="40" Source="/img/back.png" MouseLeftButtonUp="BackToPage_MouseLeftButtonUp" Cursor="Hand" />
         </Grid>
     </Grid>
 </Page>
