@@ -9,25 +9,25 @@
         Title="Добавление нового сотрудника" Height="360" Width="515"
         Loaded="Page_Loaded"
         WindowStartupLocation="CenterScreen">
-    <Grid Background="#FF2C3E50" >
+    <Grid Background="#262537" >
         <StackPanel Margin="10">
-            <Label Content="Имя" Foreground="White" FontWeight="Bold"/>
-        <TextBox x:Name="txtFirstName" Margin="0,0,0,10"/>
+            <Label Content="Имя" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtFirstName" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
 
-        <Label Content="Фамилия" Foreground="White" FontWeight="Bold"/>
-        <TextBox x:Name="txtLastName" Margin="0,0,0,10"/>
+            <Label Content="Фамилия" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtLastName" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
 
-        <Label Content="Должность" Foreground="White" FontWeight="Bold"/>
-        <TextBox x:Name="txtPosition" Margin="0,0,0,10"/>
+            <Label Content="Должность" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtPosition" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
 
-        <Label Content="Кабинет ID" Foreground="White" FontWeight="Bold"/>
-        <TextBox x:Name="txtRoomID" Margin="0,0,0,10"/>
+            <Label Content="Кабинет ID" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtRoomID" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
 
             <ComboBox x:Name="comboBoxRooms" Margin="0,0,0,10"  IsEditable="True" IsReadOnly="True" IsEnabled="True"
           SelectedValuePath="RoomID"
           SelectedValue="{Binding SelectedRoom.RoomID, Mode=TwoWay}"
           ItemsSource="{Binding RoomsList}"
-          SelectionChanged="ComboBoxRooms_SelectionChanged" HorizontalAlignment="Center" Width="481">
+          SelectionChanged="ComboBoxRooms_SelectionChanged" HorizontalAlignment="Center" Width="481" FontFamily="Segoe UI Black">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -39,9 +39,9 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <Button x:Name="AddEmployeeForm" Content="Добавить\Очистить" Width="130" Height="30" Click="AddEmployeeFormButton_Click" FontWeight="Bold" MouseRightButtonUp="AddEmployeeFormButton_MouseRightButtonUp"/>
+            <Button x:Name="AddEmployeeForm" Content="Добавить\Очистить" Width="130" Height="30" Click="AddEmployeeFormButton_Click" FontWeight="Bold" MouseRightButtonUp="AddEmployeeFormButton_MouseRightButtonUp" FontFamily="Segoe UI Black"/>
 
-        <Label Content="*ЛКМ - Добавить\ПКМ - очистить" Margin="0,7,0,0" Foreground="White" FontSize="9" FontWeight="Bold"/>
+            <Label Content="*ЛКМ - Добавить\ПКМ - очистить" Margin="0,7,0,0" Foreground="White" FontSize="9" FontWeight="Bold" FontFamily="Segoe UI Black"/>
         </StackPanel>
     </Grid>
 </Window>

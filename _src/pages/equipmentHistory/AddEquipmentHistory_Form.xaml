@@ -9,17 +9,17 @@
         WindowStartupLocation="CenterScreen"
         Title="Добавление записи" Height="450" Width="500"
         Loaded="Page_Loaded">
-    
+
     <Grid Background="#FF2C3E50" >
         <StackPanel Margin="10">
 
-            <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Наименование" Width="89" FontWeight="Bold" HorizontalAlignment="Left"  Foreground="White"/>
-            <TextBox x:Name="txtBoxEquipmentHistoryName" Text="{Binding SelectedEquipment.EquipmentID, Mode=TwoWay}"  Margin="5" Width="Auto" VerticalAlignment="Center"/>
+            <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Наименование" Width="89" FontWeight="Bold" HorizontalAlignment="Left"  Foreground="White" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtBoxEquipmentHistoryName" Text="{Binding SelectedEquipment.EquipmentID, Mode=TwoWay}"  Margin="5" Width="Auto" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
             <ComboBox x:Name="comboBoxEquipmentName" Margin="5" Width="Auto" IsEditable="True" IsReadOnly="True" IsEnabled="True"
                                       SelectedValuePath="EquipmentID"
                                       SelectedValue="{Binding SelectedEquipment.EquipmentID, Mode=TwoWay}"
                                       ItemsSource="{Binding EquipmentList}"
-                                      SelectionChanged="ComboBoxEquipment_SelectionChanged" VerticalAlignment="Center">
+                                      SelectionChanged="ComboBoxEquipment_SelectionChanged" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -31,13 +31,13 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Сотрудник" Width="65" FontWeight="Bold" HorizontalAlignment="Left" Foreground="White"/>
-            <TextBox x:Name="txtBoxEquipmentHistoryEmployee" Text="{Binding SelectedEmployee.EmployeeID, Mode=TwoWay}" Margin="5" Width="Auto" VerticalAlignment="Center" />
+            <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Сотрудник" Width="65" FontWeight="Bold" HorizontalAlignment="Left" Foreground="White" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtBoxEquipmentHistoryEmployee" Text="{Binding SelectedEmployee.EmployeeID, Mode=TwoWay}" Margin="5" Width="Auto" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black" />
             <ComboBox x:Name="comboBoxEmployee" Margin="5" Width="Auto" IsEditable="True" IsReadOnly="True" IsEnabled="True"
                                       SelectedValuePath="EmployeeID"
                                       SelectedValue="{Binding SelectedEmployee.EmployeeID, Mode=TwoWay}"
                                       ItemsSource="{Binding EmployeeList}"
-                                      SelectionChanged="ComboBoxEmployees_SelectionChanged" VerticalAlignment="Center">
+                                      SelectionChanged="ComboBoxEmployees_SelectionChanged" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -49,19 +49,19 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата выдачи" Width="Auto" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+            <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата выдачи" Width="Auto" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Segoe UI Black"/>
             <TextBox x:Name="txtBoxEquipmentHistoryCheckoutDate"  Margin="5" Width="Auto" VerticalAlignment="Center"
-                     PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChangedCheckoutDate"/>
+                     PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChangedCheckoutDate" TextBlock.FontFamily="Segoe UI Black"/>
 
-            <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата возврата" Width="Auto" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+            <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата возврата" Width="Auto" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Segoe UI Black"/>
             <TextBox x:Name="txtBoxEquipmentHistoryReturnDate"  Margin="5" Width="Auto" VerticalAlignment="Center"
-                      PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChangedReturnDate"/>
+                      PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChangedReturnDate" TextBlock.FontFamily="Segoe UI Black"/>
 
 
 
-            <Button x:Name="AddEmployeeForm" Content="Добавить\Очистить" Width="130" Height="30" Click="AddEmployeeFormButton_Click" FontWeight="Bold" MouseRightButtonUp="AddEmployeeFormButton_MouseRightButtonUp"/>
+            <Button x:Name="AddEmployeeForm" Content="Добавить\Очистить" Width="130" Height="30" Click="AddEmployeeFormButton_Click" FontWeight="Bold" MouseRightButtonUp="AddEmployeeFormButton_MouseRightButtonUp" TextBlock.FontFamily="Segoe UI Black"/>
 
-            <Label Content="*ЛКМ - Добавить\ПКМ - очистить" Margin="0,7,0,0" Foreground="White" FontSize="9" FontWeight="Bold"/>
+            <Label Content="*ЛКМ - Добавить\ПКМ - очистить" Margin="0,7,0,0" Foreground="White" FontSize="9" FontWeight="Bold" TextBlock.FontFamily="Segoe UI Black"/>
         </StackPanel>
     </Grid>
 </Window>

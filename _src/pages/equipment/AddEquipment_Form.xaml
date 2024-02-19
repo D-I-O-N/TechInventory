@@ -8,34 +8,34 @@
         Title="Добавление электронно-вычислительной техники" Height="520" Width="600"
         Loaded="Page_Loaded"
         WindowStartupLocation="CenterScreen">
-    <Grid Background="#FF2C3E50" >
+    <Grid Background="#262537" >
         <StackPanel Margin="10">
-            <Label Content="Наименование" Foreground="White" FontWeight="Bold"/>
-            <TextBox x:Name="txtEquipmentName" Margin="0,0,0,10"/>
+            <Label Content="Наименование" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtEquipmentName" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
 
-            <Label Content="Тип оборудования" Foreground="White" FontWeight="Bold"/>
-            <TextBox x:Name="txtEquipmentType" Margin="0,0,0,10"/>
+            <Label Content="Тип оборудования" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtEquipmentType" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
 
-            <Label Content="Количество" Foreground="White" FontWeight="Bold"/>
-            <TextBox x:Name="txtEquipmentCount" Margin="0,0,0,10"/>
+            <Label Content="Количество" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtEquipmentCount" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
 
-            <Label Content="Серийный номер" Foreground="White" FontWeight="Bold"/>
-            <TextBox x:Name="txtSN" Margin="0,0,0,10"/>
+            <Label Content="Серийный номер" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtSN" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
 
-            <Label Content="Дата покупки" Foreground="White" FontWeight="Bold"/>
-            <TextBox x:Name="txtPurchaseDate" Margin="0,0,0,10"/>
+            <Label Content="Дата покупки" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtPurchaseDate" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
 
-            <Label Content="Статус" Foreground="White" FontWeight="Bold"/>
-            <TextBox x:Name="txtStatus" Margin="0,0,0,10"/>
+            <Label Content="Статус" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtStatus" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
 
-            <Label Content="Кабинет ID" Foreground="White" FontWeight="Bold"/>
-            <TextBox x:Name="txtRoomID" Margin="0,0,0,10"/>
-            
+            <Label Content="Кабинет ID" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtRoomID" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
+
             <ComboBox x:Name="comboBoxRooms" Margin="0,0,0,10"  IsEditable="True" IsReadOnly="True" IsEnabled="True"
                       SelectedValuePath="RoomID"
                       SelectedValue="{Binding SelectedRoom.RoomID, Mode=TwoWay}"
                       ItemsSource="{Binding RoomsList}"
-                      SelectionChanged="ComboBoxRooms_SelectionChanged" HorizontalAlignment="Center" Width="481">
+                      SelectionChanged="ComboBoxRooms_SelectionChanged" HorizontalAlignment="Center" Width="481" FontFamily="Segoe UI Black">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -47,9 +47,9 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <Button x:Name="AddEquipmentForm" Content="Добавить\Очистить" Width="130" Height="30" Click="AddEquipmentFormButton_Click" FontWeight="Bold" MouseRightButtonUp="AddEquipmentFormButton_MouseRightButtonUp"/>
+            <Button x:Name="AddEquipmentForm" Content="Добавить\Очистить" Width="130" Height="30" Click="AddEquipmentFormButton_Click" FontWeight="Bold" MouseRightButtonUp="AddEquipmentFormButton_MouseRightButtonUp" FontFamily="Segoe UI Black"/>
 
-            <Label Content="*ЛКМ - Добавить\ПКМ - очистить" Margin="0,7,0,0" Foreground="White" FontSize="9" FontWeight="Bold"/>
+            <Label Content="*ЛКМ - Добавить\ПКМ - очистить" Margin="0,7,0,0" Foreground="White" FontSize="9" FontWeight="Bold" FontFamily="Segoe UI Black"/>
         </StackPanel>
     </Grid>
 </Window>

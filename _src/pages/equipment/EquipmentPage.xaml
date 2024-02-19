@@ -29,10 +29,15 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="ButtonBackground" Property="Fill" Value="#262537"/>
                                 <Setter Property="Foreground" Value="White"/>
+                                <Setter TargetName="ButtonBackground" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FF000000" Direction="320" ShadowDepth="0" Opacity="0.5" BlurRadius="20"/>
+                                    </Setter.Value>
+                                </Setter>
                                 <Trigger.EnterActions>
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1.7"/>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.EnterActions>

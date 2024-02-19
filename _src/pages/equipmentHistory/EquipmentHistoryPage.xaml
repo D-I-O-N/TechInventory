@@ -8,7 +8,7 @@
       DataContext="{Binding RelativeSource={RelativeSource Self}}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EquipmentHistoryPage" Loaded="Page_Loaded">
-  
+
 
     <Page.Resources>
         <Style x:Key="HoverButtonStyle" TargetType="Button">
@@ -23,13 +23,25 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Rectangle x:Name="ButtonBackground" Width="150" Height="44" Fill="{TemplateBinding Background}"/>
+                            <Rectangle x:Name="ButtonBackground" Width="150" Height="44" Fill="{TemplateBinding Background}" RadiusX="10" RadiusY="10" />
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#2C3E50"/>
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#262537"/>
                                 <Setter Property="Foreground" Value="White"/>
+                                <Setter TargetName="ButtonBackground" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FF000000" Direction="320" ShadowDepth="0" Opacity="0.5" BlurRadius="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -68,11 +80,11 @@
 
         <Grid Grid.Row="2">
             <!-- Кнопки для действий -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="Добавить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="AddEquipmentHistory_Click"/>
-                <Button x:Name="btnEdit"  Content="Редактировать" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="EditEquipmentHistory_Click"/>
-                <Button Content="Удалить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="DeleteEquipmentHistory_Click"/>
-                <Button x:Name="btnSave" Visibility="Hidden" Content="Сохранить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="SaveEquipmentHistory_Click"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button Content="Добавить" Style="{StaticResource HoverButtonStyle}" Background="#fe8369" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="AddEquipmentHistory_Click"/>
+                <Button x:Name="btnEdit"  Content="Изменить" Style="{StaticResource HoverButtonStyle}" Background="#4689e4" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="EditEquipmentHistory_Click"/>
+                <Button Content="Удалить" Style="{StaticResource HoverButtonStyle}" Background="#7645e2" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="DeleteEquipmentHistory_Click"/>
+                <Button x:Name="btnSave" Visibility="Hidden" Content="Сохранить" Style="{StaticResource HoverButtonStyle}" Background="#d7e747" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="SaveEquipmentHistory_Click"/>
             </StackPanel>
         </Grid>
 
