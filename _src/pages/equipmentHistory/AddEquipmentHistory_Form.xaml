@@ -10,7 +10,7 @@
         Title="Добавление записи" Height="450" Width="500"
         Loaded="Page_Loaded">
 
-    <Grid Background="#FF2C3E50" >
+    <Grid Background="#262537" >
         <StackPanel Margin="10">
 
             <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Наименование" Width="89" FontWeight="Bold" HorizontalAlignment="Left"  Foreground="White" FontFamily="Segoe UI Black"/>

@@ -298,10 +298,10 @@
                 <Rectangle Margin="10,5,10,5" Fill="#4db3ff" RadiusX="10" RadiusY="10"/>
                 <TextBlock Width="710" TextAlignment="Center" Text="Добро пожаловать в систему учета электронно-вычислительной техники в колледже ГБПОУ ''МПК''. Здесь вы можете управлять информацией о кабинетах, сотрудниках, оборудовании и истории его использования."
                Margin="5"
-               FontSize="18"
+               FontSize="17"
                Foreground="White"
                TextWrapping="Wrap"
-               LineHeight="1.5" FontWeight="Bold"/>
+               LineHeight="1.5" FontWeight="Bold" FontFamily="Segoe UI Black"/>
         </Grid>
 
         

@@ -7,36 +7,48 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RoomsPage" Loaded="Page_Loaded" >
-    
+
     <Page.Resources>
         <Style x:Key="HoverButtonStyle" TargetType="Button">
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="Padding" Value="10"/>
-        <Setter Property="Margin" Value="0,2,0,2"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Grid>
-                            <Rectangle x:Name="ButtonBackground" Width="150" Height="44" Fill="{TemplateBinding Background}"/>
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#2C3E50"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Rectangle x:Name="ButtonBackground" Width="150" Height="44" Fill="{TemplateBinding Background}" RadiusX="10" RadiusY="10" />
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBackground" Property="Fill" Value="#262537"/>
                                 <Setter Property="Foreground" Value="White"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+                                <Setter TargetName="ButtonBackground" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FF000000" Direction="320" ShadowDepth="0" Opacity="0.5" BlurRadius="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
-    
-    <Grid Background="#FF2C3E50">
+
+    <Grid Background="#262537">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
@@ -52,7 +64,7 @@
             <TextBlock Text="Управление аудиториями" Margin="10" FontSize="20" FontWeight="Bold"      
                Foreground="White"
                TextWrapping="Wrap"
-               LineHeight="1.5" HorizontalAlignment="Left" />
+               LineHeight="1.5" HorizontalAlignment="Left" FontFamily="Segoe UI Black" />
             <Image x:Name="searchImg" HorizontalAlignment="Right" Margin="0,7,270,7" Height="40" Width="40" Source="/img/search.png" MouseDown="refreshImg_MouseDown" />
             <TextBox x:Name="txtBoxSearch" HorizontalAlignment="Right"  Margin="5,5,60,5" Width="200" Height="27" TextChanged="txtBoxSearch_TextChanged" FontSize="18"/>
             <Image x:Name="refreshImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/refresh.png" MouseDown="refreshImg_MouseDown" Cursor="Hand" />
@@ -66,11 +78,11 @@
 
         <Grid Grid.Row="2">
             <!-- Кнопки для действий -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="Добавить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="AddCabinet_Click"/>
-                <Button x:Name="btnEdit"  Content="Редактировать" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="EditCabinet_Click"/>
-                <Button Content="Удалить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="DeleteCabinet_Click"/>
-                <Button x:Name="btnSave" Visibility="Hidden" Content="Сохранить" Style="{StaticResource HoverButtonStyle}" FontWeight="Bold" FontSize="18" Height="40" Width="150" Margin="5" Click="SaveCabinet_Click"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Добавить" Style="{StaticResource HoverButtonStyle}" Background="#fe8369" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="AddCabinet_Click" TextBlock.FontFamily="Segoe UI Black"/>
+                <Button x:Name="btnEdit"  Content="Изменить" Style="{StaticResource HoverButtonStyle}" Background="#4689e4" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="EditCabinet_Click" TextBlock.FontFamily="Segoe UI Black"/>
+                <Button Content="Удалить" Style="{StaticResource HoverButtonStyle}" Background="#7645e2" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="DeleteCabinet_Click" TextBlock.FontFamily="Segoe UI Black"/>
+                <Button x:Name="btnSave" Visibility="Hidden" Content="Сохранить" Style="{StaticResource HoverButtonStyle}" Background="#d7e747" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="SaveCabinet_Click" FontFamily="Segoe UI Black"/>
             </StackPanel>
         </Grid>
 
@@ -81,17 +93,17 @@
                    FontSize="18"
                    Foreground="Black"
                    TextWrapping="Wrap"
-                   LineHeight="1.5" FontWeight="Bold" Margin="0,5,0,10"/>
+                   LineHeight="1.5" FontWeight="Bold" Margin="0,5,0,10" FontFamily="Segoe UI Black"/>
                 <StackPanel Margin="0,0,0,0" Orientation="Horizontal" Width="470" >
                     <StackPanel Orientation="Vertical" Width="129" >
                         <!--<TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="ID" Width="119" FontWeight="Bold"/>-->
-                        <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Номер аудитории" Width="119" FontWeight="Bold"/>
-                        <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Описание" Width="119" FontWeight="Bold"/>
+                        <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Номер аудитории" Width="119" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+                        <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Описание" Width="119" FontWeight="Bold" FontFamily="Segoe UI Black"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <!--<TextBox x:Name="txtBoxID"  Margin="5" Width="233"/>-->
-                        <TextBox x:Name="txtBoxRoomNumber"  Margin="5" Width="233"/>
-                        <TextBox x:Name="txtBoxDescription"  Margin="5" Width="233"/>
+                        <TextBox x:Name="txtBoxRoomNumber"  Margin="5" Width="233" TextBlock.FontFamily="Segoe UI Black"/>
+                        <TextBox x:Name="txtBoxDescription"  Margin="5" Width="233" TextBlock.FontFamily="Segoe UI Black"/>
                     </StackPanel>
                 </StackPanel>
                 <Label x:Name="infoEdit" Visibility="Hidden" HorizontalContentAlignment="Center" Content="*Открыт режим редактирования" FontWeight="Bold" Foreground="Red" />

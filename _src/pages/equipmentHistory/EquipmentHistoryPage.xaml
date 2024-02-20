@@ -9,7 +9,6 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EquipmentHistoryPage" Loaded="Page_Loaded">
 
-
     <Page.Resources>
         <Style x:Key="HoverButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="Black"/>
@@ -50,7 +49,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="#FF2C3E50">
+    <Grid Background="#262537">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
@@ -62,10 +61,10 @@
         <Grid Grid.Row="0">
             <!-- Заголовок страницы -->
             <Image x:Name="clearImg" HorizontalAlignment="Right" Margin="0,7,320,7" Height="40" Width="40" Source="/img/сlearFields.png" MouseDown="clearImg_MouseDown" />
-            <TextBlock Text="История выдачи/возврата оборудования" Margin="10" FontSize="20" FontWeight="Bold"      
+            <TextBlock Text="История выдачи/возврата техники" Margin="10" FontSize="20" FontWeight="Bold"      
                        Foreground="White"
                        TextWrapping="Wrap"
-                       LineHeight="1.5" HorizontalAlignment="Left" />
+                       LineHeight="1.5" HorizontalAlignment="Left" FontFamily="Segoe UI Black" />
             <Image x:Name="searchImg" HorizontalAlignment="Right" Margin="0,7,270,7" Height="40" Width="40" Source="/img/search.png" MouseDown="refreshImg_MouseDown" />
             <TextBox x:Name="txtBoxSearch" HorizontalAlignment="Right"  Margin="5,5,60,5" Width="200" Height="27" TextChanged="txtBoxSearch_TextChanged" FontSize="18"/>
             <Image x:Name="refreshImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/refresh.png" MouseDown="refreshImg_MouseDown" Cursor="Hand" />
@@ -81,10 +80,10 @@
         <Grid Grid.Row="2">
             <!-- Кнопки для действий -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                <Button Content="Добавить" Style="{StaticResource HoverButtonStyle}" Background="#fe8369" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="AddEquipmentHistory_Click"/>
-                <Button x:Name="btnEdit"  Content="Изменить" Style="{StaticResource HoverButtonStyle}" Background="#4689e4" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="EditEquipmentHistory_Click"/>
-                <Button Content="Удалить" Style="{StaticResource HoverButtonStyle}" Background="#7645e2" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="DeleteEquipmentHistory_Click"/>
-                <Button x:Name="btnSave" Visibility="Hidden" Content="Сохранить" Style="{StaticResource HoverButtonStyle}" Background="#d7e747" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="SaveEquipmentHistory_Click"/>
+                <Button Content="Добавить" Style="{StaticResource HoverButtonStyle}" Background="#fe8369" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="AddEquipmentHistory_Click" FontFamily="Segoe UI Black"/>
+                <Button x:Name="btnEdit"  Content="Изменить" Style="{StaticResource HoverButtonStyle}" Background="#4689e4" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="EditEquipmentHistory_Click" FontFamily="Segoe UI Black"/>
+                <Button Content="Удалить" Style="{StaticResource HoverButtonStyle}" Background="#7645e2" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="DeleteEquipmentHistory_Click" FontFamily="Segoe UI Black"/>
+                <Button x:Name="btnSave" Visibility="Hidden" Content="Сохранить" Style="{StaticResource HoverButtonStyle}" Background="#d7e747" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="SaveEquipmentHistory_Click" FontFamily="Segoe UI Black"/>
             </StackPanel>
         </Grid>
 
@@ -95,18 +94,18 @@
                            FontSize="18"
                            Foreground="Black"
                            TextWrapping="Wrap"
-                           LineHeight="1.5" FontWeight="Bold" Margin="0,5,0,10"/>
+                           LineHeight="1.5" FontWeight="Bold" Margin="0,5,0,10" FontFamily="Segoe UI Black"/>
                 <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center" >
                     <StackPanel Orientation="Vertical" Width="800">
                         <StackPanel Orientation="Horizontal" Width="800" >
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Наименование" Width="100" FontWeight="Bold" VerticalAlignment="Center"/>
-                                <TextBox x:Name="txtBoxEquipmentHistoryName" Text="{Binding SelectedEquipment.EquipmentID, Mode=TwoWay}"  Margin="5" Width="132" VerticalAlignment="Center"/>
+                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Наименование" Width="100" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                <TextBox x:Name="txtBoxEquipmentHistoryName" Text="{Binding SelectedEquipment.EquipmentID, Mode=TwoWay}"  Margin="5" Width="132" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
                                 <ComboBox x:Name="comboBoxEquipmentName" Margin="5" Width="135" IsEditable="True" IsReadOnly="True" IsEnabled="False"
                                       SelectedValuePath="EquipmentID"
                                       SelectedValue="{Binding SelectedEquipment.EquipmentID, Mode=TwoWay}"
                                       ItemsSource="{Binding EquipmentList}"
-                                      SelectionChanged="ComboBoxEquipment_SelectionChanged" VerticalAlignment="Center">
+                                      SelectionChanged="ComboBoxEquipment_SelectionChanged" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -119,13 +118,13 @@
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Сотрудник" Width="71" FontWeight="Bold" VerticalAlignment="Center"/>
-                                <TextBox x:Name="txtBoxEquipmentHistoryEmployee" Text="{Binding SelectedEmployee.EmployeeID, Mode=TwoWay}" Margin="5" Width="114" VerticalAlignment="Center" />
+                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Сотрудник" Width="71" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                <TextBox x:Name="txtBoxEquipmentHistoryEmployee" Text="{Binding SelectedEmployee.EmployeeID, Mode=TwoWay}" Margin="5" Width="114" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black" />
                                 <ComboBox x:Name="comboBoxEmployee" Margin="5" Width="135" IsEditable="True" IsReadOnly="True" IsEnabled="False"
                                       SelectedValuePath="EmployeeID"
                                       SelectedValue="{Binding SelectedEmployee.EmployeeID, Mode=TwoWay}"
                                       ItemsSource="{Binding EmployeeList}"
-                                      SelectionChanged="ComboBoxEmployees_SelectionChanged" VerticalAlignment="Center">
+                                      SelectionChanged="ComboBoxEmployees_SelectionChanged" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -140,12 +139,12 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal"  Width="593" >
                             <StackPanel Orientation="Horizontal" Width="283">
-                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата выдачи" Width="80" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                <TextBox x:Name="txtBoxEquipmentHistoryCheckoutDate"  Margin="5" Width="180" VerticalAlignment="Center"/>
+                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата выдачи" Width="80" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                <TextBox x:Name="txtBoxEquipmentHistoryCheckoutDate"  Margin="5" Width="180" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата возврата" Width="109" FontWeight="Bold" VerticalAlignment="Center"/>
-                                <TextBox x:Name="txtBoxEquipmentHistoryReturnDate"  Margin="5" Width="180" VerticalAlignment="Center"/>
+                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата возврата" Width="109" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                <TextBox x:Name="txtBoxEquipmentHistoryReturnDate"  Margin="5" Width="180" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
