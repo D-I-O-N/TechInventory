@@ -135,7 +135,7 @@ namespace TechInventory._src.pages.employees
         {
             DataGridTextColumn idColumn = new DataGridTextColumn
             {
-                Header = "ИД",
+                Header = "ID",
                 Binding = new Binding("ID")
             };
 
