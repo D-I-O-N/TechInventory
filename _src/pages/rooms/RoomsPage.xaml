@@ -9,6 +9,7 @@
       Title="RoomsPage" Loaded="Page_Loaded" >
 
     <Page.Resources>
+
         <Style x:Key="DataGridStyle" TargetType="DataGrid">
             <Style.Resources>
                 <Style TargetType="DataGridCell">
@@ -103,7 +104,7 @@
         </Style>
     </Page.Resources>
 
-
+    
 
     <Grid Background="#262537">
         <Grid.RowDefinitions>

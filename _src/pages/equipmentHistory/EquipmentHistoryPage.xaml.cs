@@ -27,8 +27,6 @@ namespace TechInventory._src.pages.equipmentHistory
     /// Логика взаимодействия для EquipmentHistoryPage.xaml
     /// </summary>
 
-
-
     public class RoomViewModelEquipment
     {
         public int EquipmentID { get; set; }
@@ -112,7 +110,7 @@ namespace TechInventory._src.pages.equipmentHistory
 
         private void LoadRoomsFromDatabaseEquipment()
         {
-            List<Equipment> roomsFromDatabase = GetRoomsFromDatabaseEquipment();
+            List<Equipment> roomsFromDatabase = GetRoomsFromDatabaseEquipment().Where(e => e.Status == "Доступен").ToList();
             EquipmentList.Clear();
             foreach (var equipment in roomsFromDatabase)
             {
@@ -148,7 +146,7 @@ namespace TechInventory._src.pages.equipmentHistory
 
             DataGridTextColumn employeeIDColumn = new DataGridTextColumn
             {
-                Header = "ID Сотрудника",
+                Header = "ID Сотрудника ",
                 Binding = new Binding("EmployeeID")
             };
 
@@ -160,7 +158,7 @@ namespace TechInventory._src.pages.equipmentHistory
 
             DataGridTextColumn returnDateColumn = new DataGridTextColumn
             {
-                Header = "Дата выдачи",
+                Header = "Дата возврата",
                 Binding = new Binding("ReturnDate")
             };
 

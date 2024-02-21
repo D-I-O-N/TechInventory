@@ -81,7 +81,7 @@ namespace TechInventory._src.pages.rooms
             dataGridView1.Columns.Add(idColumn);
             dataGridView1.Columns.Add(roomNumberСolumn);
             dataGridView1.Columns.Add(descriptionСolumn);
-            dataGridView1.Columns.Add(newСolumn);
+            //dataGridView1.Columns.Add(newСolumn);
         }
 
         private void ReadSingleRow(DataGrid dataGrid, IDataRecord record)
@@ -91,7 +91,7 @@ namespace TechInventory._src.pages.rooms
                 ID = record.GetInt32(0),
                 RoomNumber = record.GetInt32(1),
                 Description = record.GetString(2),
-                IsNew = true // Помечаем как новую запись
+                //IsNew = true // Помечаем как новую запись
             });
         }
 

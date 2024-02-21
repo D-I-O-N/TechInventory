@@ -10,6 +10,62 @@
       Title="EquipmentPage" Loaded="Page_Loaded">
 
     <Page.Resources>
+
+        <Style x:Key="DataGridStyle" TargetType="DataGrid">
+            <Style.Resources>
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#262537" />
+                            <Setter Property="BorderBrush" Value="#262537" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="BorderBrush" Value="#262537" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="RowHeaderWidth" Value="0" />
+            <Setter Property="RowHeight" Value="30" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="RowBackground" Value="White" />
+            <Setter Property="AlternatingRowBackground" Value="#E0E0E0" />
+            <Setter Property="HorizontalGridLinesBrush" Value="#DDDDDD" />
+            <Setter Property="VerticalGridLinesBrush" Value="#DDDDDD" />
+            <Setter Property="SelectionMode" Value="Single" />
+            <Setter Property="CanUserAddRows" Value="False" />
+            <Setter Property="CanUserDeleteRows" Value="False" />
+            <Setter Property="AutoGenerateColumns" Value="False" />
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="ColumnHeaderHeight" Value="30" />
+            <Setter Property="ColumnHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="#262537" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="BorderBrush" Value="#262537" />
+                        <Setter Property="BorderThickness" Value="0,0,0,1" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="FontFamily" Value="Segoe UI Black" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="CellStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderBrush" Value="#DDDDDD" />
+                        <Setter Property="BorderThickness" Value="0,0,1,1" />
+                        <Setter Property="Padding" Value="5" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="HoverButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Background" Value="White"/>
@@ -68,7 +124,7 @@
                Foreground="White"
                TextWrapping="Wrap"
                LineHeight="1.5" HorizontalAlignment="Left" FontFamily="Segoe UI Black" />
-            <StackPanel Orientation="Horizontal" Margin="437,0,0,0" HorizontalAlignment="Left" Width="363">
+            <StackPanel Orientation="Horizontal" Margin="437,0,0,0" HorizontalAlignment="Right" Width="363">
                 <Image x:Name="clearImg" HorizontalAlignment="Left" Margin="5" Height="40" Width="40" Source="/img/сlearFields.png" MouseDown="clearImg_MouseDown" />
                 <Image x:Name="searchImg" Margin="5" Height="40" Width="40" Source="/img/search.png" MouseDown="refreshImg_MouseDown" />
                 <TextBox x:Name="txtBoxSearch"  Width="200" Height="26" TextChanged="txtBoxSearch_TextChanged" FontSize="18"/>
@@ -78,7 +134,7 @@
 
         <Grid Grid.Row="1">
             <!-- Список сотрудников -->
-            <DataGrid  x:Name="dataGridView1" SelectedCellsChanged="dataGridView1_SelectedCellsChanged">
+            <DataGrid  x:Name="dataGridView1" Style="{StaticResource DataGridStyle}" SelectedCellsChanged="dataGridView1_SelectedCellsChanged">
 
             </DataGrid>
         </Grid>

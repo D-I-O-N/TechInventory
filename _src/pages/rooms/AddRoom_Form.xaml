@@ -10,7 +10,7 @@
     <Grid Background="#262537" >
         <StackPanel Margin="10">
             <Label Content="Номер аудитории" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
-            <TextBox x:Name="txtRoomNumber" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtRoomNumber" Margin="0,0,0,10" FontFamily="Segoe UI Black" TextChanged="txtRoomNumber_TextChanged"/>
 
             <Label Content="Название" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
             <TextBox x:Name="txtDescription"  Margin="0,0,0,10" FontFamily="Segoe UI Black"/>

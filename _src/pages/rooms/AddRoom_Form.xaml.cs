@@ -63,6 +63,27 @@ namespace TechInventory._src.pages.rooms
             ClearFields();
         }
 
+        private void txtRoomNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                // Получаем текст из текстового поля
+                string text = textBox.Text;
 
+                // Удаляем все символы, кроме цифр
+                string filteredText = new string(text.Where(char.IsDigit).ToArray());
+
+                // Проверяем, изменился ли текст
+                if (filteredText != text)
+                {
+                    // Если изменился, устанавливаем отфильтрованный текст
+                    textBox.Text = filteredText;
+
+                    // Устанавливаем каретку в конец текста
+                    textBox.CaretIndex = textBox.Text.Length;
+                }
+            }
+        }
     }
 }
