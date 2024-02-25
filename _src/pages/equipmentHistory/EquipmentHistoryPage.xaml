@@ -137,9 +137,9 @@
             <!-- Кнопки для действий -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                 <Button Content="Добавить" Style="{StaticResource HoverButtonStyle}" Background="#fe8369" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="AddEquipmentHistory_Click" FontFamily="Segoe UI Black"/>
-                <Button x:Name="btnEdit"  Content="Изменить" Style="{StaticResource HoverButtonStyle}" Background="#4689e4" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="EditEquipmentHistory_Click" FontFamily="Segoe UI Black"/>
+                <Button Content="Изменить" x:Name="btnEdit" Style="{StaticResource HoverButtonStyle}" Background="#4689e4" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="EditEquipmentHistory_Click" FontFamily="Segoe UI Black"/>
                 <Button Content="Удалить" Style="{StaticResource HoverButtonStyle}" Background="#7645e2" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="DeleteEquipmentHistory_Click" FontFamily="Segoe UI Black"/>
-                <Button x:Name="btnSave" Visibility="Hidden" Content="Сохранить" Style="{StaticResource HoverButtonStyle}" Background="#d7e747" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="SaveEquipmentHistory_Click" FontFamily="Segoe UI Black"/>
+                <Button Content="Сохранить"  x:Name="btnSave" Visibility="Hidden" Style="{StaticResource HoverButtonStyle}" Background="#d7e747" Foreground="White" FontWeight="Bold" FontSize="18" Height="50" Width="150" Margin="5" Click="SaveEquipmentHistory_Click" FontFamily="Segoe UI Black"/>
             </StackPanel>
         </Grid>
 
@@ -152,7 +152,7 @@
                            TextWrapping="Wrap"
                            LineHeight="1.5" FontWeight="Bold" Margin="0,5,0,10" FontFamily="Segoe UI Black"/>
                 <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center" >
-                    <StackPanel Orientation="Vertical" Width="800">
+                    <StackPanel Orientation="Vertical" Width="747">
                         <StackPanel Orientation="Horizontal" Width="800" >
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Наименование" Width="100" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
@@ -193,7 +193,7 @@
                                 </ComboBox>
                             </StackPanel>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal"  Width="593" >
+                        <StackPanel Orientation="Horizontal"  Width="748" >
                             <StackPanel Orientation="Horizontal" Width="283">
                                 <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата выдачи" Width="80" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 <TextBox x:Name="txtBoxEquipmentHistoryCheckoutDate"  Margin="5" Width="180" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
@@ -201,6 +201,10 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата возврата" Width="109" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 <TextBox x:Name="txtBoxEquipmentHistoryReturnDate"  Margin="5" Width="180" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Доступно" Width="86" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                <CheckBox x:Name="CheckBoxStatus"  Margin="5" Width="16" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

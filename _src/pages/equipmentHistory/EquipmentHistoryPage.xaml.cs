@@ -110,7 +110,7 @@ namespace TechInventory._src.pages.equipmentHistory
 
         private void LoadRoomsFromDatabaseEquipment()
         {
-            List<Equipment> roomsFromDatabase = GetRoomsFromDatabaseEquipment().Where(e => e.Status == "Доступен").ToList();
+            List<Equipment> roomsFromDatabase = GetRoomsFromDatabaseEquipment(); /*.Where(e => e.Status == "Доступно").ToList()*/
             EquipmentList.Clear();
             foreach (var equipment in roomsFromDatabase)
             {
@@ -152,7 +152,7 @@ namespace TechInventory._src.pages.equipmentHistory
 
             DataGridTextColumn assignedEmployeeColumn = new DataGridTextColumn
             {
-                Header = "Сотрудник",
+                Header = "  Сотрудник  ",
                 Binding = new Binding("AssignedEmployee.LastName") // Предположим, что есть свойство EmployeeInfo
             };
 
@@ -321,7 +321,7 @@ namespace TechInventory._src.pages.equipmentHistory
         private void UpdateEquipmentHistoryFromFields(EquipmentHistory equipmentHistory)
         {
             //string checkoutDateInput = txtBoxEquipmentHistoryCheckoutDate.Text;
-            //string returnDateInput = txtBoxEquipmentHistoryReturnDate.Text;
+            string returnDateInput = txtBoxEquipmentHistoryReturnDate.Text;
 
             if (int.TryParse(txtBoxEquipmentHistoryName.Text, out int equipmentID))
             {
@@ -353,15 +353,15 @@ namespace TechInventory._src.pages.equipmentHistory
                 return;
             }
 
-            //if (DateTime.TryParseExact(returnDateInput, "s", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime returnDate))
-            //{
-            //    equipmentHistory.ReturnDate = returnDate;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Неверный формат даты возврата. Используйте формат 'год-месяц-день час:минута:секунда'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    return;
-            //}
+            if (DateTime.TryParseExact(returnDateInput, "s", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime returnDate))
+            {
+                equipmentHistory.ReturnDate = returnDate;
+            }
+            else
+            {
+                MessageBox.Show("Неверный формат даты возврата. Используйте формат 'год-месяц-день час:минута:секунда'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             //equipmentHistory.IsNew = true; // или другая логика присвоения значения
             equipmentHistory.State = employees.RowState.Modified;
@@ -396,7 +396,8 @@ namespace TechInventory._src.pages.equipmentHistory
                     {
                         UpdateEquipmentHistoryFromFields(selectedEquipmentHistory);
                         UpdateEquipmentHistoryInDatabase(selectedEquipmentHistory);
-                        
+                        SaveEquipmentHistoryStatus();
+
 
                         infoEdit.Visibility = Visibility.Hidden;
                         btnEdit.Visibility = Visibility.Visible;
@@ -423,7 +424,73 @@ namespace TechInventory._src.pages.equipmentHistory
             }
         }
 
+        private void SaveEquipmentHistoryStatus()
+        {
+            if (string.IsNullOrEmpty(txtBoxEquipmentHistoryName.Text))
+            {
+                MessageBox.Show("Пожалуйста, укажите ID оборудования.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
+            if (int.TryParse(txtBoxEquipmentHistoryName.Text, out int equipmentID))
+            {
+                // Преобразование успешно
+                // equipmentID содержит целочисленное значение
+            }
+            else
+            {
+                // Неверный формат строки, которая не может быть преобразована в число
+                MessageBox.Show("Неверный формат ID оборудования.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            string returnDate = txtBoxEquipmentHistoryReturnDate.Text;
+
+            //// Проверяем, заполнена ли дата возврата оборудования
+            //if (string.IsNullOrEmpty(returnDate)) // Поменять условие под CheckBox
+            //{
+            //    // Если дата возврата не заполнена, присваиваем статус "Используется"
+            //    UpdateEquipmentStatus(equipmentID, "Используется");
+            //}
+            //else
+            //{
+            //    // Если дата возврата заполнена, присваиваем статус "Доступно"
+            //    UpdateEquipmentStatus(equipmentID, "Доступно");
+            //}
+
+            if (CheckBoxStatus.IsChecked == true)
+            {
+                // Если активирован (отмечен), присваиваем статус "Доступно"
+                UpdateEquipmentStatus(equipmentID, "Доступно");
+            }
+            else
+            {
+                // Если не активирован (не отмечен), присваиваем статус "Используется"
+                UpdateEquipmentStatus(equipmentID, "Используется");
+            }
+
+
+            // Далее выполняем сохранение истории выдачи/возврата оборудования
+            // ваш код для сохранения истории...
+        }
+
+        private void UpdateEquipmentStatus(int equipmentID, string status)
+        {
+            using (var dbContext = new Entities())
+            {
+                var equipment = dbContext.Equipment.FirstOrDefault(e => e.ID == equipmentID);
+                if (equipment != null)
+                {
+                    equipment.Status = status;
+                    dbContext.SaveChanges();
+                }
+                else
+                {
+                    // Если оборудование не найдено, можно выполнить соответствующие действия, например, выдать сообщение об ошибке
+                    MessageBox.Show($"Оборудование с ID =  '{equipmentID}' не найдено.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
 
         private void AddEquipmentHistory_Click(object sender, RoutedEventArgs e)
         {

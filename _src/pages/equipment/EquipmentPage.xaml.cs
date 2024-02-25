@@ -110,25 +110,25 @@ namespace TechInventory._src.pages.equipment
 
             DataGridTextColumn equipmentNameColumn = new DataGridTextColumn
             {
-                Header = "Название оборудования",
+                Header = " Название оборудования ",
                 Binding = new Binding("EquipmentName")
             };
 
             DataGridTextColumn equipmentTypeColumn = new DataGridTextColumn
             {
-                Header = "Тип оборудования",
+                Header = " Тип оборудования ",
                 Binding = new Binding("EquipmentType")
             };
 
             DataGridTextColumn countColumn = new DataGridTextColumn
             {
-                Header = "Количество",
+                Header = " Кол-во ",
                 Binding = new Binding("Count")
             };
 
             DataGridTextColumn serialNumberColumn = new DataGridTextColumn
             {
-                Header = "Серийный номер",
+                Header = " Серийный номер ",
                 Binding = new Binding("SerialNumber")
             };
 
@@ -262,7 +262,7 @@ namespace TechInventory._src.pages.equipment
             string searchString = $"SELECT * FROM Equipment WHERE CONCAT(EquipmentName, EquipmentType, Count, SerialNumber, PurchaseDate, Status, RoomID) LIKE N'%{txtBoxSearch.Text}%'";
 
             SqlCommand com = new SqlCommand(searchString, (SqlConnection)entities.Database.Connection);
-
+            
             entities.Database.Connection.Open();
 
             SqlDataReader reader = com.ExecuteReader();
@@ -276,17 +276,19 @@ namespace TechInventory._src.pages.equipment
             entities.Database.Connection.Close();
         }
 
-        // ... (Остальной код без изменений)
+        
 
         private void UpdateEquipmentInDatabase(Equipment equipmentToUpdate)
         {
+            string status = (txtBoxStatus.SelectedItem as ComboBoxItem)?.Content.ToString();
+
             string updateQuery = $"UPDATE Equipment SET " +
                                  $"EquipmentName = N'{equipmentToUpdate.EquipmentName}', " +
                                  $"EquipmentType = N'{equipmentToUpdate.EquipmentType}', " +
                                  $"Count = {equipmentToUpdate.Count}, " +
                                  $"SerialNumber = N'{equipmentToUpdate.SerialNumber}', " +
                                  $"PurchaseDate = '{equipmentToUpdate.PurchaseDate:s}', " +
-                                 $"Status = N'{equipmentToUpdate.Status}', " +
+                                 $"Status = N'{status}', " +
                                  $"RoomID = {equipmentToUpdate.RoomID} " +
                                  $"WHERE ID = {equipmentToUpdate.ID}";
 
@@ -342,11 +344,24 @@ namespace TechInventory._src.pages.equipment
                 if (selectedEquipment != null)
                 {
                     string ID = selectedEquipment.ID.ToString();
+                    string Status = selectedEquipment.Status;
                     txtID.Text = "Выбранная запись об оборудовании № " + ID;
                     txtBoxEquipmentName.Text = selectedEquipment.EquipmentName;
                     txtBoxEquipmentType.Text = selectedEquipment.EquipmentType;
                     txtBoxEquipmentCount.Text = selectedEquipment.Count.ToString();
-                    txtBoxStatus.Text = selectedEquipment.Status.ToString();
+                    // надо настроить отслеживание чекбокса статуса
+
+                    // Установка значения статуса
+                    if (Status == "Используется")
+                    {
+                        txtBoxStatus.SetValue(ComboBox.SelectedItemProperty, txtBoxStatus.Items[0]);
+                    }
+                    else if (Status == "Доступно")
+                    {
+                        txtBoxStatus.SetValue(ComboBox.SelectedItemProperty, txtBoxStatus.Items[1]);
+                    }
+
+                    //txtBoxStatus.Text = selectedEquipment.Status.ToString();
                     txtBoxSN.Text = selectedEquipment.SerialNumber.ToString();
                     txtBoxPurchaseDate.Text = selectedEquipment.PurchaseDate.ToString();
                     txtBoxRoomID.Text = selectedEquipment.RoomID.ToString();
@@ -360,7 +375,7 @@ namespace TechInventory._src.pages.equipment
                     txtBoxEquipmentName.Text = "Не выбрано";
                     txtBoxEquipmentType.Text = "Не выбрано";
                     txtBoxEquipmentCount.Text = "Не выбрано";
-                    txtBoxStatus.Text = "Не выбрано";
+                    //txtBoxStatus.Text = "Не выбрано";
                     txtBoxSN.Text = "Не выбрано";
                     txtBoxPurchaseDate.Text = "Не выбрано";
                     txtBoxRoomID.Text = "Не выбрано";

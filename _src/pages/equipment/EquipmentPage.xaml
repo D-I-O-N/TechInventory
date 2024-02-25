@@ -172,25 +172,29 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Тип" Width="25" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxEquipmentType"  Margin="5" Width="160" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxEquipmentType"  Margin="5" Width="138" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Количество" Width="73" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxEquipmentCount"  Margin="5" Width="70" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxEquipmentCount"  Margin="5" Width="68" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Статус" Width="40" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxStatus"  Margin="5" Width="100" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <!--<TextBox x:Name="txtBoxStatus"  Margin="5" Width="100" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>-->
+                                    <ComboBox x:Name="txtBoxStatus" SelectedIndex="1" Margin="5" Width="113" VerticalAlignment="Center" FontFamily="Segoe UI Black">
+                                        <ComboBoxItem>Используется</ComboBoxItem>
+                                        <ComboBoxItem>Доступно</ComboBoxItem>
+                                    </ComboBox>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="790">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="SN" Width="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxSN"  Margin="5" Width="100" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxSN"  Margin="5" Width="82" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата покупки" Width="86" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxPurchaseDate"  Margin="5" Width="108" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxPurchaseDate"  Margin="5" Width="122" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
