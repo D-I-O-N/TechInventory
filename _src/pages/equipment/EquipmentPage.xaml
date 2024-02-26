@@ -124,7 +124,7 @@
                Foreground="White"
                TextWrapping="Wrap"
                LineHeight="1.5" HorizontalAlignment="Left" FontFamily="Segoe UI Black" />
-            <StackPanel Orientation="Horizontal" Margin="437,0,0,0" HorizontalAlignment="Right" Width="363">
+            <StackPanel Orientation="Horizontal" Margin="430,0,0,0" HorizontalAlignment="Left" Width="370">
                 <Image x:Name="clearImg" HorizontalAlignment="Left" Margin="5" Height="40" Width="40" Source="/img/сlearFields.png" MouseDown="clearImg_MouseDown" />
                 <Image x:Name="searchImg" Margin="5" Height="40" Width="40" Source="/img/search.png" MouseDown="refreshImg_MouseDown" />
                 <TextBox x:Name="txtBoxSearch"  Width="200" Height="26" TextChanged="txtBoxSearch_TextChanged" FontSize="18"/>
@@ -189,12 +189,12 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="790">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="SN" Width="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxSN"  Margin="5" Width="82" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="SN" Width="16" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxSN"  Margin="5" Width="73" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата покупки" Width="86" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxPurchaseDate"  Margin="5" Width="122" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxPurchaseDate"  Margin="5" Width="133" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">

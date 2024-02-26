@@ -72,6 +72,7 @@ namespace TechInventory._src.pages.equipment
         public EquipmentPage()
         {
             InitializeComponent();
+
         }
 
         private List<Rooms> GetRoomsFromDatabase()
@@ -136,6 +137,7 @@ namespace TechInventory._src.pages.equipment
             {
                 Header = "Дата покупки",
                 Binding = new Binding("PurchaseDate")
+
             };
 
             DataGridTextColumn statusColumn = new DataGridTextColumn
@@ -244,10 +246,15 @@ namespace TechInventory._src.pages.equipment
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             CreateColumns();
+
+            (dataGridView1.Columns[5] as DataGridTextColumn).Binding.StringFormat = "dd.MM.yyyy";
+
             RefreshDataGrid(dataGridView1);
 
             LoadRoomsFromDatabase();
             comboBoxRooms.ItemsSource = RoomsList;
+
+           
         }
 
         private void txtBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -302,25 +309,22 @@ namespace TechInventory._src.pages.equipment
 
         private void UpdateEquipmentFromFields(Equipment equipment)
         {
-            //string inputDate = txtBoxPurchaseDate.Text;
+            string PurchaseDateInput = txtBoxPurchaseDate.Text;
 
-            //equipment.EquipmentName = txtBoxEquipmentName.Text;
-            //equipment.EquipmentType = txtBoxEquipmentType.Text;
-            //equipment.Count = int.Parse(txtBoxEquipmentCount.Text);
-            //equipment.SerialNumber = txtBoxSN.Text;
-            ////equipment.PurchaseDate = txtBoxPurchaseDate.Text;
-            ////equipment.PurchaseDate = DateTime.ParseExact(txtBoxPurchaseDate.Text, "s", CultureInfo.InvariantCulture);
-            //equipment.Status = txtBoxStatus.Text;
+            // Формат входной строки
+            string inputFormat = "dd.MM.yyyy";
 
-            //if (DateTime.TryParseExact(inputDate, format: "s", provider: CultureInfo.InvariantCulture, style: DateTimeStyles.None, result: out DateTime purchaseDate))
-            //{
-            //    equipment.PurchaseDate = purchaseDate;
-            //}
-            //else
-            //{
-            //    // Введенное значение не соответствует ожидаемому формату
-            //    MessageBox.Show("Неверный формат даты. Используйте формат 'год-месяц-день час:минута:секунда'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
+            // Преобразование строки в объект DateTime
+            if (DateTime.TryParseExact(PurchaseDateInput, inputFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime purchaseDate))
+            {
+                equipment.PurchaseDate = purchaseDate;
+            }
+            else
+            {
+                // Введенное значение не соответствует ожидаемому формату
+                MessageBox.Show("Неверный формат даты. Используйте формат 'день.месяц.год час:минута:секунда'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             if (int.TryParse(txtBoxRoomID.Text, out int roomID))
             {
@@ -349,7 +353,7 @@ namespace TechInventory._src.pages.equipment
                     txtBoxEquipmentName.Text = selectedEquipment.EquipmentName;
                     txtBoxEquipmentType.Text = selectedEquipment.EquipmentType;
                     txtBoxEquipmentCount.Text = selectedEquipment.Count.ToString();
-                    // надо настроить отслеживание чекбокса статуса
+                    
 
                     // Установка значения статуса
                     if (Status == "Используется")
@@ -363,7 +367,7 @@ namespace TechInventory._src.pages.equipment
 
                     //txtBoxStatus.Text = selectedEquipment.Status.ToString();
                     txtBoxSN.Text = selectedEquipment.SerialNumber.ToString();
-                    txtBoxPurchaseDate.Text = selectedEquipment.PurchaseDate.ToString();
+                    txtBoxPurchaseDate.Text = selectedEquipment.PurchaseDate.ToString("dd.MM.yyyy");
                     txtBoxRoomID.Text = selectedEquipment.RoomID.ToString();
    
                     //comboBoxRooms.IsEnabled = true;
