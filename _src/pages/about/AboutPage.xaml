@@ -20,7 +20,7 @@
             <TextBlock Text="О программе" FontSize="24" FontWeight="Bold" Margin="0,60,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI Black"/>
         </Grid>
         <Grid Margin="0,125,0,41" Grid.RowSpan="3">
-            <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="20" FontFamily="Segoe UI Black" Height="216" Width="630" Text="Эта программа предназначена для учета электронно-вычислительной техники. Она облегчает процессы отслеживания и управления компьютерами, а также другими устройствами в вашей организации." TextAlignment="Center"  HorizontalAlignment="Center" Margin="0,0,0,-22"/>
+            <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="20" FontFamily="Segoe UI Black" Height="216" Width="630" Text="Эта программа предназначена для учета электронно-вычислительной техники. Она облегчает процессы отслеживания и управления компьютерами, а также другими устройствами в организации. Созданно для ГБПОУ Макеевский Политехнический Колледж.                Дипломная работа." TextAlignment="Center"  HorizontalAlignment="Center" Margin="0,0,0,-22"/>
         </Grid>
         <Grid Grid.Row="2" Margin="0,108,0,0">
 
@@ -31,7 +31,7 @@
         </Grid>
         <Grid Grid.Row="3">
             <TextBlock Text="Год создания: 2024" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe UI Black"/>
-            <Image x:Name="backImg" HorizontalAlignment="Left" Margin="732,5,0,5" Height="40" Width="40" Source="/img/back.png" MouseLeftButtonUp="BackToPage_MouseLeftButtonUp" Cursor="Hand" />
+            <Image x:Name="backImg" HorizontalAlignment="Left"  Height="40" Width="40" Source="/img/back.png" MouseLeftButtonUp="BackToPage_MouseLeftButtonUp" Cursor="Hand" Margin="752,5,0,5" />
         </Grid>
 
 
