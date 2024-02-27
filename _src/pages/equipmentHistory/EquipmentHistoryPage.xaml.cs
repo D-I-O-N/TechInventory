@@ -49,6 +49,27 @@ namespace TechInventory._src.pages.equipmentHistory
         }
     }
 
+    public class DateTimeFormatter
+    {
+        public static void FormatDateTimeTextBox(TextBox textBox)
+        {
+            // Парсируем входную строку в объект DateTime с текущим форматом
+            if (DateTime.TryParseExact(textBox.Text, "dd.MM.yyyy H:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDateTime))
+            {
+                // Форматируем дату и время в строку с нужным форматом
+                string formattedDateTime = parsedDateTime.ToString("dd.MM.yyyy HH:mm:ss");
+
+                // Записываем отформатированную дату и время обратно в текстбокс
+                textBox.Text = formattedDateTime;
+            }
+            else
+            {
+                // Обработка ошибки парсинга
+                Console.WriteLine("Ошибка парсинга даты и времени.");
+            }
+        }
+    }
+
     public partial class EquipmentHistoryPage : Page
     {
         Entities entities = new Entities();
@@ -83,10 +104,10 @@ namespace TechInventory._src.pages.equipmentHistory
 
         private void ComboBoxEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-                if (comboBoxEmployee.SelectedItem is RoomViewModelEmployee selectedEmployee)
-                {
-                    txtBoxEquipmentHistoryEmployee.Text = selectedEmployee.EmployeeID.ToString();
-                }
+            if (comboBoxEmployee.SelectedItem is RoomViewModelEmployee selectedEmployee)
+            {
+                txtBoxEquipmentHistoryEmployee.Text = selectedEmployee.EmployeeID.ToString();
+            }
         }
 
         private void ComboBoxEquipment_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -100,12 +121,12 @@ namespace TechInventory._src.pages.equipmentHistory
 
         private void LoadRoomsFromDatabaseEmployee()
         {
-                List<Employees> roomsFromDatabase = GetRoomsFromDatabaseEmployees();
-                EmployeeList.Clear();
-                foreach (var employee in roomsFromDatabase)
-                {
-                    EmployeeList.Add(new RoomViewModelEmployee { EmployeeID = employee.ID, LastName = employee.LastName });
-                }
+            List<Employees> roomsFromDatabase = GetRoomsFromDatabaseEmployees();
+            EmployeeList.Clear();
+            foreach (var employee in roomsFromDatabase)
+            {
+                EmployeeList.Add(new RoomViewModelEmployee { EmployeeID = employee.ID, LastName = employee.LastName });
+            }
         }
 
         private void LoadRoomsFromDatabaseEquipment()
@@ -286,7 +307,11 @@ namespace TechInventory._src.pages.equipmentHistory
                 txtBoxEquipmentHistoryName.Text = selectedEquipmentHistory.AssignedEquipment.EquipmentName.ToString();
                 txtBoxEquipmentHistoryEmployee.Text = selectedEquipmentHistory.AssignedEmployee.LastName.ToString();
                 txtBoxEquipmentHistoryCheckoutDate.Text = selectedEquipmentHistory.CheckoutDate.ToString();
+                DateTimeFormatter.FormatDateTimeTextBox(txtBoxEquipmentHistoryCheckoutDate);
                 txtBoxEquipmentHistoryReturnDate.Text = selectedEquipmentHistory.ReturnDate.ToString();
+                DateTimeFormatter.FormatDateTimeTextBox(txtBoxEquipmentHistoryReturnDate);
+
+
 
                 string equipmentStatus = GetEquipmentStatus(selectedEquipmentHistory.AssignedEquipment.ID);
 
@@ -314,7 +339,7 @@ namespace TechInventory._src.pages.equipmentHistory
             }
         }
 
-        private string GetEquipmentStatus(int equipmentID)
+            private string GetEquipmentStatus(int equipmentID)
         {
             using (var dbContext = new Entities())
             {
@@ -335,6 +360,7 @@ namespace TechInventory._src.pages.equipmentHistory
 
         private void UpdateEquipmentHistoryInDatabase(EquipmentHistory equipmentHistoryToUpdate)
         {
+
             string updateQuery = $"UPDATE EquipmentHistory SET " +
                                  $"EquipmentID = {equipmentHistoryToUpdate.EquipmentID}, " +
                                  $"CheckoutDate = '{equipmentHistoryToUpdate.CheckoutDate:s}', " +
@@ -361,7 +387,7 @@ namespace TechInventory._src.pages.equipmentHistory
 
 
             // Вывод результата
-            
+
 
             if (DateTime.TryParseExact(checkoutDateInput, inputFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkoutDate))
             {
@@ -369,7 +395,7 @@ namespace TechInventory._src.pages.equipmentHistory
             }
             else
             {
-                MessageBox.Show("Неверный формат даты выдачи. Используйте формат 'год-месяц-день час:минута:секунда'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Неверный формат даты выдачи. Используйте формат 'день-месяц-год час:минута:секунда' Пример: 20.01.2024 18:00:00", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -379,7 +405,7 @@ namespace TechInventory._src.pages.equipmentHistory
             }
             else
             {
-                MessageBox.Show("Неверный формат даты возврата. Используйте формат 'год-месяц-день час:минута:секунда'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Неверный формат даты возврата. Используйте формат 'день-месяц-год час:минута:секунда' Пример: 20.01.2024 18:00:00", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -405,7 +431,7 @@ namespace TechInventory._src.pages.equipmentHistory
 
             //equipmentHistory.IsNew = true; // или другая логика присвоения значения
             equipmentHistory.State = employees.RowState.Modified;
-            
+
         }
 
 
@@ -545,13 +571,21 @@ namespace TechInventory._src.pages.equipmentHistory
 
             if (selectedEquipmentHistory != null)
             {
-                
+
+
+
                 infoEdit.Visibility = Visibility.Visible;
                 btnEdit.Visibility = Visibility.Hidden;
                 btnSave.Visibility = Visibility.Visible;
                 comboBoxEquipmentName.IsEnabled = true;
                 comboBoxEmployee.IsEnabled = true;
-
+                CheckBoxStatus.IsEnabled = true;
+                txtBoxEquipmentHistoryName.IsEnabled = false;
+                txtBoxEquipmentHistoryEmployee.IsEnabled = false;
+                //txtBoxEquipmentHistoryName.IsReadOnly = false;
+                //txtBoxEquipmentHistoryEmployee.IsReadOnly = false;
+                txtBoxEquipmentHistoryCheckoutDate.IsReadOnly = false;
+                txtBoxEquipmentHistoryReturnDate.IsReadOnly = false;
                 // Установка значений в текстовые поля
                 //txtBoxEquipmentHistoryCheckoutDate.Text = selectedEquipmentHistory.CheckoutDate.ToString("s");
                 //txtBoxEquipmentHistoryReturnDate.Text = selectedEquipmentHistory.ReturnDate.ToString("s");
@@ -608,8 +642,51 @@ namespace TechInventory._src.pages.equipmentHistory
             NavigationService.GoBack();
         }
 
+        private void txtBoxEquipmentHistoryCheckoutDate_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            inputMaskForHardwareDateHistory(sender);
+        }
 
-    } 
+        private void txtBoxEquipmentHistoryReturnDate_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            inputMaskForHardwareDateHistory(sender);
+        }
+
+        private void inputMaskForHardwareDateHistory(object sender)
+        {
+            //Пример: 20.01.2024 18:00:00
+            TextBox textBox = sender as TextBox;
+            int maxMaskLength = 19;
+
+            // Удаляем все недопустимые символы
+            textBox.Text = new string(textBox.Text
+                .Where(c => char.IsDigit(c) || c == ':' || c == ' ' || c == '.')
+                .ToArray());
+
+            // Ограничьте длину строки максимальной длиной маски
+            if (textBox.Text.Length > maxMaskLength)
+            {
+                textBox.Text = textBox.Text.Substring(0, maxMaskLength);
+            }
+
+            // Форматируйте ввод в соответствии с маской
+            if (textBox.Text.Length >= 3 && textBox.Text[2] != '.')
+            {
+                textBox.Text = textBox.Text.Insert(2, ".");
+            }
+            if (textBox.Text.Length >= 11 && textBox.Text[10] != ' ')
+            {
+                textBox.Text = textBox.Text.Insert(10, " ");
+            }
+            if (textBox.Text.Length >= 12 && textBox.Text[11] != ' ' && !char.IsDigit(textBox.Text[11]))
+            {
+                textBox.Text = textBox.Text.Insert(11, "0");
+            }
+
+            // Каретку в конец текста
+            textBox.CaretIndex = textBox.Text.Length;
+        }
+    }
 }
-    
+
 

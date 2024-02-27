@@ -124,7 +124,7 @@
                Foreground="White"
                TextWrapping="Wrap"
                LineHeight="1.5" HorizontalAlignment="Left" FontFamily="Segoe UI Black" />
-            <StackPanel Orientation="Horizontal" Margin="430,0,0,0" HorizontalAlignment="Left" Width="370">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="353">
                 <Image x:Name="clearImg" HorizontalAlignment="Left" Margin="5" Height="40" Width="40" Source="/img/сlearFields.png" MouseDown="clearImg_MouseDown" />
                 <Image x:Name="searchImg" Margin="5" Height="40" Width="40" Source="/img/search.png" MouseDown="refreshImg_MouseDown" />
                 <TextBox x:Name="txtBoxSearch"  Width="200" Height="26" TextChanged="txtBoxSearch_TextChanged" FontSize="18"/>
@@ -168,20 +168,20 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="790" >
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Название" Width="60" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxEquipmentName"  Margin="5" Width="180" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxEquipmentName" IsReadOnly="True" Margin="5" Width="180" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Тип" Width="25" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxEquipmentType"  Margin="5" Width="138" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxEquipmentType" IsReadOnly="True" Margin="5" Width="138" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Количество" Width="73" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxEquipmentCount"  Margin="5" Width="68" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxEquipmentCount" IsReadOnly="True" Margin="5" Width="68" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Статус" Width="40" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                     <!--<TextBox x:Name="txtBoxStatus"  Margin="5" Width="100" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>-->
-                                    <ComboBox x:Name="txtBoxStatus" SelectedIndex="1" Margin="5" Width="113" VerticalAlignment="Center" FontFamily="Segoe UI Black">
+                                    <ComboBox x:Name="txtBoxStatus" IsReadOnly="True" IsEditable="False" SelectedIndex="1" Margin="5" Width="113" VerticalAlignment="Center" FontFamily="Segoe UI Black">
                                         <ComboBoxItem>Используется</ComboBoxItem>
                                         <ComboBoxItem>Доступно</ComboBoxItem>
                                     </ComboBox>
@@ -190,18 +190,18 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="790">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="SN" Width="16" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxSN"  Margin="5" Width="73" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxSN" IsReadOnly="True" Margin="5" Width="73" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата покупки" Width="86" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                    <TextBox x:Name="txtBoxPurchaseDate"  Margin="5" Width="133" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
+                                    <TextBox x:Name="txtBoxPurchaseDate" IsReadOnly="True" Margin="5" Width="133" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock x:Name="txtIDAudit" Margin="5" TextAlignment="Right" FontSize="12" Text="ID Аудитории" Width="87" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                     <TextBlock x:Name="txtBoxRoomID" FontSize="12" Text="{Binding SelectedRoom.RoomID, Mode=TwoWay}" Margin="5" Width="67" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
                                     <!--<ComboBox x:Name="comboBoxRooms" Width="200" DisplayMemberPath="Description" SelectedValuePath="ID" IsEditable="True" />-->
-                                    <ComboBox x:Name="comboBoxRooms" Margin="5" Width="240" IsEditable="True" IsReadOnly="True" IsEnabled="False"
+                                    <ComboBox x:Name="comboBoxRooms" Margin="5" Width="240" IsEditable="False" IsReadOnly="True" IsEnabled="False"
           SelectedValuePath="RoomID"
           SelectedValue="{Binding SelectedRoom.RoomID, Mode=TwoWay}"
           ItemsSource="{Binding RoomsList}"

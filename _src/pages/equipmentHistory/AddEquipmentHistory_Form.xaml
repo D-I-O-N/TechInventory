@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         WindowStartupLocation="CenterScreen"
-        Title="Добавление записи" Height="450" Width="500"
+        Title="Добавление записи о истории оборудования" Height="450" Width="500"
         Loaded="Page_Loaded">
 
     <Grid Background="#262537" >
@@ -51,13 +51,11 @@
 
             <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата выдачи" Width="Auto" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Segoe UI Black"/>
             <TextBox x:Name="txtBoxEquipmentHistoryCheckoutDate"  Margin="5" Width="Auto" VerticalAlignment="Center"
-                     PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChangedCheckoutDate" TextBlock.FontFamily="Segoe UI Black"/>
+                      TextChanged="TextBox_TextChangedCheckoutDate" TextBlock.FontFamily="Segoe UI Black"/>
 
             <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата возврата" Width="Auto" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Segoe UI Black"/>
             <TextBox x:Name="txtBoxEquipmentHistoryReturnDate"  Margin="5" Width="Auto" VerticalAlignment="Center"
-                      PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChangedReturnDate" TextBlock.FontFamily="Segoe UI Black"/>
-
-           
+                       TextChanged="TextBox_TextChangedReturnDate" TextBlock.FontFamily="Segoe UI Black"/>
 
             <Button x:Name="AddEmployeeForm" Content="Добавить\Очистить" Width="130" Height="30" Click="AddEmployeeFormButton_Click" FontWeight="Bold" MouseRightButtonUp="AddEmployeeFormButton_MouseRightButtonUp" TextBlock.FontFamily="Segoe UI Black"/>
 

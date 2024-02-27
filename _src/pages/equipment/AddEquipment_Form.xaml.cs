@@ -91,7 +91,7 @@ namespace TechInventory._src.pages.equipment
                 {
                     var addQuery = $"INSERT INTO Equipment (EquipmentName, EquipmentType, Count, SerialNumber, PurchaseDate, Status, RoomID) " +
                                    $"VALUES (N'{equipmentName}', N'{equipmentType}', {equipmentCount}, N'{serialNumber}', " +
-                                   $"'{purchaseDate:yyyy-MM-dd HH:mm:ss}', N'{status}', {roomID})";
+                                   $"'{purchaseDate:yyyy-MM-dd H:mm:ss}', N'{status}', {roomID})";
 
                     SqlCommand command = new SqlCommand(addQuery, (SqlConnection)entities.Database.Connection);
                     command.ExecuteReader();

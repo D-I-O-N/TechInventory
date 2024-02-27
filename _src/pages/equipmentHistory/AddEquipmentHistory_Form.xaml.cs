@@ -20,6 +20,10 @@ namespace TechInventory._src.pages.equipmentHistory
     /// <summary>
     /// Логика взаимодействия для AddEquipmentHistory_Form.xaml
     /// </summary>
+    /// 
+
+
+
     public partial class AddEquipmentHistory_Form : Window
     {
         Entities entities = new Entities();
@@ -46,7 +50,6 @@ namespace TechInventory._src.pages.equipmentHistory
             {
                 return entities.Equipment.ToList();
             }
-
         }
 
         private void ComboBoxEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -64,7 +67,6 @@ namespace TechInventory._src.pages.equipmentHistory
                 txtBoxEquipmentHistoryName.Text = selectedEquipment.EquipmentID.ToString();
             }
         }
-
 
         private void LoadRoomsFromDatabaseEmployee()
         {
@@ -101,24 +103,25 @@ namespace TechInventory._src.pages.equipmentHistory
             {
                 entities.Database.Connection.Open();
 
+                // Формат входной строки
+                string inputFormat = "dd.MM.yyyy H:mm:ss";
                 // Считывание значений из элементов управления
-          
+
                 // Пример:
                 DateTime checkoutDate;
-                if (!DateTime.TryParseExact(txtBoxEquipmentHistoryCheckoutDate.Text, "s", CultureInfo.InvariantCulture, DateTimeStyles.None, out checkoutDate))
+                if (!DateTime.TryParseExact(txtBoxEquipmentHistoryCheckoutDate.Text, inputFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out checkoutDate))
                 {
-                    MessageBox.Show("Неверный формат даты выдачи. Используйте формат 'год-месяц-день час:минута:секунда'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Неверный формат даты выдачи. Используйте формат 'день-месяц-год час:минута:секунда' Пример: 20.01.2024 18:00:00", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-
 
                 var newEquipmentHistory = new EquipmentHistory
                 {
                     EquipmentID = int.Parse(txtBoxEquipmentHistoryName.Text),
                     CheckoutDate = checkoutDate,
                     EmployeeID = int.Parse(txtBoxEquipmentHistoryEmployee.Text),
-                    ReturnDate = DateTime.ParseExact(txtBoxEquipmentHistoryReturnDate.Text, "s", CultureInfo.InvariantCulture)
-                     // или другая логика
+                    ReturnDate = DateTime.ParseExact(txtBoxEquipmentHistoryReturnDate.Text, inputFormat, CultureInfo.InvariantCulture)
+                    // или другая логика
                 };
 
                 // Добавление новой записи в базу данных
@@ -140,122 +143,63 @@ namespace TechInventory._src.pages.equipmentHistory
             }
         }
 
-
-        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            // Запрещаем ввод недопустимых символов
-            if (!char.IsDigit(e.Text[0]) && e.Text[0] != ':' && e.Text[0] != 'T' && e.Text[0] != '-' && e.Text[0] != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-
-
-//        Этот код представляет собой обработчик события TextChanged, который вызывается каждый раз, когда изменяется текст в TextBox с именем txtBoxEquipmentHistoryCheckoutDate.
-
-//Очистка текста: В строке txtBoxEquipmentHistoryCheckoutDate.Text = new string (txtBoxEquipmentHistoryCheckoutDate.Text.Where(c => char.IsDigit(c) || c == ':' || c == 'T' || c == '-').ToArray());
-//удаляются все символы, кроме цифр, двоеточий, буквы 'T' и дефисов.
-
-//Ограничение длины: После очистки текста проверяется его длина, и если она превышает максимальную длину маски (в данном случае 19 символов), то текст обрезается до максимальной длины.
-
-//Добавление разделителей в маску: Затем проверяется каждая позиция в строке, и если необходимо, добавляются разделители.
-//Например, между годом, месяцем и днем добавляется дефис, а между часами, минутами и секундами добавляется двоеточие.
-
-//Установка каретки в конец текста: В конце обработчика устанавливается каретка в конец текста, чтобы обеспечить удобство ввода для пользователя.
-
-//Таким образом, этот код обеспечивает ввод текста в TextBox в формате, соответствующем маске даты и времени "гггг-мм-ддТчч:мм:сс".
-        
-
-
-
         private void TextBox_TextChangedCheckoutDate(object sender, TextChangedEventArgs e)
         {
-
-
-
-            // Форматируем ввод в соответствии с маской
-            // Определите максимальную длину маски
-            int maxMaskLength = 19;
-
-            // Удалите все недопустимые символы
-            txtBoxEquipmentHistoryCheckoutDate.Text = new string(txtBoxEquipmentHistoryCheckoutDate.Text
-                .Where(c => char.IsDigit(c) || c == ':' || c == 'T' || c == '-')
-                .ToArray());
-
-            // Ограничьте длину строки максимальной длиной маски
-            if (txtBoxEquipmentHistoryCheckoutDate.Text.Length > maxMaskLength)
-            {
-                txtBoxEquipmentHistoryCheckoutDate.Text = txtBoxEquipmentHistoryCheckoutDate.Text.Substring(0, maxMaskLength);
-            }
-
-            // Форматируйте ввод в соответствии с маской
-            if (txtBoxEquipmentHistoryCheckoutDate.Text.Length >= 5 && txtBoxEquipmentHistoryCheckoutDate.Text[4] != '-')
-            {
-                txtBoxEquipmentHistoryCheckoutDate.Text = txtBoxEquipmentHistoryCheckoutDate.Text.Insert(4, "-");
-            }
-            if (txtBoxEquipmentHistoryCheckoutDate.Text.Length >= 8 && txtBoxEquipmentHistoryCheckoutDate.Text[7] != '-')
-            {
-                txtBoxEquipmentHistoryCheckoutDate.Text = txtBoxEquipmentHistoryCheckoutDate.Text.Insert(7, "-");
-            }
-            if (txtBoxEquipmentHistoryCheckoutDate.Text.Length >= 11 && txtBoxEquipmentHistoryCheckoutDate.Text[10] != 'T')
-            {
-                txtBoxEquipmentHistoryCheckoutDate.Text = txtBoxEquipmentHistoryCheckoutDate.Text.Insert(10, "T");
-            }
-            if (txtBoxEquipmentHistoryCheckoutDate.Text.Length >= 14 && txtBoxEquipmentHistoryCheckoutDate.Text[13] != ':')
-            {
-                txtBoxEquipmentHistoryCheckoutDate.Text = txtBoxEquipmentHistoryCheckoutDate.Text.Insert(13, ":");
-            }
-            if (txtBoxEquipmentHistoryCheckoutDate.Text.Length >= 17 && txtBoxEquipmentHistoryCheckoutDate.Text[16] != ':')
-            {
-                txtBoxEquipmentHistoryCheckoutDate.Text = txtBoxEquipmentHistoryCheckoutDate.Text.Insert(16, ":");
-            }
-
-            // Установите каретку в конец текста
-            txtBoxEquipmentHistoryCheckoutDate.CaretIndex = txtBoxEquipmentHistoryCheckoutDate.Text.Length;
+            DateTimeFormatter.FormatDateTimeTextBox(txtBoxEquipmentHistoryCheckoutDate);
+            inputMaskForHardwareDateHistory(sender);
         }
 
         private void TextBox_TextChangedReturnDate(object sender, TextChangedEventArgs e)
         {
-            // Форматируем ввод в соответствии с маской
-            // Определите максимальную длину маски
+            DateTimeFormatter.FormatDateTimeTextBox(txtBoxEquipmentHistoryReturnDate);
+            inputMaskForHardwareDateHistory(sender);
+        }
+
+        private void inputMaskForHardwareDateHistory(object sender)
+        {
+                        //Пример: 20.01.2024 18:00:00
+            TextBox textBox = sender as TextBox;
             int maxMaskLength = 19;
 
-            // Удалите все недопустимые символы
-            txtBoxEquipmentHistoryReturnDate.Text = new string(txtBoxEquipmentHistoryReturnDate.Text
-                .Where(c => char.IsDigit(c) || c == ':' || c == 'T' || c == '-')
+            // Удаляем все недопустимые символы
+            textBox.Text = new string(textBox.Text
+                .Where(c => char.IsDigit(c) || c == ':' || c == ' ' || c == '.')
                 .ToArray());
 
             // Ограничьте длину строки максимальной длиной маски
-            if (txtBoxEquipmentHistoryReturnDate.Text.Length > maxMaskLength)
+            if (textBox.Text.Length > maxMaskLength)
             {
-                txtBoxEquipmentHistoryReturnDate.Text = txtBoxEquipmentHistoryReturnDate.Text.Substring(0, maxMaskLength);
+                textBox.Text = textBox.Text.Substring(0, maxMaskLength);
             }
 
             // Форматируйте ввод в соответствии с маской
-            if (txtBoxEquipmentHistoryReturnDate.Text.Length >= 5 && txtBoxEquipmentHistoryReturnDate.Text[4] != '-')
+            if (textBox.Text.Length >= 3 && textBox.Text[2] != '.')
             {
-                txtBoxEquipmentHistoryReturnDate.Text = txtBoxEquipmentHistoryReturnDate.Text.Insert(4, "-");
+                textBox.Text = textBox.Text.Insert(2, ".");
             }
-            if (txtBoxEquipmentHistoryReturnDate.Text.Length >= 8 && txtBoxEquipmentHistoryReturnDate.Text[7] != '-')
+            if (textBox.Text.Length >= 6 && textBox.Text[5] != '.')
             {
-                txtBoxEquipmentHistoryReturnDate.Text = txtBoxEquipmentHistoryReturnDate.Text.Insert(7, "-");
+                textBox.Text = textBox.Text.Insert(5, ".");
             }
-            if (txtBoxEquipmentHistoryReturnDate.Text.Length >= 11 && txtBoxEquipmentHistoryReturnDate.Text[10] != 'T')
+            if (textBox.Text.Length >= 11 && textBox.Text[10] != ' ')
             {
-                txtBoxEquipmentHistoryReturnDate.Text = txtBoxEquipmentHistoryReturnDate.Text.Insert(10, "T");
+                textBox.Text = textBox.Text.Insert(10, " ");
             }
-            if (txtBoxEquipmentHistoryReturnDate.Text.Length >= 14 && txtBoxEquipmentHistoryReturnDate.Text[13] != ':')
+            if (textBox.Text.Length >= 14 && textBox.Text[13] != ':')
             {
-                txtBoxEquipmentHistoryReturnDate.Text = txtBoxEquipmentHistoryReturnDate.Text.Insert(13, ":");
+                textBox.Text = textBox.Text.Insert(13, ":");
             }
-            if (txtBoxEquipmentHistoryReturnDate.Text.Length >= 17 && txtBoxEquipmentHistoryReturnDate.Text[16] != ':')
+            if (textBox.Text.Length >= 17 && textBox.Text[16] != ':')
             {
-                txtBoxEquipmentHistoryReturnDate.Text = txtBoxEquipmentHistoryReturnDate.Text.Insert(16, ":");
+                textBox.Text = textBox.Text.Insert(16, ":");
             }
+            //if (textBox.Text.Length >= 12 && textBox.Text[11] != ' ' && !char.IsDigit(textBox.Text[11]))
+            //{
+            //    textBox.Text = textBox.Text.Insert(11, "0");
+            //}
 
-            // Установите каретку в конец текста
-            txtBoxEquipmentHistoryReturnDate.CaretIndex = txtBoxEquipmentHistoryReturnDate.Text.Length;
+            // Каретку в конец текста
+            textBox.CaretIndex = textBox.Text.Length;
         }
 
         private void ClearFields()

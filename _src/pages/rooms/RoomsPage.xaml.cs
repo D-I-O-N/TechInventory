@@ -255,6 +255,8 @@ namespace TechInventory._src.pages.rooms
                 infoEdit.Visibility = Visibility.Visible;
                 btnEdit.Visibility = Visibility.Hidden;
                 btnSave.Visibility = Visibility.Visible;
+                txtBoxRoomNumber.IsReadOnly = false;
+                txtBoxDescription.IsReadOnly = false;
             }
             else
             {

@@ -330,7 +330,7 @@ namespace TechInventory._src.pages.employees
 
         private void AddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            // Ваш код для открытия формы добавления сотрудника
+            // Код для открытия формы добавления сотрудника
             AddEmployees_Form createEmployeeWindow = new AddEmployees_Form();
             createEmployeeWindow.ShowDialog();
         }
@@ -341,11 +341,13 @@ namespace TechInventory._src.pages.employees
 
             if (selectedEmployee != null)
             {
-
                 infoEdit.Visibility = Visibility.Visible;
                 btnEdit.Visibility = Visibility.Hidden;
                 btnSave.Visibility = Visibility.Visible;
                 comboBoxRooms.IsEnabled = true;
+                txtBoxFirstName.IsReadOnly = false;
+                txtBoxLastName.IsReadOnly = false;
+                txtBoxPosition.IsReadOnly = false;
             }
             else
             {

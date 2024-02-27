@@ -102,6 +102,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
+     
     </Page.Resources>
 
     
@@ -160,8 +162,8 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Width="334">
                         <!--<TextBox x:Name="txtBoxID"  Margin="5" Width="233"/>-->
-                        <TextBox x:Name="txtBoxRoomNumber"  Margin="5" Width="312" TextBlock.FontFamily="Segoe UI Black" TextChanged="txtBoxRoomNumber_TextChanged"/>
-                        <TextBox x:Name="txtBoxDescription"  Margin="5" Width="312" TextBlock.FontFamily="Segoe UI Black"/>
+                        <TextBox x:Name="txtBoxRoomNumber" IsReadOnly="True" Margin="5" Width="312" TextBlock.FontFamily="Segoe UI Black" TextChanged="txtBoxRoomNumber_TextChanged"/>
+                        <TextBox x:Name="txtBoxDescription" IsReadOnly="True" Margin="5" Width="312" TextBlock.FontFamily="Segoe UI Black" BorderThickness="1,1,1,1"/>
                     </StackPanel>
                 </StackPanel>
                 <Label x:Name="infoEdit" Visibility="Hidden" HorizontalContentAlignment="Center" Content="*Открыт режим редактирования" FontWeight="Bold" Foreground="Red" />

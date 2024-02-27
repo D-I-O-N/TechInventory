@@ -153,10 +153,10 @@
                            LineHeight="1.5" FontWeight="Bold" Margin="0,5,0,10" FontFamily="Segoe UI Black"/>
                 <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center" >
                     <StackPanel Orientation="Vertical" Width="747">
-                        <StackPanel Orientation="Horizontal" Width="800" >
+                        <StackPanel Orientation="Horizontal" Width="Auto" >
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Наименование" Width="100" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                <TextBox x:Name="txtBoxEquipmentHistoryName" Text="{Binding SelectedEquipment.EquipmentID, Mode=TwoWay}"  Margin="5" Width="132" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
+                                <TextBox x:Name="txtBoxEquipmentHistoryName" IsReadOnly="True" Text="{Binding SelectedEquipment.EquipmentID, Mode=TwoWay}"  Margin="5" Width="132" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black" />
                                 <ComboBox x:Name="comboBoxEquipmentName" Margin="5" Width="135" IsEditable="True" IsReadOnly="True" IsEnabled="False"
                                       SelectedValuePath="EquipmentID"
                                       SelectedValue="{Binding SelectedEquipment.EquipmentID, Mode=TwoWay}"
@@ -175,7 +175,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Сотрудник" Width="71" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                <TextBox x:Name="txtBoxEquipmentHistoryEmployee" Text="{Binding SelectedEmployee.EmployeeID, Mode=TwoWay}" Margin="5" Width="114" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black" />
+                                <TextBox x:Name="txtBoxEquipmentHistoryEmployee" IsReadOnly="True" Text="{Binding SelectedEmployee.EmployeeID, Mode=TwoWay}" Margin="5" Width="114" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black" />
                                 <ComboBox x:Name="comboBoxEmployee" Margin="5" Width="135" IsEditable="True" IsReadOnly="True" IsEnabled="False"
                                       SelectedValuePath="EmployeeID"
                                       SelectedValue="{Binding SelectedEmployee.EmployeeID, Mode=TwoWay}"
@@ -196,15 +196,15 @@
                         <StackPanel Orientation="Horizontal"  Width="748" >
                             <StackPanel Orientation="Horizontal" Width="283">
                                 <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата выдачи" Width="80" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                <TextBox x:Name="txtBoxEquipmentHistoryCheckoutDate"  Margin="5" Width="180" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
+                                <TextBox x:Name="txtBoxEquipmentHistoryCheckoutDate" IsReadOnly="True" Margin="5" Width="180" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black" TextChanged="txtBoxEquipmentHistoryCheckoutDate_TextChanged"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Дата возврата" Width="109" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                <TextBox x:Name="txtBoxEquipmentHistoryReturnDate"  Margin="5" Width="180" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
+                                <TextBox x:Name="txtBoxEquipmentHistoryReturnDate" IsReadOnly="True" Margin="5" Width="180" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black" TextChanged="txtBoxEquipmentHistoryReturnDate_TextChanged"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="5" TextAlignment="Right" FontSize="12" Text="Доступно" Width="86" FontWeight="Bold" VerticalAlignment="Center" FontFamily="Segoe UI Black"/>
-                                <CheckBox x:Name="CheckBoxStatus"  Margin="5" Width="16" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
+                                <CheckBox x:Name="CheckBoxStatus" IsEnabled = "False"  Margin="5" Width="16" VerticalAlignment="Center" TextBlock.FontFamily="Segoe UI Black"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

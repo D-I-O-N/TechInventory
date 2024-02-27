@@ -322,7 +322,7 @@ namespace TechInventory._src.pages.equipment
             else
             {
                 // Введенное значение не соответствует ожидаемому формату
-                MessageBox.Show("Неверный формат даты. Используйте формат 'день.месяц.год час:минута:секунда'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Неверный формат даты. Используйте формат 'день-месяц-год' Пример: 20.01.2024", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -463,11 +463,16 @@ namespace TechInventory._src.pages.equipment
 
             if (selectedEquipment != null)
             {
-
                 infoEdit.Visibility = Visibility.Visible;
                 btnEdit.Visibility = Visibility.Hidden;
                 btnSave.Visibility = Visibility.Visible;
                 comboBoxRooms.IsEnabled = true;
+                txtBoxStatus.IsEnabled = true;
+                txtBoxEquipmentCount.IsReadOnly = false;
+                txtBoxEquipmentName.IsReadOnly = false; 
+                txtBoxEquipmentType.IsReadOnly = false;
+                txtBoxPurchaseDate.IsReadOnly = false;
+                txtBoxSN.IsReadOnly = false;
             }
             else
             {
