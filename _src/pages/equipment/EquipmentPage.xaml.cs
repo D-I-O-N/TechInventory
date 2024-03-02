@@ -254,7 +254,7 @@ namespace TechInventory._src.pages.equipment
             LoadRoomsFromDatabase();
             comboBoxRooms.ItemsSource = RoomsList;
 
-           
+
         }
 
         private void txtBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -269,7 +269,7 @@ namespace TechInventory._src.pages.equipment
             string searchString = $"SELECT * FROM Equipment WHERE CONCAT(EquipmentName, EquipmentType, Count, SerialNumber, PurchaseDate, Status, RoomID) LIKE N'%{txtBoxSearch.Text}%'";
 
             SqlCommand com = new SqlCommand(searchString, (SqlConnection)entities.Database.Connection);
-            
+
             entities.Database.Connection.Open();
 
             SqlDataReader reader = com.ExecuteReader();
@@ -283,7 +283,7 @@ namespace TechInventory._src.pages.equipment
             entities.Database.Connection.Close();
         }
 
-        
+
 
         private void UpdateEquipmentInDatabase(Equipment equipmentToUpdate)
         {
@@ -353,7 +353,7 @@ namespace TechInventory._src.pages.equipment
                     txtBoxEquipmentName.Text = selectedEquipment.EquipmentName;
                     txtBoxEquipmentType.Text = selectedEquipment.EquipmentType;
                     txtBoxEquipmentCount.Text = selectedEquipment.Count.ToString();
-                    
+
 
                     // Установка значения статуса
                     if (Status == "Используется")
@@ -369,7 +369,7 @@ namespace TechInventory._src.pages.equipment
                     txtBoxSN.Text = selectedEquipment.SerialNumber.ToString();
                     txtBoxPurchaseDate.Text = selectedEquipment.PurchaseDate.ToString("dd.MM.yyyy");
                     txtBoxRoomID.Text = selectedEquipment.RoomID.ToString();
-   
+
                     //comboBoxRooms.IsEnabled = true;
                     comboBoxRooms.SelectedItem = selectedEquipment.AssignedRoom.Description.ToString();
                 }
@@ -469,7 +469,7 @@ namespace TechInventory._src.pages.equipment
                 comboBoxRooms.IsEnabled = true;
                 txtBoxStatus.IsEnabled = true;
                 txtBoxEquipmentCount.IsReadOnly = false;
-                txtBoxEquipmentName.IsReadOnly = false; 
+                txtBoxEquipmentName.IsReadOnly = false;
                 txtBoxEquipmentType.IsReadOnly = false;
                 txtBoxPurchaseDate.IsReadOnly = false;
                 txtBoxSN.IsReadOnly = false;
@@ -505,6 +505,38 @@ namespace TechInventory._src.pages.equipment
         private void BackToPage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void txtBoxPurchaseDate_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            inputMaskForPurchaseDateHardware(sender);
+        }
+
+        private void inputMaskForPurchaseDateHardware(object sender)
+        {
+            //Пример: 20.01.2024
+            TextBox textBox = sender as TextBox;
+            int maxMaskLength = 10;
+
+            // Удаляем все недопустимые символы
+            textBox.Text = new string(textBox.Text
+                .Where(c => char.IsDigit(c) || c == '.')
+                .ToArray());
+
+            if (textBox.Text.Length > maxMaskLength)
+            {
+                textBox.Text = textBox.Text.Substring(0, maxMaskLength);
+            }
+            if (textBox.Text.Length >= 3 && textBox.Text[2] != '.')
+            {
+                textBox.Text = textBox.Text.Insert(2, ".");
+            }
+            if (textBox.Text.Length >= 6 && textBox.Text[5] != '.')
+            {
+                textBox.Text = textBox.Text.Insert(5, ".");
+            }
+            // Каретку в конец текста
+            textBox.CaretIndex = textBox.Text.Length;
         }
     }
 

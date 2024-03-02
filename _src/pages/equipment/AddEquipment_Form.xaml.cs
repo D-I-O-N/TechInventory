@@ -131,6 +131,38 @@ namespace TechInventory._src.pages.equipment
         {
             ClearFields();
         }
+
+        private void txtPurchaseDate_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            inputMaskForPurchaseDateHardware(sender);
+        }
+
+        private void inputMaskForPurchaseDateHardware(object sender)
+        {
+            //Пример: 20.01.2024
+            TextBox textBox = sender as TextBox;
+            int maxMaskLength = 10;
+
+            // Удаляем все недопустимые символы
+            textBox.Text = new string(textBox.Text
+                .Where(c => char.IsDigit(c) || c == '.')
+                .ToArray());
+
+            if (textBox.Text.Length > maxMaskLength)
+            {
+                textBox.Text = textBox.Text.Substring(0, maxMaskLength);
+            }
+            if (textBox.Text.Length >= 3 && textBox.Text[2] != '.')
+            {
+                textBox.Text = textBox.Text.Insert(2, ".");
+            }
+            if (textBox.Text.Length >= 6 && textBox.Text[5] != '.')
+            {
+                textBox.Text = textBox.Text.Insert(5, ".");
+            }
+            // Каретку в конец текста
+            textBox.CaretIndex = textBox.Text.Length;
+        }
     }
 }
 

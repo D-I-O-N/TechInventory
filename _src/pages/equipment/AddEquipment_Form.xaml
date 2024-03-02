@@ -23,7 +23,7 @@
             <TextBox x:Name="txtSN" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
 
             <Label Content="Дата покупки" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
-            <TextBox x:Name="txtPurchaseDate" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
+            <TextBox x:Name="txtPurchaseDate" Margin="0,0,0,10" FontFamily="Segoe UI Black" TextChanged="txtPurchaseDate_TextChanged"/>
 
             <Label Content="Статус" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black"/>
             <TextBox x:Name="txtStatus" Margin="0,0,0,10" FontFamily="Segoe UI Black"/>
