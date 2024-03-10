@@ -96,6 +96,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetTechInventory.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report.cs" />
     <Compile Include="TechInventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -170,6 +171,9 @@
     <Compile Include="_src\pages\statistics\EquipmentReportPage.xaml.cs">
       <DependentUpon>EquipmentReportPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="_src\pages\statistics\PageStatisticReport.xaml.cs">
+      <DependentUpon>PageStatisticReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_src\pages\statistics\TypeEquipmentStatisticPage.xaml.cs">
       <DependentUpon>TypeEquipmentStatisticPage.xaml</DependentUpon>
     </Compile>
@@ -229,6 +233,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="_src\pages\statistics\PageStatisticReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="_src\pages\statistics\TypeEquipmentStatisticPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -284,6 +292,7 @@
     <None Include="TechInventoryDataSet.xss">
       <DependentUpon>TechInventoryDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Templates\Act.docx" />
     <None Include="_src\database\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
@@ -291,7 +300,35 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

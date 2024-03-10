@@ -357,11 +357,6 @@ namespace TechInventory._src.pages.rooms
             }
         }
 
-        private void BackToPage_MouseLeftButtonUp(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
-        }
-
         private void clearImg_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ClearFields();
@@ -388,6 +383,11 @@ namespace TechInventory._src.pages.rooms
                     textBox.CaretIndex = textBox.Text.Length;
                 }
             }
+        }
+
+        private void BackToPage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

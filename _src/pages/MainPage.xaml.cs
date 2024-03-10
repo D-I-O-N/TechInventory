@@ -55,7 +55,8 @@ namespace TechInventory._src.pages
 
         private void OpenStatic_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EquipmentReportPage());
+            //NavigationService.Navigate(new EquipmentReportPage());
+            NavigationService.Navigate(new PageStatisticReport());
         }
 
         private void OpenAbout_Click(object sender, RoutedEventArgs e)

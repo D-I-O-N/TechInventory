@@ -738,8 +738,8 @@
         <DataSetName>DataSet_EpAndEq</DataSetName>
         <Top>1.01742cm</Top>
         <Left>0.254cm</Left>
-        <Height>2.01138cm</Height>
-        <Width>15.46799cm</Width>
+        <Height>2.01139cm</Height>
+        <Width>15.46797cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -780,10 +780,10 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.16167in</Height>
+    <Height>1.62834in</Height>
     <Style />
   </Body>
-  <Width>6.18976in</Width>
+  <Width>6.24809in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
