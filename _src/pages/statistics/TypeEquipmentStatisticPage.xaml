@@ -4,12 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TechInventory._src.pages.statistics"
-      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TypeEquipmentStatisticPage">
 
     <Grid Background="#FF2C3E50">
-        <lvc:PieChart x:Name="pieChart" />
+       
     </Grid>
 </Page>

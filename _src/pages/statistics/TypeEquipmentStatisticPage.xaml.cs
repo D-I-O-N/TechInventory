@@ -13,8 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DocumentFormat.OpenXml.Drawing.Charts;
-using LiveCharts;
-using LiveCharts.Wpf;
+
 
 namespace TechInventory._src.pages.statistics
 {

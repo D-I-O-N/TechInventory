@@ -2,11 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TechInventory._src.database;
 using Word = Microsoft.Office.Interop.Word;
+using System.IO;
 
 namespace TechInventory
 {
@@ -15,20 +18,18 @@ namespace TechInventory
         Word.Application app = new Word.Application();
         Word.Document doc;
 
-        ~Report()
-        {
-            doc.Saved = true;
-            try { app.Quit(); }
-            catch { }
-        }
-
         public void CheckTechGen(IList<Equipment> Equipment)
         {
             if (Equipment != null)
             {
                 doc = app.Documents.Add(Template: $@"C:\Users\danb9\Desktop\C#\TechInventory\Templates\Act.docx", Visible: true);
 
-            
+                //string templatePath = $@"Templates\Act.docx";
+                //string fullWay = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, templatePath);
+                //doc = app.Documents.Add(Template: fullWay, Visible: true);
+
+
+                int rowCount = 0;
 
                 //Word.Range dateTime = doc.Bookmarks["DateTime"].Range;
                 //dateTime.Text = DateTime.Now.ToString();
@@ -57,39 +58,44 @@ namespace TechInventory
                                 break;
                             }
                         }
-
-                        // Удаляем строку, если найдена
+                        
                         if (rowIndexToDelete != -1)
                         {
-                            table.Rows[rowIndexToDelete].Delete();
+                            table.Rows[rowIndexToDelete].Delete(); // Удаляем пустую строку после заголовка строку, если найдена
                         }
-
-                        //table.Rows[2].Delete(); //Удаляем пустую строку после заголовка
-
                         currPage = page;
                         row = table.Rows.Add();
                     }
 
                     row.Cells[1].Range.Text = item.EquipmentName;
                     row.Cells[2].Range.Text = item.Count.ToString();
-                    //row.Cells[3].Range.InsertBefore(item.PurchaseDate.ToString());
-                    //row.Cells[4].Range.Text = item.PurchaseDate.ToString();
-                    //row.Cells[5].Range.Text = item.SerialNumber;
-                    //row.Cells[6].Range.Text = item.EquipmentType;
+
+                    String Cells_3 = item.PurchaseDate.ToString();
+                    string originalString = Cells_3;
+                    string stringToRemove = " 0:00:00";
+                    string modifiedStringCells_3 = originalString.Replace(stringToRemove, string.Empty);
+
+                    row.Cells[3].Range.Text = modifiedStringCells_3;
+                    row.Cells[4].Range.Text = item.SerialNumber;
+                    row.Cells[5].Range.Text = item.EquipmentType;
+
+                    rowCount++;
+                    if (rowCount >= 4) // Если добавлено уже 4 строки, прекращаем цикл
+                    {
+                        break;
+                    }
                 }
                 doc.Bookmarks["Table"].Range.Tables[1].Rows[2].Delete(); //Удаляем строку [текст] [текст] [текст] [текст] в таблице
+                //app.Visible = true;
 
-                app.Visible = true;
+                // Сохранение измененного файла
+                string savePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string fileName = "Акт приема-передачи оборудования.docx";
+                string fullPath = System.IO.Path.Combine(savePath, fileName);
+                doc.SaveAs(fullPath);
+                doc.Close();
 
-                //// Сохранение измененного файла
-                //string savePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); // Укажите путь для сохранения файла
-                //string fileName = "Акт приема-передачи оборудования.docx"; // Укажите имя файла
-                //string fullPath = System.IO.Path.Combine(savePath, fileName);
-                //doc.SaveAs(fullPath);
-                //doc.Close();
-
-                //// Вывод сообщения о готовности файла
-                //Console.WriteLine("Файл успешно сохранен.");
+                MessageBox.Show("Файл успешно сохранен на рабочем столе.", "Успешное выполнение задачи", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
