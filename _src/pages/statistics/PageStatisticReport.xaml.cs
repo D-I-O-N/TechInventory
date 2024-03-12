@@ -15,8 +15,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TechInventory._src.database;
-using Word = Microsoft.Office.Interop.Word;
-
+using LiveCharts;
+using LiveCharts.Wpf;
+using System.Data.Entity;
+using DocumentFormat.OpenXml.Drawing.Charts;
+using TechInventory._src.pages.employees;
+using TechInventory._src.pages.rooms;
 
 namespace TechInventory._src.pages.statistics
 {
@@ -26,14 +30,159 @@ namespace TechInventory._src.pages.statistics
     /// 
 
 
-
+    
     public partial class PageStatisticReport : Page
     {
         Entities entities = new Entities();
+        public SeriesCollection SeriesCollection { get; set; }
+        public Func<ChartPoint, string> Pointlabel { get; set; }
+        //public SeriesCollection seriesCollection = new SeriesCollection();
+        //public List<Entities> Equipment { get; set; }
+        //public List<Entities> Rooms { get; set; }
+        //public List<Entities> Employees { get; set; }
+
         public PageStatisticReport()
         {
             InitializeComponent();
+            pieChart();
+            doughnut();
         }
+
+        public void pieChart()
+        {
+            Pointlabel = chartPoint => string.Format("{0}({1:P})", chartPoint.Y, chartPoint.Participation);
+            DataContext = this;
+        }
+
+
+        private IList<Equipment> GetEquipmentData()
+        {
+            // Здесь должен быть ваш код для получения данных из таблицы оборудования
+            // Пример:
+            return entities.Equipment.ToList();
+            //return null;
+        }
+
+        private IList<Rooms> GetRoomData()
+        {
+            // Здесь должен быть ваш код для получения данных из таблицы аудиторий
+            // Пример:
+            return entities.Rooms.ToList();
+            //return null;
+        }
+
+        private IList<Employees> GetEmployeeData()
+        {
+            // Здесь должен быть ваш код для получения данных из таблицы преподавателей
+            // Пример:
+            return entities.Employees.ToList();
+            //return null;
+        }
+
+        public void doughnut()
+        {
+
+            IList<Equipment> equipmentList = GetEquipmentData();
+            IList<Rooms> roomList = GetRoomData();
+            IList<Employees> employeeList = GetEmployeeData();
+
+            //Создание коллекций значений для графика
+            ChartValues<int> equipmentValues = new ChartValues<int> { equipmentList.Count };
+            ChartValues<int> roomValues = new ChartValues<int> { roomList.Count };
+            ChartValues<int> employeeValues = new ChartValues<int> { employeeList.Count };
+
+            // //Создание серий графика для каждой категории данных
+            //PieSeries equipmentSeries = new PieSeries
+            //{
+            //    Title = "Оборудование",
+            //    Values = equipmentValues,
+            //    DataLabels = true
+            //};
+
+            // PieSeries roomSeries = new PieSeries
+            // {
+            //     Title = "Аудитории",
+            //     Values = roomValues,
+            //     DataLabels = true
+            // };
+
+            // PieSeries employeeSeries = new PieSeries
+            // {
+            //     Title = "Преподаватели",
+            //     Values = employeeValues,
+            //     DataLabels = true
+            // };
+
+            // // Добавление серий в коллекцию Series для отображения на графике
+            // SeriesCollection SeriesCollection = new SeriesCollection { equipmentSeries, roomSeries, employeeSeries };
+
+            // Привязка коллекции серий к графику
+
+
+
+
+            SeriesCollection = new SeriesCollection
+            {
+                new PieSeries
+                {
+                    Title="Оборудование",
+                    Values=equipmentValues,
+                    DataLabels=true,
+                },
+                new PieSeries
+                {
+                    Title="Аудитории",
+                    Values=roomValues,
+                    DataLabels=true,
+                },
+                new PieSeries
+                {
+                    Title="Преподаватели",
+                    Values=employeeValues,
+                    DataLabels=true,
+                }
+
+            };
+
+            //// Получить количество строк в коллекции Equipment
+            //int equipmentCount = entities.Equipment.Count();
+
+            //// Получить количество аудиторий
+            //int roomsCount = entities.Rooms.Count();
+
+            //// Получить количество преподавателей
+            //int employeesCount = entities.Employees.Count();
+
+            //// Создать коллекцию значений для графика
+            //ChartValues<int> values = new ChartValues<int> { equipmentCount, roomsCount, employeesCount };
+
+            //// Создать объекты PieSeries и добавить коллекцию значений
+
+            //PieSeries equipmentSeries = new PieSeries
+            //{
+            //    Title = "Оборудование",
+            //    Values = new ChartValues<int> { equipmentCount },
+            //    DataLabels = true
+            //};
+
+            //PieSeries roomsSeries = new PieSeries
+            //{
+            //    Title = "Аудитории",
+            //    Values = new ChartValues<int> { roomsCount },
+            //    DataLabels = true
+            //};
+
+            //PieSeries employeesSeries = new PieSeries
+            //{
+            //    Title = "Преподаватели",
+            //    Values = new ChartValues<int> { employeesCount },
+            //    DataLabels = true
+            //};
+
+            //// Добавить PieSeries в коллекцию Series
+            //SeriesCollection seriesCollection = new SeriesCollection { equipmentSeries, roomsSeries, employeesSeries };
+        }
+
 
         private void BackToPage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -44,35 +193,6 @@ namespace TechInventory._src.pages.statistics
         {
             Report report = new Report();
             report.CheckTechGen(entities.Equipment.ToList());
-
-            //var allEquipment = new List<Equipment>();
-
-            //var application = new Word.Application();
-
-            //Word.Document document = application.Documents.Add();
-
-            //Word.Paragraph tableParagraph = document.Paragraphs.Add();
-            //Word.Range tableRange = tableParagraph.Range;
-            //Word.Table paymentsTable = document.Tables.Add(tableRange, allEquipment.Count()+1, 5);
-            //paymentsTable.Borders.InsideLineStyle = paymentsTable.Borders.OutsideLineStyle
-            //    = Word.WdLineStyle.wdLineStyleSingle;
-            //paymentsTable.Range.Cells.VerticalAlignment = Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-
-            //Word.Range cellRange;
-
-            //cellRange = paymentsTable.Cell(1, 1).Range;
-            //cellRange.Text = "Наименование оборудования";
-            //cellRange = paymentsTable.Cell(1, 2).Range;
-            //cellRange.Text = "Кол-во";
-            //cellRange = paymentsTable.Cell(1, 3).Range;
-            //cellRange.Text = "Дата покупки";
-            //cellRange = paymentsTable.Cell(1, 4).Range;
-            //cellRange.Text = "Серийный номер";
-            //cellRange = paymentsTable.Cell(1, 5).Range;
-            //cellRange.Text = "Тип";
-
-            //paymentsTable.Rows[1].Range.Bold = 1;
-            //paymentsTable.Rows[1].Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment
         }
 
         private void EqList_Click(object sender, RoutedEventArgs e)

@@ -58,34 +58,45 @@
 
         <Grid Grid.Row="0" >
             <StackPanel Orientation="Horizontal">
-            <StackPanel VerticalAlignment="Center" Orientation="Vertical">
-                    <Button Margin="50,0,0,0"  Style="{StaticResource NavigationButtonStyle3}" x:Name="EqList" FontWeight="Bold" FontSize="18" Width="360" Height="175" Click="EqList_Click">
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                        <Image Source="/img/equipment.png" Width="120" Height="120" />
-                        <TextBlock Margin="0,0,0,0" HorizontalAlignment="Center"  Text="Список оборудования для журнала" Foreground="White" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI Black" />
-                    </StackPanel>
-                </Button>
-                    <Button Margin="50,0,0,0" Style="{StaticResource NavigationButtonStyle3}" x:Name="EqAct"  FontWeight="Bold" FontSize="18" Width="360" Height="175" Click="EqAct_Click">
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                        <Image Source="/img/equipment.png" Width="120" Height="120" />
+                <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                    <Button Margin="30,0,15,0"  Style="{StaticResource NavigationButtonStyle3}" x:Name="EqList" FontWeight="Bold" FontSize="18" Width="360" Height="175" Click="EqList_Click">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <Image Source="/img/equipment.png" Width="120" Height="120" />
+                            <TextBlock Margin="0,0,0,0" HorizontalAlignment="Center"  Text="Список оборудования для журнала" Foreground="White" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI Black" />
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="30,0,15,0" Style="{StaticResource NavigationButtonStyle3}" x:Name="EqAct"  FontWeight="Bold" FontSize="18" Width="360" Height="175" Click="EqAct_Click">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <Image Source="/img/equipment.png" Width="120" Height="120" />
                             <TextBlock Margin="0,0,0,0" HorizontalAlignment="Center"  Text="Акт приема-передачи оборудования" Foreground="White" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI Black" />
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-                <StackPanel Height="400">
-
-                    <lvc:CartesianChart Width="362" Height="397">
-
-                    </lvc:CartesianChart>
-
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
+                <StackPanel Orientation="Vertical"
+                            VerticalAlignment="Center">
+                    <lvc:PieChart Name="Doughnut"
+                                  Series="{Binding SeriesCollection}"
+                                  Margin="15,0,0,0"
+                                  Width="350" Height="350"
+                                  LegendLocation="Bottom" 
+                                  InnerRadius="70">
+                        <lvc:PieChart.ChartLegend>
+                            <lvc:DefaultLegend Foreground="White"/>
+                        </lvc:PieChart.ChartLegend>
 
+                    </lvc:PieChart>
+                </StackPanel>
             </StackPanel>
         </Grid>
-
+        
         <Grid Grid.Row="1" >
             <Image x:Name="backImg" HorizontalAlignment="Right" Margin="7" Height="40" Width="40" Source="/img/back.png" MouseLeftButtonUp="BackToPage_MouseLeftButtonUp" Cursor="Hand" />
         </Grid>
 
         </Grid>
 </Page>
+<!--<lvc:PieChart.Series>
+    <lvc:PieSeries Title="Оборудование" Values="60" />
+    <lvc:PieSeries Title="Преподаватели"  Values="10" />
+    <lvc:PieSeries Title="Аудитории"  Values="20" />
+</lvc:PieChart.Series>-->
