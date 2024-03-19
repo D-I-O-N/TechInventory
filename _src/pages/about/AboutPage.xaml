@@ -31,7 +31,7 @@
         </Grid>
         <Grid Grid.Row="3">
             <TextBlock Text="Год создания: 2024" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe UI Black"/>
-            <Image x:Name="backImg" HorizontalAlignment="Left"  Height="40" Width="40" Source="/img/back.png" MouseLeftButtonUp="BackToPage_MouseLeftButtonUp" Cursor="Hand" Margin="752,5,0,5" />
+            <Image x:Name="backImg" HorizontalAlignment="Right"  Height="40" Width="40" Source="/img/back.png" MouseLeftButtonUp="BackToPage_MouseLeftButtonUp" Cursor="Hand" Margin="752,5,0,5" />
         </Grid>
 
 

@@ -57,7 +57,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" >
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel VerticalAlignment="Center" Orientation="Vertical">
                     <Button Margin="30,0,15,0"  Style="{StaticResource NavigationButtonStyle3}" x:Name="EqList" FontWeight="Bold" FontSize="18" Width="360" Height="175" Click="EqList_Click">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
