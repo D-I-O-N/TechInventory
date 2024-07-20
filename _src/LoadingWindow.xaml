@@ -1,0 +1,19 @@
+﻿<Window x:Class="TechInventory._src.LoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TechInventory._src"
+        mc:Ignorable="d"
+        Title="Окно загрузки" Height="150" Width="400">
+    <Grid Background="#262537">
+        <ProgressBar IsIndeterminate="True" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <!-- Текстовое сообщение -->
+        <TextBlock Text="Loading..." 
+                    FontWeight="Bold"
+                   Foreground="White" 
+                   Margin="10" FontSize="30" VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Center"
+                   FontFamily="Segoe UI Black" />
+    </Grid>
+</Window>
