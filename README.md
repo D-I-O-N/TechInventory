@@ -25,7 +25,7 @@ TechInventory - это десктопное приложение на C# для 
 
 # TechInventory - Electronic Computing Equipment Management System
 
-![Application Interface Example](screenshot.png)
+![Снимок экрана 2025-06-08 132247](https://github.com/user-attachments/assets/bc279267-b424-4705-8df2-25bb01446f10)
 
 ## 📌 Overview
 
